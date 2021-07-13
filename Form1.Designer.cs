@@ -132,7 +132,6 @@ namespace Magn3D_Prof
             this.открытьВСерфереToolStripMenuItem.Name = "открытьВСерфереToolStripMenuItem";
             this.открытьВСерфереToolStripMenuItem.Size = new System.Drawing.Size(301, 26);
             this.открытьВСерфереToolStripMenuItem.Text = "Открыть в серфере";
-            this.открытьВСерфереToolStripMenuItem.Click += new System.EventHandler(this.открытьВСерфереToolStripMenuItem_Click);
             // 
             // выходToolStripMenuItem
             // 
@@ -316,7 +315,6 @@ namespace Magn3D_Prof
             this.Text = "Магнитное поле";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Global_Load);
-            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Global_PreviewKeyDown);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuProfile.ResumeLayout(false);

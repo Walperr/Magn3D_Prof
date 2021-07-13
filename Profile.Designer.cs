@@ -23,28 +23,27 @@ namespace Magn3D_Prof
 
         #region Код, автоматически созданный конструктором компонентов
 
-        /// <summary> 
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series25 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series26 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Series series27 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Profile));
             this.ProfileSplit = new System.Windows.Forms.SplitContainer();
             this.LeftSplit = new System.Windows.Forms.SplitContainer();
-            this.button1 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.Hi2 = new Magn3D_Prof.Numeric();
@@ -81,32 +80,30 @@ namespace Magn3D_Prof
             this.Hmax = new Magn3D_Prof.Numeric();
             this.DrawPlace1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.plot1 = new ploting.plot();
             this.resetView = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.ProfileSplit)).BeginInit();
+            this.plot1 = new ploting.plot();
+            ((System.ComponentModel.ISupportInitialize) (this.ProfileSplit)).BeginInit();
             this.ProfileSplit.Panel1.SuspendLayout();
             this.ProfileSplit.Panel2.SuspendLayout();
             this.ProfileSplit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LeftSplit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.LeftSplit)).BeginInit();
             this.LeftSplit.Panel1.SuspendLayout();
             this.LeftSplit.Panel2.SuspendLayout();
             this.LeftSplit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RigthSplit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.RigthSplit)).BeginInit();
             this.RigthSplit.Panel1.SuspendLayout();
             this.RigthSplit.Panel2.SuspendLayout();
             this.RigthSplit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.chart1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DrawPlace1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.DrawPlace1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProfileSplit
             // 
-            this.ProfileSplit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProfileSplit.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.ProfileSplit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ProfileSplit.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.ProfileSplit.IsSplitterFixed = true;
@@ -136,7 +133,6 @@ namespace Magn3D_Prof
             // 
             // LeftSplit.Panel1
             // 
-            this.LeftSplit.Panel1.Controls.Add(this.button1);
             this.LeftSplit.Panel1.Controls.Add(this.label7);
             this.LeftSplit.Panel1.Controls.Add(this.label6);
             this.LeftSplit.Panel1.Controls.Add(this.Hi2);
@@ -171,16 +167,6 @@ namespace Magn3D_Prof
             this.LeftSplit.Size = new System.Drawing.Size(382, 720);
             this.LeftSplit.SplitterDistance = 169;
             this.LeftSplit.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(282, 141);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(49, 23);
-            this.button1.TabIndex = 48;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label7
             // 
@@ -235,7 +221,7 @@ namespace Magn3D_Prof
             this.PointsCount.Decimalplaces = 3;
             this.PointsCount.Location = new System.Drawing.Point(224, 141);
             this.PointsCount.Name = "PointsCount";
-            this.PointsCount.Size = new System.Drawing.Size(52, 26);
+            this.PointsCount.Size = new System.Drawing.Size(64, 26);
             this.PointsCount.TabIndex = 42;
             this.PointsCount.TabStop = false;
             // 
@@ -472,7 +458,7 @@ namespace Magn3D_Prof
             // 
             this.SKOlabel.AutoSize = true;
             this.SKOlabel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.SKOlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SKOlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
             this.SKOlabel.Location = new System.Drawing.Point(801, 0);
             this.SKOlabel.Name = "SKOlabel";
             this.SKOlabel.Size = new System.Drawing.Size(91, 29);
@@ -481,75 +467,67 @@ namespace Magn3D_Prof
             // 
             // chart1
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea5);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(0, 0);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            this.chart1.PaletteCustomColors = new System.Drawing.Color[] {
-        System.Drawing.Color.Blue,
-        System.Drawing.Color.Yellow,
-        System.Drawing.Color.Red,
-        System.Drawing.Color.Yellow,
-        System.Drawing.Color.Cyan,
-        System.Drawing.Color.Green,
-        System.Drawing.Color.Olive,
-        System.Drawing.Color.Gray};
-            series19.BorderWidth = 2;
-            series19.ChartArea = "ChartArea1";
-            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series19.Legend = "Legend1";
-            series19.Name = "Аномальное поле 1";
-            series20.BorderWidth = 2;
-            series20.ChartArea = "ChartArea1";
-            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series20.Legend = "Legend1";
-            series20.Name = "Аномальное поле 2";
-            series21.BorderWidth = 2;
-            series21.ChartArea = "ChartArea1";
-            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series21.Enabled = false;
-            series21.Legend = "Legend1";
-            series21.Name = "FieldX";
-            series22.BorderWidth = 2;
-            series22.ChartArea = "ChartArea1";
-            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series22.Enabled = false;
-            series22.Legend = "Legend1";
-            series22.Name = "FieldY";
-            series23.BorderWidth = 2;
-            series23.ChartArea = "ChartArea1";
-            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series23.Enabled = false;
-            series23.Legend = "Legend1";
-            series23.Name = "FieldZ";
-            series24.BorderWidth = 2;
-            series24.ChartArea = "ChartArea1";
-            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series24.Legend = "Legend1";
-            series24.Name = "Измеренное поле 1";
-            series25.BorderWidth = 2;
-            series25.ChartArea = "ChartArea1";
-            series25.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series25.Legend = "Legend1";
-            series25.Name = "Измеренное поле 2";
-            series26.BorderWidth = 2;
-            series26.ChartArea = "ChartArea1";
-            series26.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series26.Legend = "Legend1";
-            series26.Name = "Буфер";
-            this.chart1.Series.Add(series19);
-            this.chart1.Series.Add(series20);
-            this.chart1.Series.Add(series21);
-            this.chart1.Series.Add(series22);
-            this.chart1.Series.Add(series23);
-            this.chart1.Series.Add(series24);
-            this.chart1.Series.Add(series25);
-            this.chart1.Series.Add(series26);
+            this.chart1.PaletteCustomColors = new System.Drawing.Color[] {System.Drawing.Color.Blue, System.Drawing.Color.Yellow, System.Drawing.Color.Red, System.Drawing.Color.Yellow, System.Drawing.Color.Cyan, System.Drawing.Color.Green, System.Drawing.Color.Olive, System.Drawing.Color.Gray};
+            series1.BorderWidth = 2;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Аномальное поле 1";
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Legend = "Legend1";
+            series2.Name = "Аномальное поле 2";
+            series3.BorderWidth = 2;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Enabled = false;
+            series3.Legend = "Legend1";
+            series3.Name = "FieldX";
+            series4.BorderWidth = 2;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Enabled = false;
+            series4.Legend = "Legend1";
+            series4.Name = "FieldY";
+            series5.BorderWidth = 2;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series5.Enabled = false;
+            series5.Legend = "Legend1";
+            series5.Name = "FieldZ";
+            series6.BorderWidth = 2;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series6.Legend = "Legend1";
+            series6.Name = "Измеренное поле 1";
+            series7.BorderWidth = 2;
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series7.Legend = "Legend1";
+            series7.Name = "Измеренное поле 2";
+            series8.BorderWidth = 2;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series8.Legend = "Legend1";
+            series8.Name = "Буфер";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
+            this.chart1.Series.Add(series3);
+            this.chart1.Series.Add(series4);
+            this.chart1.Series.Add(series5);
+            this.chart1.Series.Add(series6);
+            this.chart1.Series.Add(series7);
+            this.chart1.Series.Add(series8);
             this.chart1.Size = new System.Drawing.Size(892, 341);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "FieldChart";
@@ -601,24 +579,23 @@ namespace Magn3D_Prof
             // 
             // DrawPlace1
             // 
-            chartArea6.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea6.AxisX.LabelStyle.Format = "F2";
-            chartArea6.AxisX.MajorGrid.Enabled = false;
-            chartArea6.AxisY.IsReversed = true;
-            chartArea6.AxisY.LabelStyle.Format = "F0";
-            chartArea6.AxisY.MajorGrid.Enabled = false;
-            chartArea6.Name = "ChartArea1";
-            this.DrawPlace1.ChartAreas.Add(chartArea6);
+            chartArea2.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea2.AxisX.LabelStyle.Format = "F2";
+            chartArea2.AxisX.MajorGrid.Enabled = false;
+            chartArea2.AxisY.IsReversed = true;
+            chartArea2.AxisY.LabelStyle.Format = "F0";
+            chartArea2.AxisY.MajorGrid.Enabled = false;
+            chartArea2.Name = "ChartArea1";
+            this.DrawPlace1.ChartAreas.Add(chartArea2);
             this.DrawPlace1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DrawPlace1.Location = new System.Drawing.Point(3, 3);
             this.DrawPlace1.Name = "DrawPlace1";
             this.DrawPlace1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            this.DrawPlace1.PaletteCustomColors = new System.Drawing.Color[] {
-        System.Drawing.Color.Black};
-            series27.ChartArea = "ChartArea1";
-            series27.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series27.Name = "Series1";
-            this.DrawPlace1.Series.Add(series27);
+            this.DrawPlace1.PaletteCustomColors = new System.Drawing.Color[] {System.Drawing.Color.Black};
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series9.Name = "Series1";
+            this.DrawPlace1.Series.Add(series9);
             this.DrawPlace1.Size = new System.Drawing.Size(857, 357);
             this.DrawPlace1.TabIndex = 0;
             this.DrawPlace1.Text = "chart2";
@@ -637,10 +614,21 @@ namespace Magn3D_Prof
             this.tabPage2.Text = "Сверху";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // resetView
+            // 
+            this.resetView.AutoSize = true;
+            this.resetView.Image = ((System.Drawing.Image) (resources.GetObject("resetView.Image")));
+            this.resetView.Location = new System.Drawing.Point(6, 6);
+            this.resetView.Name = "resetView";
+            this.resetView.Size = new System.Drawing.Size(81, 72);
+            this.resetView.TabIndex = 1;
+            this.resetView.UseVisualStyleBackColor = true;
+            this.resetView.Click += new System.EventHandler(this.resetView_Click);
+            // 
             // plot1
             // 
             this.plot1.ContoursCount = 10;
-            this.plot1.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.plot1.Cursor = System.Windows.Forms.Cursors.Default;
             this.plot1.DeferUpdate = false;
             this.plot1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plot1.Grid = null;
@@ -652,21 +640,9 @@ namespace Magn3D_Prof
             this.plot1.Padding = new System.Windows.Forms.Padding(5);
             this.plot1.Size = new System.Drawing.Size(857, 357);
             this.plot1.TabIndex = 0;
-            this.plot1.UseWaitCursor = true;
             this.plot1.ViewHeight = 0;
             this.plot1.ViewXmin = 0;
             this.plot1.ViewYmin = 0;
-            // 
-            // resetView
-            // 
-            this.resetView.AutoSize = true;
-            this.resetView.Image = ((System.Drawing.Image)(resources.GetObject("resetView.Image")));
-            this.resetView.Location = new System.Drawing.Point(6, 6);
-            this.resetView.Name = "resetView";
-            this.resetView.Size = new System.Drawing.Size(81, 72);
-            this.resetView.TabIndex = 1;
-            this.resetView.UseVisualStyleBackColor = true;
-            this.resetView.Click += new System.EventHandler(this.resetView_Click);
             // 
             // Profile
             // 
@@ -678,27 +654,26 @@ namespace Magn3D_Prof
             this.Load += new System.EventHandler(this.Profile_Load);
             this.ProfileSplit.Panel1.ResumeLayout(false);
             this.ProfileSplit.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ProfileSplit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.ProfileSplit)).EndInit();
             this.ProfileSplit.ResumeLayout(false);
             this.LeftSplit.Panel1.ResumeLayout(false);
             this.LeftSplit.Panel1.PerformLayout();
             this.LeftSplit.Panel2.ResumeLayout(false);
             this.LeftSplit.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LeftSplit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.LeftSplit)).EndInit();
             this.LeftSplit.ResumeLayout(false);
             this.RigthSplit.Panel1.ResumeLayout(false);
             this.RigthSplit.Panel1.PerformLayout();
             this.RigthSplit.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.RigthSplit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.RigthSplit)).EndInit();
             this.RigthSplit.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.chart1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DrawPlace1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.DrawPlace1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -734,11 +709,10 @@ namespace Magn3D_Prof
         public Numeric Point0X;
         public Numeric Point1Y;
         public Numeric Point1X;
-        public Numeric PointsCount;
+        public Magn3D_Prof.Numeric PointsCount;
         public Numeric Hi2;
         public Numeric Hi1;
         private System.Windows.Forms.Label SKOlabel;
-        private System.Windows.Forms.Button button1;
         public Numeric Hmin;
         private Numeric Hmax;
         private System.Windows.Forms.DataVisualization.Charting.Chart DrawPlace1;
