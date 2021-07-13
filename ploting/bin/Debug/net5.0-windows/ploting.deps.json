@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "ploting/1.0.0": {
+        "dependencies": {
+          "Magn3D_Prof": "1.0.0"
+        },
+        "runtime": {
+          "ploting.dll": {}
+        }
+      },
+      "Magn3D_Prof/1.0.0": {
+        "runtime": {
+          "Magn3D_Prof.exe": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ploting/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Magn3D_Prof/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
