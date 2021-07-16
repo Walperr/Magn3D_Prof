@@ -107,12 +107,12 @@ namespace Magn3D_Prof
             Hi1.Decimalplaces = 0;
             Hi2.Decimalplaces = 0;
 
-            plot1.DeferUpdate = true;
-            float aspectRatio = (float)(plot1.ClientRectangle.Width - plot1.Padding.Horizontal) / (float)(plot1.ClientRectangle.Height - plot1.Padding.Vertical);
-            plot1.ViewHeight = (int)((Global.Relief.GetxMax() - Global.Relief.GetxMin()) / aspectRatio);
-            plot1.ViewXmin = (int)Global.Relief.GetxMin();
-            plot1.ViewYmin = (int)Global.Relief.GetyMin();
-            plot1.DeferUpdate = false;
+            Top.DeferUpdate = true;
+            float aspectRatio = (float)(Top.ClientRectangle.Width - Top.Padding.Horizontal) / (float)(Top.ClientRectangle.Height - Top.Padding.Vertical);
+            Top.ViewHeight = (int)((Global.Relief.GetxMax() - Global.Relief.GetxMin()) / aspectRatio);
+            Top.ViewXmin = (int)Global.Relief.GetxMin();
+            Top.ViewYmin = (int)Global.Relief.GetyMin();
+            Top.DeferUpdate = false;
 
             UpdateProfilePoints(sender,e);
         }
@@ -140,10 +140,10 @@ namespace Magn3D_Prof
             foreach (var control in bodyControls)
                 control.UpdateParameters();
 
-            plot1.DeferUpdate = true;
-            plot1.Start = new Vector2(P0X, P0Y);
-            plot1.DeferUpdate = false;
-            plot1.End = new Vector2(P1X, P1Y);
+            Top.DeferUpdate = true;
+            Top.Start = new Vector2(P0X, P0Y);
+            Top.DeferUpdate = false;
+            Top.End = new Vector2(P1X, P1Y);
 
             RecalculatePoints();
         }
@@ -500,11 +500,11 @@ namespace Magn3D_Prof
         private void PaintA(object sender, PaintEventArgs e)
         {
             // Если рисовать нечего прекращаем
-            if (DrawPlace1.Series.Count == 0 || DrawPlace1.Series[0].Points.Count == 0 || DrawPlace1.Series.Count < Global.bodies.Count)
+            if (Slit.Series.Count == 0 || Slit.Series[0].Points.Count == 0 || Slit.Series.Count < Global.bodies.Count)
                 return;
 
             var pen = new Pen(Color.Black, 1.0f); // Создаем кисть
-            var ChartArea = DrawPlace1.ChartAreas[0]; // Объявляем ссылку на область отрисовки
+            var ChartArea = Slit.ChartAreas[0]; // Объявляем ссылку на область отрисовки
 
             for (int j = 0; j < Global.bodies.Count; j++) // Перебираем все тела
             {
@@ -517,8 +517,8 @@ namespace Magn3D_Prof
                 // Перебираем все точки тела и добавляем их координаты в массив, переводя в координаты экрана
                 for (int i = 0; i < 8; i++)
                 {
-                    XYs[i].x = DrawPlace1.Series[j].Points[i].XValue;
-                    XYs[i].y = DrawPlace1.Series[j].Points[i].YValues[0];
+                    XYs[i].x = Slit.Series[j].Points[i].XValue;
+                    XYs[i].y = Slit.Series[j].Points[i].YValues[0];
 
                     XYs[i].x = ChartArea.AxisX.ValueToPixelPosition((float)XYs[i].x);
                     XYs[i].y = ChartArea.AxisY.ValueToPixelPosition((float)XYs[i].y);
@@ -623,12 +623,11 @@ namespace Magn3D_Prof
             if (Hmax.GetValue() == 0)
                 Hmax.SetValue(1);
             
-            Magn3D_Prof.Draw.DrawBodyPoints(DrawPlace1, Point0, Point1, chart1.ChartAreas[0].AxisX.Minimum, chart1.ChartAreas[0].AxisX.Maximum, Hmin.GetValue(), Hmax.GetValue());
+            Magn3D_Prof.Draw.DrawBodyPoints(Slit, Point0, Point1, chart1.ChartAreas[0].AxisX.Minimum, chart1.ChartAreas[0].AxisX.Maximum, Hmin.GetValue(), Hmax.GetValue());
            // Magn3D_Prof.Draw.DrawBodyPointsTOP(DrawPlace2, Point0, Point1, SettingsForm.minX, SettingsForm.maxX,
                                                //SettingsForm.minY, SettingsForm.maxY);
             
-            plot1.Grid = Global.Relief;
-
+            Top.Grid = Global.Relief;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -638,10 +637,16 @@ namespace Magn3D_Prof
 
         private void resetView_Click(object sender, EventArgs e)
         {
-            plot1.ViewHeight = (int)(Global.Relief.GetyMax() - Global.Relief.GetyMin());
-            plot1.ViewXmin = (int) (-(Global.Relief.GetxMax() - Global.Relief.GetxMin() - plot1.ViewHeight) / 2) +
+            Top.ViewHeight = (int)(Global.Relief.GetyMax() - Global.Relief.GetyMin());
+            Top.ViewXmin = (int) (-(Global.Relief.GetxMax() - Global.Relief.GetxMin() - Top.ViewHeight) / 2) +
                              (int)Global.Relief.GetxMin();
-            plot1.ViewYmin = (int) Global.Relief.GetyMin();
+            Top.ViewYmin = (int) Global.Relief.GetyMin();
+        }
+
+        private void Slit_Click(object sender, EventArgs e)
+        {
+            Slit.Focus();
+            Draw(sender,e);
         }
     }
 }

@@ -829,5 +829,11 @@ namespace Magn3D_Prof
         {
             UpdateT0();
         }
-       }
+
+        private void Global_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(ProfPlace.SelectedIndex < 0) return;
+             Profiles[ProfPlace.SelectedIndex]?.Profile_KeyDown(sender,e);
+        }
+    }
 }

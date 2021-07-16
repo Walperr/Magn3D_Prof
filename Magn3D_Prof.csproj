@@ -63,6 +63,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="GRD.cs" />
+    <Compile Include="MoveBodyinProfile.cs" />
     <Compile Include="Numeric.cs">
       <SubType>UserControl</SubType>
     </Compile>
