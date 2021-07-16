@@ -99,7 +99,9 @@ namespace Magn3D_Prof
         public void MoveBodyXY(double dx, double dy)
         {
             //TODO: implement this method
-            MessageBox.Show("Move ALL BODY in xy " + dx + " ; " + dy );
+            //MessageBox.Show("Move ALL BODY in xy " + dx + " ; " + dy );
+            bodyControls[SelectedBodyIndex].X.SetValue(bodyControls[SelectedBodyIndex].X.GetValue() + dx);
+            bodyControls[SelectedBodyIndex].Y.SetValue(bodyControls[SelectedBodyIndex].Y.GetValue() + dy);
         }
       
         public void MoveXZ(double dx, double dz)
@@ -168,7 +170,14 @@ namespace Magn3D_Prof
         public void MoveBodyXZ(double dx, double dz)
         {
             //TODO: implement this method
-            MessageBox.Show("Move ALL BODY in xz " + dx + " ; " + dz );
+            //MessageBox.Show("Move ALL BODY in xz " + dx + " ; " + dz );
+            bodyControls[SelectedBodyIndex].X.SetValue(bodyControls[SelectedBodyIndex].X.GetValue() + dx);
+            bodyControls[SelectedBodyIndex].h1.SetValue(bodyControls[SelectedBodyIndex].h1.GetValue() + dz);
+            if (!bodyControls[SelectedBodyIndex].ConnectDepth.Checked)
+            {
+                bodyControls[SelectedBodyIndex].h2.SetValue(bodyControls[SelectedBodyIndex].h2.GetValue() + dz);
+                bodyControls[SelectedBodyIndex].h3.SetValue(bodyControls[SelectedBodyIndex].h3.GetValue() + dz);
+            }
         }
 
         private void Top_Enter(object sender, EventArgs e)
@@ -206,10 +215,10 @@ namespace Magn3D_Prof
                     dx = d1;
                     break;
                 case Keys.NumPad8:
-                    dy = d1;
+                    dy = -d1;
                     break;
                 case  Keys.NumPad2:
-                    dy = -d1;
+                    dy = d1;
                     break;
                 default:
                     dx = 0;
@@ -304,7 +313,6 @@ namespace Magn3D_Prof
             }
 
             Draw(sender,e);
-            e.Handled = true;
         }
     }
 }
