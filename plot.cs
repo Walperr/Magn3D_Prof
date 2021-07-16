@@ -572,8 +572,8 @@ namespace ploting
         {
             if (e.Button == MouseButtons.Left)
             {
-                _viewXmin -= (e.X - _Xlast)/2;
-                _viewYmin -= (e.Y - _ylast)/2;
+                _viewXmin -= (e.X - _Xlast) * (int)(_grid.X[1]/2 - _grid.X[0]/2);
+                _viewYmin -= (e.Y - _ylast) * (int)(_grid.Y[1]/2 - _grid.Y[0]/2);
             }
             UpdateViewport();
 
