@@ -81,6 +81,10 @@ namespace Magn3D_Prof
             if (Global.Relief != null)
                 Zs = Global.Relief.Interp(0, points);
 
+            for(int i = 0; i <  4; i++)
+                if (double.IsNaN(Zs[i]))
+                    Zs[i] = Global.Relief.GetzMean();
+            
             Verticles.Add(new Vector3(-b / 2, -d / 2, h1 - Zs[0])); // 1 Точка грани
             Verticles.Add(new Vector3(b / 2, -d / 2, h2 - Zs[1])); // 2 Точка грани
             Verticles.Add(new Vector3(-b / 2, d / 2, h3 - Zs[2])); // 3 Точка грани
