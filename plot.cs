@@ -15,14 +15,13 @@ namespace ploting
     public partial class plot : UserControl
     {
         private Rectangle _viewport;
-        
         private int _viewXmin = 0;
         private int _viewYmin = 0;
         private int _viewHeight;
-        private int _contoursCount = 23;
+        private int _contoursCount = 50;
         private int _labelsCountX;
         private int _labelsCountY;
-        private ColorPalette _palette;
+        private ColorPalette _palette = ColorPalette.GetTerrain(0,0);
 
 
         private int _Xlast;
@@ -39,7 +38,7 @@ namespace ploting
             InitializeComponent();
         }
 
-
+        [Browsable(false)]
         public bool DeferUpdate { get; set; }
         
         public int ContoursCount
@@ -51,7 +50,7 @@ namespace ploting
                 UpdateViewport();
             }
         }
-
+        [Browsable(false)]
         public int ViewHeight
         {
             get => _viewport.Height;
@@ -61,7 +60,7 @@ namespace ploting
                 UpdateViewport();
             }
         }
-
+        [Browsable(false)]
         public int ViewXmin
         {
             get => _viewXmin;
@@ -71,7 +70,7 @@ namespace ploting
                 UpdateViewport();
             }
         }
-
+        [Browsable(false)]
         public int ViewYmin
         {
             get => _viewYmin;
@@ -83,7 +82,7 @@ namespace ploting
         }
 
 
-
+        [Browsable(false)]
         public GRD Grid
         {
             get => _grid;
@@ -115,7 +114,7 @@ namespace ploting
                 Refresh();
             }
         }
-
+        [Browsable(false)]
         public Vector2 Start
         {
             get => _start;
@@ -125,7 +124,7 @@ namespace ploting
                 Refresh();
             }
         }
-
+        [Browsable(false)]
         public Vector2 End
         {
             get => _end;
@@ -204,40 +203,10 @@ namespace ploting
                 var min = (float) _grid.GetzMin();
                 var max = (float) _grid.GetzMax();
 
-                _palette = ColorPalette.GetTerrain(min,max);
-
-               
-                DrawContour(graphics, pts, min, max, _contoursCount);
                 DrawColor(graphics, pts, min, max);
+                DrawContour(graphics, pts, min, max, _contoursCount);
                 DrawBodies(graphics);
-                /*
-                int stepx = (this.ClientRectangle.Width - 2 * this.Padding.All) / _viewport.Width;
-                int stepy = (this.ClientRectangle.Height - 2 * this.Padding.All) / _viewport.Height;
-
-                for (int i = _viewport.X; i < _viewport.Width; i++)
-                {
-                    graphics.DrawString(i.ToString("0"), this.Font, Brushes.Black,
-                        this.Padding.All + (i - _viewport.X) * stepx,
-                        this.ClientRectangle.Height - this.Padding.All * 0.75f);
-
-                }
-
-                using (var format = new StringFormat(StringFormatFlags.DirectionRightToLeft)
-                    {Alignment = StringAlignment.Far})
-                {
-                    // graphics.TranslateTransform(this.ClientRectangle.Width,0);
-                    // graphics.RotateTransform(90);
-
-                    for (int i = _viewport.Y; i < _viewport.Height; i++)
-                    {
-                        graphics.DrawString(i.ToString("0.0"), this.Font, Brushes.Black,
-                            this.Padding.All * 0.25f - this.Font.Size * 0.5f
-                            , this.ClientRectangle.Height - this.Padding.All - (i - _viewport.Y) * stepy, format);
-                    }
-
-                    graphics.ResetTransform();
-                }*/
-
+                
                 var edges = new PointF[4];
 
                 var Xmin = (_grid.GetxMin() - _viewport.X) * ClientRectangle.Width / _viewport.Width - Padding.Left;
@@ -315,9 +284,9 @@ namespace ploting
 
         }
 
-        private static void DrawContour(Graphics g, Point3F[,] pts, float zmin, float zmax, int ncount)
+        private void DrawContour(Graphics g, Point3F[,] pts, float zmin, float zmax, int ncount)
         {
-            using (var aPen = new Pen(Color.DarkGray) {Width = 0.25f})
+            using (var aPen = new Pen(CPalette.Countur) {Width = 0.5f})
             {
                 var pta = new PointF[2];
 
@@ -513,21 +482,18 @@ namespace ploting
                     points[i] = new PointF(nX , nY);
                 }
 
-                using (var Pen = new Pen(Color.Black, 1.5f))
+                using (var Pen = new Pen(CPalette.Body, 1.7f))
                 {
                     if(Global.bodies.IndexOf(body) == Global.SelectedBodyIndex)
-                        Pen.Color = Color.Blue;;
+                        Pen.Color = Color.Blue;
 
-                    SolidBrush brush = new SolidBrush(Color.FromArgb(127,127,127,127));
+                    SolidBrush brush = new SolidBrush(Color.FromArgb(127,CPalette.BodyFill.R,CPalette.BodyFill.G,CPalette.BodyFill.B));
 
                     g.FillPolygon(brush, new PointF[] { points[4], points[5], points[7], points[6] });
                     
                     g.DrawPolygon(Pen, new PointF[] { points[4], points[5], points[7], points[6] });
 
                     g.DrawPolygon(Pen, new PointF[] {points[0], points[1], points[3], points[2]});
-
-                    
-                    
 
                     g.DrawLine(Pen, points[0], points[4]);
                     g.DrawLine(Pen, points[1], points[5]);
@@ -565,15 +531,15 @@ namespace ploting
                 ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer |
                 ControlStyles.OptimizedDoubleBuffer |
                 ControlStyles.ResizeRedraw, true);
-            //_palette = new ColorPalette(new [] {Color.BlueViolet, Color.Red },new []{250d,230d});
+            
         }
 
         private void plot_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                _viewXmin -= (e.X - _Xlast) * 1;
-                _viewYmin -= (e.Y - _ylast) * 1;
+                _viewXmin -= (int)((e.X - _Xlast) / (float)(ClientRectangle.Width - Padding.Horizontal) * _viewport.Width);
+                _viewYmin -= (int)((e.Y - _ylast) / (float)(ClientRectangle.Height - Padding.Vertical) * _viewport.Height);
             }
             UpdateViewport();
 
@@ -582,7 +548,7 @@ namespace ploting
         }
     }
 
-    public struct ColorPalette
+    public class ColorPalette
     {
         private Color[] _colors;
 
@@ -598,6 +564,11 @@ namespace ploting
             private set => _values = value;
         }
 
+        public Color Countur { get; set; }
+        
+        public Color Body { get; set; }
+        public Color BodyFill { get; set; }
+
         private double[] _values;
 
         public ColorPalette(Color[] colors, double[] values)
@@ -607,6 +578,9 @@ namespace ploting
 
             _colors = colors;
             _values = values.OrderBy(x => x).ToArray();
+            Countur = Color.Black;
+            Body = Color.Gray;
+            BodyFill = Color.Gray;
         }
 
         public Color GetColor(double value)
@@ -644,7 +618,7 @@ namespace ploting
 
             return new ColorPalette(
                 new[] { Color.MediumPurple, Color.Blue, Color.LimeGreen, Color.Yellow, Color.Orange, Color.Red },
-                values);
+                values) {Countur =  Color.White, Body = Color.Black, BodyFill = Color.WhiteSmoke};
         }
 
         public static ColorPalette GetTerrain(double min, double max)
@@ -663,7 +637,7 @@ namespace ploting
                     Color.FromArgb(255,248,250,234), Color.FromArgb(255,229,254,250), Color.FromArgb(255,219,255,253),Color.FromArgb(255,214,251,252),
                     Color.FromArgb(255,183,244,247),Color.FromArgb(255,115,224,241),Color.FromArgb(255,29,188,239), Color.FromArgb(255,0,137,245),
                     Color.FromArgb(255,0,80,250)},
-                values);
+                values) {Countur =  Color.Black, Body = Color.Navy, BodyFill = Color.DimGray};
         }
     }
 

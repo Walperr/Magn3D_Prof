@@ -24,8 +24,8 @@ namespace Magn3D_Prof
         #region Код, автоматически созданный конструктором форм Windows
 
         /// <summary>
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -69,10 +69,7 @@ namespace Magn3D_Prof
             // 
             this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Top;
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripDropDownButton1,
-            this.toolStripDropDownButton2,
-            this.ProjectButton});
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.toolStripDropDownButton1, this.toolStripDropDownButton2, this.ProjectButton});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1262, 26);
@@ -82,14 +79,8 @@ namespace Magn3D_Prof
             // toolStripDropDownButton1
             // 
             this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.выбратьПапкуПроектаToolStripMenuItem,
-            this.сохранитьToolStripMenuItem,
-            this.настройкиToolStripMenuItem,
-            this.рассчитатьПолеНаПлоскостиToolStripMenuItem,
-            this.открытьВСерфереToolStripMenuItem,
-            this.выходToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.выбратьПапкуПроектаToolStripMenuItem, this.сохранитьToolStripMenuItem, this.настройкиToolStripMenuItem, this.рассчитатьПолеНаПлоскостиToolStripMenuItem, this.открытьВСерфереToolStripMenuItem, this.выходToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image) (resources.GetObject("toolStripDropDownButton1.Image")));
             this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
             this.toolStripDropDownButton1.ShowDropDownArrow = false;
@@ -99,7 +90,7 @@ namespace Magn3D_Prof
             // выбратьПапкуПроектаToolStripMenuItem
             // 
             this.выбратьПапкуПроектаToolStripMenuItem.Name = "выбратьПапкуПроектаToolStripMenuItem";
-            this.выбратьПапкуПроектаToolStripMenuItem.Size = new System.Drawing.Size(301, 26);
+            this.выбратьПапкуПроектаToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
             this.выбратьПапкуПроектаToolStripMenuItem.Text = "Выбрать папку проекта";
             this.выбратьПапкуПроектаToolStripMenuItem.Click += new System.EventHandler(this.выбратьПапкуПроектаToolStripMenuItem_Click);
             // 
@@ -107,7 +98,7 @@ namespace Magn3D_Prof
             // 
             this.сохранитьToolStripMenuItem.Enabled = false;
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(301, 26);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
             // 
@@ -115,7 +106,7 @@ namespace Magn3D_Prof
             // 
             this.настройкиToolStripMenuItem.Enabled = false;
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
-            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(301, 26);
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
             this.настройкиToolStripMenuItem.Text = "Настройки";
             this.настройкиToolStripMenuItem.Click += new System.EventHandler(this.настройкиToolStripMenuItem_Click);
             // 
@@ -123,31 +114,28 @@ namespace Magn3D_Prof
             // 
             this.рассчитатьПолеНаПлоскостиToolStripMenuItem.Enabled = false;
             this.рассчитатьПолеНаПлоскостиToolStripMenuItem.Name = "рассчитатьПолеНаПлоскостиToolStripMenuItem";
-            this.рассчитатьПолеНаПлоскостиToolStripMenuItem.Size = new System.Drawing.Size(301, 26);
+            this.рассчитатьПолеНаПлоскостиToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
             this.рассчитатьПолеНаПлоскостиToolStripMenuItem.Text = "Рассчитать поле на плоскости";
             this.рассчитатьПолеНаПлоскостиToolStripMenuItem.Click += new System.EventHandler(this.рассчитатьПолеНаПлоскостиToolStripMenuItem_Click);
             // 
             // открытьВСерфереToolStripMenuItem
             // 
             this.открытьВСерфереToolStripMenuItem.Name = "открытьВСерфереToolStripMenuItem";
-            this.открытьВСерфереToolStripMenuItem.Size = new System.Drawing.Size(301, 26);
+            this.открытьВСерфереToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
             this.открытьВСерфереToolStripMenuItem.Text = "Открыть в серфере";
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(301, 26);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(287, 24);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
             // toolStripDropDownButton2
             // 
             this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.отменитьToolStripMenuItem,
-            this.вернутьToolStripMenuItem,
-            this.загруженныеСеткиToolStripMenuItem});
-            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
+            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.отменитьToolStripMenuItem, this.вернутьToolStripMenuItem, this.загруженныеСеткиToolStripMenuItem});
+            this.toolStripDropDownButton2.Image = ((System.Drawing.Image) (resources.GetObject("toolStripDropDownButton2.Image")));
             this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
             this.toolStripDropDownButton2.ShowDropDownArrow = false;
@@ -158,35 +146,29 @@ namespace Magn3D_Prof
             // 
             this.отменитьToolStripMenuItem.Enabled = false;
             this.отменитьToolStripMenuItem.Name = "отменитьToolStripMenuItem";
-            this.отменитьToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.отменитьToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
             this.отменитьToolStripMenuItem.Text = "Отменить";
             // 
             // вернутьToolStripMenuItem
             // 
             this.вернутьToolStripMenuItem.Enabled = false;
             this.вернутьToolStripMenuItem.Name = "вернутьToolStripMenuItem";
-            this.вернутьToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.вернутьToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
             this.вернутьToolStripMenuItem.Text = "Вернуть";
             // 
             // загруженныеСеткиToolStripMenuItem
             // 
             this.загруженныеСеткиToolStripMenuItem.Name = "загруженныеСеткиToolStripMenuItem";
-            this.загруженныеСеткиToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
+            this.загруженныеСеткиToolStripMenuItem.Size = new System.Drawing.Size(213, 24);
             this.загруженныеСеткиToolStripMenuItem.Text = "Загруженные сетки";
             this.загруженныеСеткиToolStripMenuItem.Click += new System.EventHandler(this.загруженныеСеткиToolStripMenuItem_Click);
             // 
             // ProjectButton
             // 
             this.ProjectButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.ProjectButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.создатьПрофильToolStripMenuItem,
-            this.загрузитьПрофильToolStripMenuItem,
-            this.загрузитьПолеНаПрофильToolStripMenuItem,
-            this.обновитьНормальноеПолеToolStripMenuItem,
-            this.загрузитьРельефToolStripMenuItem,
-            this.загрузитьСеткуИзмеренныхПолейToolStripMenuItem});
+            this.ProjectButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.создатьПрофильToolStripMenuItem, this.загрузитьПрофильToolStripMenuItem, this.загрузитьПолеНаПрофильToolStripMenuItem, this.обновитьНормальноеПолеToolStripMenuItem, this.загрузитьРельефToolStripMenuItem, this.загрузитьСеткуИзмеренныхПолейToolStripMenuItem});
             this.ProjectButton.Enabled = false;
-            this.ProjectButton.Image = ((System.Drawing.Image)(resources.GetObject("ProjectButton.Image")));
+            this.ProjectButton.Image = ((System.Drawing.Image) (resources.GetObject("ProjectButton.Image")));
             this.ProjectButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ProjectButton.Name = "ProjectButton";
             this.ProjectButton.ShowDropDownArrow = false;
@@ -196,42 +178,42 @@ namespace Magn3D_Prof
             // создатьПрофильToolStripMenuItem
             // 
             this.создатьПрофильToolStripMenuItem.Name = "создатьПрофильToolStripMenuItem";
-            this.создатьПрофильToolStripMenuItem.Size = new System.Drawing.Size(360, 26);
+            this.создатьПрофильToolStripMenuItem.Size = new System.Drawing.Size(346, 24);
             this.создатьПрофильToolStripMenuItem.Text = "Создать профиль";
             this.создатьПрофильToolStripMenuItem.Click += new System.EventHandler(this.создатьПрофильToolStripMenuItem_Click);
             // 
             // загрузитьПрофильToolStripMenuItem
             // 
             this.загрузитьПрофильToolStripMenuItem.Name = "загрузитьПрофильToolStripMenuItem";
-            this.загрузитьПрофильToolStripMenuItem.Size = new System.Drawing.Size(360, 26);
+            this.загрузитьПрофильToolStripMenuItem.Size = new System.Drawing.Size(346, 24);
             this.загрузитьПрофильToolStripMenuItem.Text = "Загрузить профиль";
             this.загрузитьПрофильToolStripMenuItem.Click += new System.EventHandler(this.загрузитьПрофильToolStripMenuItem_Click);
             // 
             // загрузитьПолеНаПрофильToolStripMenuItem
             // 
             this.загрузитьПолеНаПрофильToolStripMenuItem.Name = "загрузитьПолеНаПрофильToolStripMenuItem";
-            this.загрузитьПолеНаПрофильToolStripMenuItem.Size = new System.Drawing.Size(360, 26);
+            this.загрузитьПолеНаПрофильToolStripMenuItem.Size = new System.Drawing.Size(346, 24);
             this.загрузитьПолеНаПрофильToolStripMenuItem.Text = "Загрузить поле на профиль";
             this.загрузитьПолеНаПрофильToolStripMenuItem.Click += new System.EventHandler(this.загрузитьПолеНаПрофильToolStripMenuItem_Click);
             // 
             // обновитьНормальноеПолеToolStripMenuItem
             // 
             this.обновитьНормальноеПолеToolStripMenuItem.Name = "обновитьНормальноеПолеToolStripMenuItem";
-            this.обновитьНормальноеПолеToolStripMenuItem.Size = new System.Drawing.Size(360, 26);
+            this.обновитьНормальноеПолеToolStripMenuItem.Size = new System.Drawing.Size(346, 24);
             this.обновитьНормальноеПолеToolStripMenuItem.Text = "Обновить нормальное поле";
             this.обновитьНормальноеПолеToolStripMenuItem.Click += new System.EventHandler(this.обновитьНормальноеПолеToolStripMenuItem_Click);
             // 
             // загрузитьРельефToolStripMenuItem
             // 
             this.загрузитьРельефToolStripMenuItem.Name = "загрузитьРельефToolStripMenuItem";
-            this.загрузитьРельефToolStripMenuItem.Size = new System.Drawing.Size(360, 26);
+            this.загрузитьРельефToolStripMenuItem.Size = new System.Drawing.Size(346, 24);
             this.загрузитьРельефToolStripMenuItem.Text = "Загрузить рельеф";
             this.загрузитьРельефToolStripMenuItem.Click += new System.EventHandler(this.загрузитьРельефToolStripMenuItem_Click);
             // 
             // загрузитьСеткуИзмеренныхПолейToolStripMenuItem
             // 
             this.загрузитьСеткуИзмеренныхПолейToolStripMenuItem.Name = "загрузитьСеткуИзмеренныхПолейToolStripMenuItem";
-            this.загрузитьСеткуИзмеренныхПолейToolStripMenuItem.Size = new System.Drawing.Size(360, 26);
+            this.загрузитьСеткуИзмеренныхПолейToolStripMenuItem.Size = new System.Drawing.Size(346, 24);
             this.загрузитьСеткуИзмеренныхПолейToolStripMenuItem.Text = "Загрузить измеренные поля и высоты";
             this.загрузитьСеткуИзмеренныхПолейToolStripMenuItem.Click += new System.EventHandler(this.загрузитьСеткуИзмеренныхПолейToolStripMenuItem_Click);
             // 
@@ -248,10 +230,7 @@ namespace Magn3D_Prof
             // menuProfile
             // 
             this.menuProfile.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuProfile.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.отображатьАномальноеПолеToolStripMenuItem,
-            this.отображатьПокомпонентноToolStripMenuItem,
-            this.удалитьToolStripMenuItem});
+            this.menuProfile.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.отображатьАномальноеПолеToolStripMenuItem, this.отображатьПокомпонентноToolStripMenuItem, this.удалитьToolStripMenuItem});
             this.menuProfile.Name = "contextMenuStrip1";
             this.menuProfile.Size = new System.Drawing.Size(317, 76);
             this.menuProfile.Opening += new System.ComponentModel.CancelEventHandler(this.MenuProfile_Opening);
@@ -309,18 +288,18 @@ namespace Magn3D_Prof
             this.ClientSize = new System.Drawing.Size(1262, 673);
             this.Controls.Add(this.ProfPlace);
             this.Controls.Add(this.statusStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Global";
             this.Text = "Магнитное поле";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Global_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Global_KeyDown);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.menuProfile.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -177,6 +178,7 @@ namespace Magn3D_Prof
         }
 
         // Пересчет вершин треугольника в новых координатах
+        [SuppressMessage("ReSharper.DPA", "DPA0002: Excessive memory allocations in SOH")]
         private List<Vector3> ChangeSystem(List<Vector3> points, Vector3 orientation)
         {
             // Получаем точку наблюдения (x,y,z) - points[0], вершины треугольника и дополнительную точку для рассчета нормали
@@ -395,52 +397,6 @@ namespace Magn3D_Prof
             {
                 AddProfile();
             }
-        }
-
-        public void UpdateParameters()
-        {
-            double x1 = Verticles[0].X, x2 = Verticles[1].X, x3 = Verticles[2].X, x4 = Verticles[3].X;
-            double y1 = Verticles[0].Y, y2 = Verticles[1].Y, y3 = Verticles[2].Y, y4 = Verticles[3].Y;
-
-            var y = (x2 - x1) * (y4 - y1) * (y3 - y2) + (x4 - x1) * (y3 - y2) * y1 - (x3 - x2) * (y4 - y1) * y2;
-            
-            y /= (x4 - x1) * (y3 - y2) - (x3 - x2) * (y4 - y1);
-
-            var x = (y - y1) * (x4 - x1) / (y4 - y1) + x1;
-
-            X = x;
-            Y = y;
-
-            b = (Verticles[1] - Verticles[0]).Getlength();
-
-            d = (Verticles[2] - Verticles[0]).Getlength();
-
-            var L_vec = (Verticles[4] - Verticles[0]);
-
-            L = L_vec.Getlength();
-
-            List<Vector2> points = new List<Vector2>
-            {
-                new Vector2(-b / 2, -d / 2),
-                new Vector2(b / 2, -d / 2),
-                new Vector2(-b / 2, d / 2)
-            };
-
-            List<double> Zs = new List<double>();
-
-            for (int i = 0; i < 4; i++)
-                Zs.Add(0);
-
-            if (Global.Relief != null)
-                Zs = Global.Relief.Interp(0, points);
-
-            h1 = Verticles[0].Z + Zs[0];
-            h2 = Verticles[1].Z + Zs[1];
-            h3 = Verticles[2].Z + Zs[2];
-
-            fi = Math.Asin(L_vec.Z / L) * 180 / Math.PI + 90;
-
-            beta = Math.Asin(L_vec.Y / L / Math.Cos(fi * Math.PI / 180)) * 180 / Math.PI;
         }
     }
 }

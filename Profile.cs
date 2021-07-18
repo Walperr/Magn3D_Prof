@@ -9,6 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using ploting;
 
 namespace Magn3D_Prof
 {
@@ -107,13 +110,16 @@ namespace Magn3D_Prof
             Hi1.Decimalplaces = 0;
             Hi2.Decimalplaces = 0;
 
-            plot1.DeferUpdate = true;
-            float aspectRatio = (float)(plot1.ClientRectangle.Width - plot1.Padding.Horizontal) / (float)(plot1.ClientRectangle.Height - plot1.Padding.Vertical);
-            plot1.ViewHeight = (int)((Global.Relief.GetxMax() - Global.Relief.GetxMin()) / aspectRatio);
-            plot1.ViewXmin = (int)Global.Relief.GetxMin();
-            plot1.ViewYmin = (int)Global.Relief.GetyMin();
-            plot1.DeferUpdate = false;
+            Top.DeferUpdate = true;
+            float aspectRatio = (float)(Top.ClientRectangle.Width - Top.Padding.Horizontal) / (float)(Top.ClientRectangle.Height - Top.Padding.Vertical);
+            Top.ViewHeight = (int)((Global.Relief.GetxMax() - Global.Relief.GetxMin()) / aspectRatio);
+            Top.ViewXmin = (int)Global.Relief.GetxMin();
+            Top.ViewYmin = (int)Global.Relief.GetyMin();
+            Top.DeferUpdate = false;
 
+            CurrentGrid = Global.Relief;
+            Top.CPalette = ColorPalette.GetTerrain(CurrentGrid.GetzMin(),CurrentGrid.GetzMax());
+            
             UpdateProfilePoints(sender,e);
         }
         private void UpdateProfilePoints(object sender, EventArgs e)
@@ -140,10 +146,10 @@ namespace Magn3D_Prof
             foreach (var control in bodyControls)
                 control.UpdateParameters();
 
-            plot1.DeferUpdate = true;
-            plot1.Start = new Vector2(P0X, P0Y);
-            plot1.DeferUpdate = false;
-            plot1.End = new Vector2(P1X, P1Y);
+            Top.DeferUpdate = true;
+            Top.Start = new Vector2(P0X, P0Y);
+            Top.DeferUpdate = false;
+            Top.End = new Vector2(P1X, P1Y);
 
             RecalculatePoints();
         }
@@ -452,6 +458,11 @@ namespace Magn3D_Prof
             Hmax.Decimalplaces = (int)SettingsForm.decimals;
             Hmin.Decimalplaces = (int)SettingsForm.decimals;
 
+            chooseGrid.Items.Clear();
+            chooseGrid.Items.Add("рельеф");
+            foreach (var name in Global.MeasFieldNames)
+                chooseGrid.Items.Add(name);
+            
             RecalculatePoints();
 
             Draw(sender, e);
@@ -500,11 +511,11 @@ namespace Magn3D_Prof
         private void PaintA(object sender, PaintEventArgs e)
         {
             // Если рисовать нечего прекращаем
-            if (DrawPlace1.Series.Count == 0 || DrawPlace1.Series[0].Points.Count == 0 || DrawPlace1.Series.Count < Global.bodies.Count)
+            if (Slit.Series.Count == 0 || Slit.Series[0].Points.Count == 0 || Slit.Series.Count < Global.bodies.Count)
                 return;
 
             var pen = new Pen(Color.Black, 1.0f); // Создаем кисть
-            var ChartArea = DrawPlace1.ChartAreas[0]; // Объявляем ссылку на область отрисовки
+            var ChartArea = Slit.ChartAreas[0]; // Объявляем ссылку на область отрисовки
 
             for (int j = 0; j < Global.bodies.Count; j++) // Перебираем все тела
             {
@@ -517,8 +528,8 @@ namespace Magn3D_Prof
                 // Перебираем все точки тела и добавляем их координаты в массив, переводя в координаты экрана
                 for (int i = 0; i < 8; i++)
                 {
-                    XYs[i].x = DrawPlace1.Series[j].Points[i].XValue;
-                    XYs[i].y = DrawPlace1.Series[j].Points[i].YValues[0];
+                    XYs[i].x = Slit.Series[j].Points[i].XValue;
+                    XYs[i].y = Slit.Series[j].Points[i].YValues[0];
 
                     XYs[i].x = ChartArea.AxisX.ValueToPixelPosition((float)XYs[i].x);
                     XYs[i].y = ChartArea.AxisY.ValueToPixelPosition((float)XYs[i].y);
@@ -548,100 +559,72 @@ namespace Magn3D_Prof
                 g.DrawLine(pen, (float)XYs[2].x, (float)XYs[2].y, (float)XYs[6].x, (float)XYs[6].y);
             }
         }
-        private void PaintB(object sender, PaintEventArgs e)
-        {/*
-            // Если рисовать нечего прекращаем
-            if (DrawPlace2.Series.Count == 0 || DrawPlace2.Series[0].Points.Count == 0 || DrawPlace2.Series.Count < Global.bodies.Count+1)
-                return;
-
-            var pen = new Pen(Color.Black, 1.0f); // Создаем кисть
-            var ChartArea = DrawPlace2.ChartAreas[0]; // Объявляем ссылку на область отрисовки
-
-            for (int j = 0; j < Global.bodies.Count; j++) // Перебираем все тела
-            {
-                pen.Color = Color.Black; // Задали кисти такой же цвет, как у вершин
-                if (j == Global.SelectedBodyIndex)
-                    pen.Color = Color.Blue;
-
-                Vector2[] XYs = new Vector2[8]; // Массив с координатами точек
-
-                // Перебираем все точки тела и добавляем их координаты в массив, переводя в координаты экрана
-                for (int i = 0; i < 8; i++)
-                {
-                    XYs[i].x = DrawPlace2.Series[j+1].Points[i].XValue;
-                    XYs[i].y = DrawPlace2.Series[j+1].Points[i].YValues[0];
-
-                    XYs[i].x = ChartArea.AxisX.ValueToPixelPosition((float)XYs[i].x);
-                    XYs[i].y = ChartArea.AxisY.ValueToPixelPosition((float)XYs[i].y);
-                }
-
-                // Рисуем линии, соответствующие ребрам призмы (12 штук)
-                      
-                Graphics g = e.Graphics;
-                
-                SolidBrush peg = new SolidBrush(Color.Gray);
-                GraphicsPath gp = new GraphicsPath(FillMode.Winding);
-                gp.AddPolygon(new Point[] { new Point((int)XYs[4].x, (int)XYs[4].y), new Point((int)XYs[5].x, (int)XYs[5].y), new Point((int)XYs[7].x, (int)XYs[7].y), new Point((int)XYs[6].x, (int)XYs[6].y) });
-                g.FillPath(peg, gp);
-
-                g.DrawLine(pen, (float)XYs[0].x, (float)XYs[0].y, (float)XYs[1].x, (float)XYs[1].y);
-                g.DrawLine(pen, (float)XYs[1].x, (float)XYs[1].y, (float)XYs[3].x, (float)XYs[3].y);
-                g.DrawLine(pen, (float)XYs[3].x, (float)XYs[3].y, (float)XYs[2].x, (float)XYs[2].y);
-                g.DrawLine(pen, (float)XYs[2].x, (float)XYs[2].y, (float)XYs[0].x, (float)XYs[0].y);
-                
-                g.DrawLine(pen, (float)XYs[4].x, (float)XYs[4].y, (float)XYs[5].x, (float)XYs[5].y);
-                g.DrawLine(pen, (float)XYs[5].x, (float)XYs[5].y, (float)XYs[7].x, (float)XYs[7].y);
-                g.DrawLine(pen, (float)XYs[7].x, (float)XYs[7].y, (float)XYs[6].x, (float)XYs[6].y);
-                g.DrawLine(pen, (float)XYs[6].x, (float)XYs[6].y, (float)XYs[4].x, (float)XYs[4].y);
-                
-                g.DrawLine(pen, (float)XYs[0].x, (float)XYs[0].y, (float)XYs[4].x, (float)XYs[4].y);
-                g.DrawLine(pen, (float)XYs[1].x, (float)XYs[1].y, (float)XYs[5].x, (float)XYs[5].y);
-                g.DrawLine(pen, (float)XYs[3].x, (float)XYs[3].y, (float)XYs[7].x, (float)XYs[7].y);
-                g.DrawLine(pen, (float)XYs[2].x, (float)XYs[2].y, (float)XYs[6].x, (float)XYs[6].y);
-            }
-
-            pen.Color = Color.Red;
-            Vector2 p0, p1;
-
-            p0.x = DrawPlace2.Series[0].Points[0].XValue;
-            p0.y = DrawPlace2.Series[0].Points[0].YValues[0];
-
-            p1.x = DrawPlace2.Series[0].Points[1].XValue;
-            p1.y = DrawPlace2.Series[0].Points[1].YValues[0];
-
-            p0.x = ChartArea.AxisX.ValueToPixelPosition((float)p0.x);
-            p0.y = ChartArea.AxisY.ValueToPixelPosition((float)p0.y);
-
-            p1.x = ChartArea.AxisX.ValueToPixelPosition((float)p1.x);
-            p1.y = ChartArea.AxisY.ValueToPixelPosition((float)p1.y);
-
-            e.Graphics.DrawLine(pen, (float)p0.x, (float)p0.y, (float)p1.x, (float)p1.y);*/
-        }
-
         public void Draw(object sender, EventArgs e)
         {
             if (Hmax.GetValue() == 0)
                 Hmax.SetValue(1);
             
-            Magn3D_Prof.Draw.DrawBodyPoints(DrawPlace1, Point0, Point1, chart1.ChartAreas[0].AxisX.Minimum, chart1.ChartAreas[0].AxisX.Maximum, Hmin.GetValue(), Hmax.GetValue());
+            Magn3D_Prof.Draw.DrawBodyPoints(Slit, Point0, Point1, chart1.ChartAreas[0].AxisX.Minimum, chart1.ChartAreas[0].AxisX.Maximum, Hmin.GetValue(), Hmax.GetValue());
            // Magn3D_Prof.Draw.DrawBodyPointsTOP(DrawPlace2, Point0, Point1, SettingsForm.minX, SettingsForm.maxX,
                                                //SettingsForm.minY, SettingsForm.maxY);
             
-            plot1.Grid = Global.Relief;
-
+            Top.Grid = CurrentGrid;
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            RecalculatePoints();
-        }
+        public GRD CurrentGrid { get; set; }
 
         private void resetView_Click(object sender, EventArgs e)
         {
-            plot1.ViewHeight = (int)(Global.Relief.GetyMax() - Global.Relief.GetyMin());
-            plot1.ViewXmin = (int) (-(Global.Relief.GetxMax() - Global.Relief.GetxMin() - plot1.ViewHeight) / 2) +
-                             (int)Global.Relief.GetxMin();
-            plot1.ViewYmin = (int) Global.Relief.GetyMin();
+            Top.ViewHeight = (int)(CurrentGrid.GetyMax() - CurrentGrid.GetyMin());
+            var ar = (float)(Top.ClientRectangle.Width - Top.Padding.Horizontal) /
+                     (float)(Top.ClientRectangle.Height - Top.Padding.Vertical);
+            Top.ViewXmin = (int) ((CurrentGrid.GetxMax() - CurrentGrid.GetxMin() - Top.ViewHeight * ar) / 2) +
+                             (int)CurrentGrid.GetxMin();
+            Top.ViewYmin = (int) CurrentGrid.GetyMin();
+        }
+
+        private void Slit_Click(object sender, EventArgs e)
+        {
+            Slit.Focus();
+            Draw(sender,e);
+        }
+        private void chooseGrid_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (chooseGrid.SelectedIndex == 0)
+            {
+                CurrentGrid = Global.Relief;
+                Top.CPalette = ColorPalette.GetTerrain(CurrentGrid.GetzMin(),CurrentGrid.GetzMax());
+                Top.Grid = CurrentGrid;
+            }
+            else
+            {
+                CurrentGrid = Global.MeasuredField[chooseGrid.SelectedIndex - 1];
+                Top.CPalette = ColorPalette.GetRainbow(CurrentGrid.GetzMin(), CurrentGrid.GetzMax());
+                Top.Grid = CurrentGrid;
+            }
+            panel1.Refresh();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            var pal = Top.CPalette;
+            var rect = panel1.ClientRectangle;
+
+            var hStep = (rect.Height - panel1.Padding.Vertical) / (pal.Colors.Length - 1);
+
+            for (int i = 0; i < pal.Colors.Length - 1; i++)
+            {
+                var x1 = rect.X + panel1.Padding.Left;
+                var x2 = rect.X + rect.Width - panel1.Padding.Right;
+                var y = rect.Y + panel1.Padding.Top + i * hStep;
+                
+                var y2 = rect.Y + panel1.Padding.Top + (i+1) * hStep;
+                
+                var curRect = new Rectangle(x1, y, x2 - x1, y2 - y);
+                e.Graphics.FillRectangle(new SolidBrush(pal.Colors[i]),curRect);
+                e.Graphics.DrawRectangle(Pens.Black,curRect);
+                e.Graphics.DrawString(pal.Values[i].ToString("F1"),Font,Brushes.Black,x2,y);
+            }
         }
     }
 }

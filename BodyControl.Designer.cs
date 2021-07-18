@@ -23,9 +23,9 @@ namespace Magn3D_Prof
 
         #region Код, автоматически созданный конструктором компонентов
 
-        /// <summary> 
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -68,8 +68,7 @@ namespace Magn3D_Prof
             // 
             // Body
             // 
-            this.Body.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Body.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.Body.BackColor = System.Drawing.SystemColors.Control;
             this.Body.Controls.Add(this.button1);
             this.Body.Controls.Add(this.KappaAuto);
@@ -115,8 +114,7 @@ namespace Magn3D_Prof
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(420, 168);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(65, 36);
@@ -127,8 +125,7 @@ namespace Magn3D_Prof
             // 
             // KappaAuto
             // 
-            this.KappaAuto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.KappaAuto.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.KappaAuto.Location = new System.Drawing.Point(123, 168);
             this.KappaAuto.Name = "KappaAuto";
             this.KappaAuto.Size = new System.Drawing.Size(36, 36);
@@ -139,149 +136,148 @@ namespace Magn3D_Prof
             // 
             // Inclin
             // 
-            this.Inclin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Inclin.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.Inclin.Decimalplaces = 3;
             this.Inclin.Location = new System.Drawing.Point(324, 173);
             this.Inclin.Name = "Inclin";
             this.Inclin.Size = new System.Drawing.Size(89, 36);
             this.Inclin.TabIndex = 53;
+            this.Inclin.TabStop = false;
             // 
             // Declin
             // 
-            this.Declin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Declin.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.Declin.Decimalplaces = 3;
             this.Declin.Location = new System.Drawing.Point(197, 173);
             this.Declin.Name = "Declin";
             this.Declin.Size = new System.Drawing.Size(97, 36);
             this.Declin.TabIndex = 52;
+            this.Declin.TabStop = false;
             // 
             // kappa
             // 
-            this.kappa.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kappa.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.kappa.Decimalplaces = 3;
             this.kappa.Location = new System.Drawing.Point(35, 173);
             this.kappa.Name = "kappa";
             this.kappa.Size = new System.Drawing.Size(82, 36);
             this.kappa.TabIndex = 49;
+            this.kappa.TabStop = false;
             // 
             // alpha
             // 
-            this.alpha.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.alpha.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.alpha.Decimalplaces = 3;
             this.alpha.Location = new System.Drawing.Point(35, 141);
             this.alpha.Name = "alpha";
             this.alpha.Size = new System.Drawing.Size(124, 36);
             this.alpha.TabIndex = 46;
+            this.alpha.TabStop = false;
             // 
             // beta
             // 
-            this.beta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.beta.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.beta.Decimalplaces = 3;
             this.beta.Location = new System.Drawing.Point(197, 141);
             this.beta.Name = "beta";
             this.beta.Size = new System.Drawing.Size(124, 36);
             this.beta.TabIndex = 47;
+            this.beta.TabStop = false;
             // 
             // fi
             // 
-            this.fi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fi.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.fi.Decimalplaces = 3;
             this.fi.Location = new System.Drawing.Point(363, 141);
             this.fi.Name = "fi";
             this.fi.Size = new System.Drawing.Size(123, 36);
             this.fi.TabIndex = 48;
+            this.fi.TabStop = false;
             // 
             // h1
             // 
-            this.h1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.h1.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.h1.Decimalplaces = 3;
             this.h1.Location = new System.Drawing.Point(35, 109);
             this.h1.Name = "h1";
             this.h1.Size = new System.Drawing.Size(124, 36);
             this.h1.TabIndex = 43;
+            this.h1.TabStop = false;
             // 
             // h2
             // 
-            this.h2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.h2.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.h2.Decimalplaces = 3;
             this.h2.Location = new System.Drawing.Point(197, 109);
             this.h2.Name = "h2";
             this.h2.Size = new System.Drawing.Size(124, 36);
             this.h2.TabIndex = 44;
+            this.h2.TabStop = false;
             // 
             // h3
             // 
-            this.h3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.h3.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.h3.Decimalplaces = 3;
             this.h3.Location = new System.Drawing.Point(363, 109);
             this.h3.Name = "h3";
             this.h3.Size = new System.Drawing.Size(123, 36);
             this.h3.TabIndex = 45;
+            this.h3.TabStop = false;
             // 
             // L
             // 
-            this.L.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.L.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.L.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.L.Decimalplaces = 3;
             this.L.Location = new System.Drawing.Point(420, 33);
             this.L.Name = "L";
             this.L.Size = new System.Drawing.Size(66, 36);
             this.L.TabIndex = 38;
+            this.L.TabStop = false;
             // 
             // d
             // 
-            this.d.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.d.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.d.Decimalplaces = 3;
             this.d.Location = new System.Drawing.Point(324, 33);
             this.d.Name = "d";
             this.d.Size = new System.Drawing.Size(66, 36);
             this.d.TabIndex = 37;
+            this.d.TabStop = false;
             // 
             // b
             // 
-            this.b.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.b.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.b.Decimalplaces = 3;
             this.b.Location = new System.Drawing.Point(228, 33);
             this.b.Name = "b";
             this.b.Size = new System.Drawing.Size(66, 36);
             this.b.TabIndex = 36;
+            this.b.TabStop = false;
             // 
             // Y
             // 
-            this.Y.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Y.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.Y.Decimalplaces = 3;
             this.Y.Location = new System.Drawing.Point(132, 33);
             this.Y.Name = "Y";
             this.Y.Size = new System.Drawing.Size(66, 36);
             this.Y.TabIndex = 35;
+            this.Y.TabStop = false;
             // 
             // X
             // 
-            this.X.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.X.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.X.Decimalplaces = 3;
             this.X.Location = new System.Drawing.Point(35, 33);
             this.X.Name = "X";
             this.X.Size = new System.Drawing.Size(66, 36);
             this.X.TabIndex = 34;
+            this.X.TabStop = false;
             // 
             // ConnectDepth
             // 
-            this.ConnectDepth.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ConnectDepth.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.ConnectDepth.BackColor = System.Drawing.SystemColors.Control;
             this.ConnectDepth.Location = new System.Drawing.Point(304, 72);
             this.ConnectDepth.Margin = new System.Windows.Forms.Padding(4);
@@ -294,8 +290,7 @@ namespace Magn3D_Prof
             // 
             // HorizontalLowEdge
             // 
-            this.HorizontalLowEdge.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HorizontalLowEdge.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.HorizontalLowEdge.BackColor = System.Drawing.SystemColors.Control;
             this.HorizontalLowEdge.Location = new System.Drawing.Point(14, 69);
             this.HorizontalLowEdge.Margin = new System.Windows.Forms.Padding(4);
@@ -308,8 +303,7 @@ namespace Magn3D_Prof
             // 
             // Remove
             // 
-            this.Remove.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Remove.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.Remove.BackColor = System.Drawing.SystemColors.Control;
             this.Remove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Remove.Location = new System.Drawing.Point(485, 0);
@@ -323,8 +317,7 @@ namespace Magn3D_Prof
             // 
             // DbigLabel
             // 
-            this.DbigLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DbigLabel.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.DbigLabel.BackColor = System.Drawing.SystemColors.Control;
             this.DbigLabel.Location = new System.Drawing.Point(166, 177);
             this.DbigLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -335,8 +328,7 @@ namespace Magn3D_Prof
             // 
             // IBigLabel
             // 
-            this.IBigLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.IBigLabel.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.IBigLabel.BackColor = System.Drawing.SystemColors.Control;
             this.IBigLabel.Location = new System.Drawing.Point(301, 173);
             this.IBigLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -347,8 +339,7 @@ namespace Magn3D_Prof
             // 
             // Kappalabel
             // 
-            this.Kappalabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Kappalabel.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.Kappalabel.BackColor = System.Drawing.SystemColors.Control;
             this.Kappalabel.Location = new System.Drawing.Point(13, 173);
             this.Kappalabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -359,8 +350,7 @@ namespace Magn3D_Prof
             // 
             // Fi_label
             // 
-            this.Fi_label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Fi_label.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.Fi_label.BackColor = System.Drawing.SystemColors.Control;
             this.Fi_label.Location = new System.Drawing.Point(332, 141);
             this.Fi_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -371,8 +361,7 @@ namespace Magn3D_Prof
             // 
             // Beta_label
             // 
-            this.Beta_label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Beta_label.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.Beta_label.BackColor = System.Drawing.SystemColors.Control;
             this.Beta_label.Location = new System.Drawing.Point(166, 141);
             this.Beta_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -383,8 +372,7 @@ namespace Magn3D_Prof
             // 
             // Alpha_label
             // 
-            this.Alpha_label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Alpha_label.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.Alpha_label.BackColor = System.Drawing.SystemColors.Control;
             this.Alpha_label.Location = new System.Drawing.Point(11, 141);
             this.Alpha_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -395,8 +383,7 @@ namespace Magn3D_Prof
             // 
             // h3label
             // 
-            this.h3label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.h3label.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.h3label.BackColor = System.Drawing.SystemColors.Control;
             this.h3label.Location = new System.Drawing.Point(332, 109);
             this.h3label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -407,8 +394,7 @@ namespace Magn3D_Prof
             // 
             // h2label
             // 
-            this.h2label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.h2label.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.h2label.BackColor = System.Drawing.SystemColors.Control;
             this.h2label.Location = new System.Drawing.Point(166, 109);
             this.h2label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -419,8 +405,7 @@ namespace Magn3D_Prof
             // 
             // h1label
             // 
-            this.h1label.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.h1label.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.h1label.BackColor = System.Drawing.SystemColors.Control;
             this.h1label.Location = new System.Drawing.Point(11, 109);
             this.h1label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -431,8 +416,7 @@ namespace Magn3D_Prof
             // 
             // LengthLabel
             // 
-            this.LengthLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LengthLabel.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.LengthLabel.BackColor = System.Drawing.SystemColors.Control;
             this.LengthLabel.Location = new System.Drawing.Point(397, 33);
             this.LengthLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -443,8 +427,7 @@ namespace Magn3D_Prof
             // 
             // dlabel
             // 
-            this.dlabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dlabel.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.dlabel.BackColor = System.Drawing.SystemColors.Control;
             this.dlabel.Location = new System.Drawing.Point(301, 33);
             this.dlabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -455,8 +438,7 @@ namespace Magn3D_Prof
             // 
             // blabel
             // 
-            this.blabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.blabel.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.blabel.BackColor = System.Drawing.SystemColors.Control;
             this.blabel.Location = new System.Drawing.Point(205, 33);
             this.blabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -467,8 +449,7 @@ namespace Magn3D_Prof
             // 
             // YcentreLabel
             // 
-            this.YcentreLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.YcentreLabel.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.YcentreLabel.BackColor = System.Drawing.SystemColors.Control;
             this.YcentreLabel.Location = new System.Drawing.Point(108, 33);
             this.YcentreLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -479,8 +460,7 @@ namespace Magn3D_Prof
             // 
             // XcentreLabel
             // 
-            this.XcentreLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.XcentreLabel.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Right)));
             this.XcentreLabel.BackColor = System.Drawing.SystemColors.Control;
             this.XcentreLabel.Location = new System.Drawing.Point(11, 33);
             this.XcentreLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -501,18 +481,17 @@ namespace Magn3D_Prof
             this.Leave += new System.EventHandler(this.BodyControl_Leave);
             this.Body.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
 
         #endregion
 
         private System.Windows.Forms.GroupBox Body;
-        private Numeric L;
-        private Numeric d;
-        private Numeric b;
-        private Numeric Y;
-        private Numeric X;
-        private System.Windows.Forms.CheckBox ConnectDepth;
+        public Magn3D_Prof.Numeric L;
+        public Magn3D_Prof.Numeric d;
+        public Magn3D_Prof.Numeric b;
+        public Magn3D_Prof.Numeric Y;
+        public Magn3D_Prof.Numeric X;
+        public System.Windows.Forms.CheckBox ConnectDepth;
         private System.Windows.Forms.CheckBox HorizontalLowEdge;
         private System.Windows.Forms.Button Remove;
         private System.Windows.Forms.Label DbigLabel;
@@ -533,12 +512,12 @@ namespace Magn3D_Prof
         private Numeric Inclin;
         private Numeric Declin;
         private Numeric kappa;
-        private Numeric fi;
-        private Numeric h1;
-        private Numeric h2;
-        private Numeric h3;
+        public Magn3D_Prof.Numeric fi;
+        public Magn3D_Prof.Numeric h1;
+        public Magn3D_Prof.Numeric h2;
+        public Magn3D_Prof.Numeric h3;
         private System.Windows.Forms.Button button1;
-        private Numeric beta;
+        public Magn3D_Prof.Numeric beta;
         public Numeric alpha;
     }
 }
