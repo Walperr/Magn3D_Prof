@@ -6,6 +6,17 @@ namespace Magn3D_Prof
 {
     public partial class Profile
     {
+        public enum Quater
+        {
+            XgreaterZero = 0b1101,
+            XlessZero = 0b1110,
+            YgreaterZero = 0b0111,
+            YlessZero = 0b1011,
+            First = 0b0101,
+            Second = 0b0110,
+            Third = 0b1010,
+            Fourth = 0b1001
+        }
         public enum MovingEdge
         {
             Upper,
@@ -62,14 +73,109 @@ namespace Magn3D_Prof
         }
         public void MoveUpXY(double dx, double dy)
         {
-            //TODO: implement this method
-            MessageBox.Show("Move UP in xy " + dx + " ; " + dy);
+            var x = bodyControls[SelectedBodyIndex].X.GetValue();
+            var y = bodyControls[SelectedBodyIndex].Y.GetValue();
+            
+            var L = bodyControls[SelectedBodyIndex].L.GetValue();
+            var fi = bodyControls[SelectedBodyIndex].fi.GetValue() * Math.PI / 180;
+            var beta = bodyControls[SelectedBodyIndex].beta.GetValue() * Math.PI / 180;
+
+            var sinfi = Math.Sin(fi);
+            var cosfi = Math.Cos(fi);
+
+            var sinbeta = Math.Sin(beta);
+            var cosbeta = Math.Cos(beta);
+
+            var a = cosfi * sinbeta;
+            var b = cosfi * cosbeta;
+
+            var Lb = L * b;
+
+            var A = Lb * Lb + dx * dx - 2 * Lb * dx + L * L * a * a;
+
+            var L1 = Math.Sqrt(A + L * L * sinfi * sinfi);
+
+            var fi1 = Math.Asin(L * sinfi / L1);
+
+            var sinbeta1 = L*a / (L1 * Math.Cos(fi1));
+            
+            var beta1 = Math.Asin(sinbeta1);
+
+            GetQuater(Lb-dx,sinbeta1, ref beta1);
+
+            var a1 = Math.Cos(fi1) * Math.Sin(beta1);
+            var b1 = Math.Cos(fi1) * Math.Cos(beta1);
+
+            var A1 = L1 * L1 * a1 * a1 + dy * dy - 2 * L1 * a1 * dy + L1 * L1 * b1 * b1;
+
+            var L2 = Math.Sqrt(A1 + L1 * L1 * Math.Pow(Math.Sin(fi1), 2));
+            
+            var fi2 = Math.Asin(L1 * Math.Sin(fi1) / L2);
+
+            var sinbeta2 = (L1 * a1 - dy) / (L2 * Math.Cos(fi2));
+            
+            var beta2 = Math.Asin(sinbeta2);
+            
+            GetQuater(Lb-dx,sinbeta2, ref beta2);
+            
+            bodyControls[SelectedBodyIndex].X.SetValue(x+dx);
+            bodyControls[SelectedBodyIndex].Y.SetValue(y+dy);
+            bodyControls[SelectedBodyIndex].L.SetValue(L2);
+            bodyControls[SelectedBodyIndex].fi.SetValue(fi2 * 180 / Math.PI);
+            bodyControls[SelectedBodyIndex].beta.SetValue(beta2 * 180 / Math.PI);
         }
 
         public void MoveDownXY(double dx, double dy)
         {
-            //TODO: implement this method
-            MessageBox.Show("Move DOWN in xy " + dx + " ; " + dy );
+            var L = bodyControls[SelectedBodyIndex].L.GetValue();
+            var fi = bodyControls[SelectedBodyIndex].fi.GetValue() * Math.PI / 180;
+            var beta = bodyControls[SelectedBodyIndex].beta.GetValue() * Math.PI / 180;
+
+            var cosfi = Math.Cos(fi);
+
+            var sinbeta = Math.Sin(beta);
+            var cosbeta = Math.Cos(beta);
+
+            var a = cosfi * sinbeta;
+            var b = cosfi * cosbeta;
+
+            var Lb = L * b;
+
+            var A = L * L * cosfi * cosfi + 2 * Lb * dx + dx * dx;
+
+            var L1 = Math.Sqrt(A + L * L * Math.Pow(Math.Sin(fi), 2) );
+
+            var fi1 = Math.Asin(L * Math.Sin(fi) / L1);
+
+            var sinbeta1 = L * a / (L1 * Math.Cos(fi1));
+           
+            var beta1 = Math.Asin(sinbeta1);
+           
+            GetQuater(Lb+dx,sinbeta1, ref beta1);
+
+            var cosfi1 = Math.Cos(fi1);
+            sinbeta1 = Math.Sin(beta1);
+
+            var a1 = cosfi1 * sinbeta1;
+            var b1 = cosfi1 * Math.Cos(beta1);
+            
+            var La1 = L1 * a1;
+
+            var A1 = La1 * La1 + dy * dy + 2 * La1 * dy + L1 * L1 * b1 * b1;
+
+            var L2 = Math.Sqrt(A1 + L1 * L1 * Math.Pow(Math.Sin(fi1), 2) );
+
+            var fi2 = Math.Asin(L1 * Math.Sin(fi1) / L2);
+
+            var sinbeta2 = (L1 * a1 + dy) / (L2 * Math.Cos(fi2));
+           
+            var beta2 = Math.Asin(sinbeta2);
+
+            GetQuater(L1 * b1, L1 * a1 + dy, ref beta2);
+            
+            bodyControls[SelectedBodyIndex].L.SetValue(L2);
+            bodyControls[SelectedBodyIndex].fi.SetValue(fi2 * 180 / Math.PI);
+            bodyControls[SelectedBodyIndex].beta.SetValue(beta2 * 180 / Math.PI);
         }
 
         public void MoveLeftXY(double dx, double dy)
@@ -98,8 +204,6 @@ namespace Magn3D_Prof
 
         public void MoveBodyXY(double dx, double dy)
         {
-            //TODO: implement this method
-            //MessageBox.Show("Move ALL BODY in xy " + dx + " ; " + dy );
             bodyControls[SelectedBodyIndex].X.SetValue(bodyControls[SelectedBodyIndex].X.GetValue() + dx);
             bodyControls[SelectedBodyIndex].Y.SetValue(bodyControls[SelectedBodyIndex].Y.GetValue() + dy);
         }
@@ -133,14 +237,90 @@ namespace Magn3D_Prof
         }
         public void MoveUpXZ(double dx, double dz)
         {
-            //TODO: implement this method
-            MessageBox.Show("Move UP in xz " + dx + " ; " + dz );
+            var x = bodyControls[SelectedBodyIndex].X.GetValue();
+            
+            var L = bodyControls[SelectedBodyIndex].L.GetValue();
+            var fi = bodyControls[SelectedBodyIndex].fi.GetValue() * Math.PI / 180;
+            var beta = bodyControls[SelectedBodyIndex].beta.GetValue() * Math.PI / 180;
+
+            var sinfi = Math.Sin(fi);
+            var cosfi = Math.Cos(fi);
+
+            var sinbeta = Math.Sin(beta);
+            var cosbeta = Math.Cos(beta);
+
+            var a = cosfi * sinbeta;
+            var b = cosfi * cosbeta;
+
+            var Lb = L * b;
+
+            var A = Lb * Lb + dx * dx - 2 * Lb * dx + L * L * a * a;
+
+            var L1 = Math.Sqrt(A + L * L * sinfi * sinfi);
+
+            var fi1 = Math.Asin(L * sinfi / L1);
+
+            var sinbeta1 = L*a / (L1 * Math.Cos(fi1));
+            
+            var beta1 = Math.Asin(sinbeta1);
+
+            GetQuater(Lb-dx,sinbeta1, ref beta1);
+
+            L = Math.Sqrt(L1 * L1 + dz * dz - 2 * L1 * Math.Sin(fi1) * dz);
+
+            fi1 = Math.Asin((L1 * Math.Sin(fi1) - dz) / L);
+
+            L1 = L;
+            
+            bodyControls[SelectedBodyIndex].X.SetValue(x+dx);
+            bodyControls[SelectedBodyIndex].L.SetValue(L1);
+            bodyControls[SelectedBodyIndex].fi.SetValue(fi1 * 180 / Math.PI);
+            bodyControls[SelectedBodyIndex].beta.SetValue(beta1 * 180 / Math.PI);
+            bodyControls[SelectedBodyIndex].h1.SetValue(bodyControls[SelectedBodyIndex].h1.GetValue() + dz);
+            if (!bodyControls[SelectedBodyIndex].ConnectDepth.Checked)
+            {
+                bodyControls[SelectedBodyIndex].h2.SetValue(bodyControls[SelectedBodyIndex].h2.GetValue() + dz);
+                bodyControls[SelectedBodyIndex].h3.SetValue(bodyControls[SelectedBodyIndex].h3.GetValue() + dz);
+            }
         }
 
         public void MoveDownXZ(double dx, double dz)
         {
-            //TODO: implement this method
-            MessageBox.Show("Move DOWN in xz " + dx + " ; " + dz );
+           var L = bodyControls[SelectedBodyIndex].L.GetValue();
+           var fi = bodyControls[SelectedBodyIndex].fi.GetValue() * Math.PI / 180;
+           var beta = bodyControls[SelectedBodyIndex].beta.GetValue() * Math.PI / 180;
+
+           var cosfi = Math.Cos(fi);
+
+           var sinbeta = Math.Sin(beta);
+           var cosbeta = Math.Cos(beta);
+
+           var a = cosfi * sinbeta;
+           var b = cosfi * cosbeta;
+
+           var Lb = L * b;
+
+           var A = L * L * cosfi * cosfi + 2 * Lb * dx + dx * dx;
+
+           var L1 = Math.Sqrt(A + L * L * Math.Pow(Math.Sin(fi), 2) );
+
+           var fi1 = Math.Asin(L * Math.Sin(fi) / L1);
+
+           var sinbeta1 = L * a / (L1 * Math.Cos(fi1));
+           
+           var beta1 = Math.Asin(sinbeta1);
+
+           GetQuater(Lb + dx, sinbeta1, ref beta1);
+
+           L = Math.Sqrt(L1 * L1 + dz * dz + 2 * L1 * dz * Math.Sin(fi1));
+         
+           fi1 = Math.Asin((L1 * Math.Sin(fi1) + dz) / L);
+
+           L1 = L;
+           
+           bodyControls[SelectedBodyIndex].L.SetValue(L1);
+           bodyControls[SelectedBodyIndex].fi.SetValue(fi1 * 180 / Math.PI);
+           bodyControls[SelectedBodyIndex].beta.SetValue(beta1 * 180 / Math.PI);
         }
 
         public void MoveLeftXZ(double dx, double dz)
@@ -313,6 +493,29 @@ namespace Magn3D_Prof
             }
 
             Draw(sender,e);
+        }
+
+        private Quater GetQuater(double x, double y, ref double angle)
+        {
+            Quater quater = (x < 0 ? Quater.XlessZero : Quater.XgreaterZero) &
+                            (y < 0 ? Quater.YlessZero : Quater.YgreaterZero);
+            
+            switch (quater)
+            {
+                case Quater.First:
+                    break;
+                case Quater.Second:
+                    angle = Math.PI - angle;
+                    break;
+                case Quater.Third:
+                    angle = Math.PI - angle;
+                    break;
+                case Quater.Fourth:
+                    angle = 2 * Math.PI + angle;
+                    break;
+            }
+            
+            return quater;
         }
     }
 }

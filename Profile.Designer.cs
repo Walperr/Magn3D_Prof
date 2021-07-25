@@ -688,7 +688,7 @@ namespace Magn3D_Prof
             // 
             // Top
             // 
-            this.Top.ContoursCount = 10;
+            this.Top.ContoursCount = 15;
             this.Top.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Top.DeferUpdate = false;
             this.Top.Dock = System.Windows.Forms.DockStyle.Fill;

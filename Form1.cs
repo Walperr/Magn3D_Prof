@@ -624,7 +624,7 @@ namespace Magn3D_Prof
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("alpha");
-                attribute.Value = body.alpha.ToString().Replace(".", ",");
+                attribute.Value = body.beta.ToString().Replace(".", ",");
 
                 node.Attributes.Append(attribute);
 
@@ -780,7 +780,7 @@ namespace Magn3D_Prof
                 
                 GRD field = GRD.ReadGRD(filename);
 
-                if (field.GetxMax() < Relief.GetxMax() || field.GetyMax() < Relief.GetyMax() || field.GetxMin() > Relief.GetxMin() || field.GetyMin() > Relief.GetyMin())
+                if (!(field.GetxMax() < Relief.GetxMax() || field.GetyMax() < Relief.GetyMax() || field.GetxMin() > Relief.GetxMin() || field.GetyMin() > Relief.GetyMin()))
                 {
                     MessageBox.Show("файл " + filename.Substring(filename.LastIndexOf("\\")+1) + " имеет неверный размер", "Невозможно загрузить сетку");
                     continue;

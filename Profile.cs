@@ -461,7 +461,7 @@ namespace Magn3D_Prof
             chooseGrid.Items.Clear();
             chooseGrid.Items.Add("рельеф");
             foreach (var name in Global.MeasFieldNames)
-                chooseGrid.Items.Add(name);
+                chooseGrid.Items.Add(name.Substring(name.LastIndexOf("\\")+1));
             
             RecalculatePoints();
 

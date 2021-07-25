@@ -13,3 +13,4 @@ C:\Users\vladb\source\repos\Magn3D_Prof\obj\Release\Magn3D_Prof.csproj.GenerateR
 C:\Users\vladb\source\repos\Magn3D_Prof\obj\Release\Magn3D_Prof.csproj.CoreCompileInputs.cache
 C:\Users\vladb\source\repos\Magn3D_Prof\obj\Release\Magn3D_Prof.exe
 C:\Users\vladb\source\repos\Magn3D_Prof\obj\Release\Magn3D_Prof.pdb
+C:\Users\vladb\source\repos\Magn3D_Prof\obj\Release\ploting.plot.resources
