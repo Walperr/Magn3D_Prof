@@ -19,10 +19,14 @@ namespace GRIDs.Parsers
             int sNx, sNy, N;
             double xMin, yMin, zMin, zMax, dx, dy;
 
-            var t = _reader.ReadBytes(16);
+            var t1 = _reader.ReadInt32();
+            var t2 = _reader.ReadInt32();
 
-            sNx = _reader.ReadInt32();//rows
-            sNy = _reader.ReadInt32();//cols
+            var marker1 = _reader.ReadChars(4);
+            var gridBytesCount = _reader.ReadInt32();
+
+            sNy = _reader.ReadInt32();//rows
+            sNx = _reader.ReadInt32();//cols
 
             N = sNx * sNy;
 
@@ -36,9 +40,10 @@ namespace GRIDs.Parsers
             dy = _reader.ReadDouble();//dy
             zMin = _reader.ReadDouble();//zmin
             zMax = _reader.ReadDouble();//zmax
-            var g = _reader.ReadChars(8);//?
+            var rotation = _reader.ReadDouble();//rotation
             var nodataValues = _reader.ReadDouble().ToString(CultureInfo.InvariantCulture);//Nodatavalues
-            var marker2 = _reader.ReadChars(8);
+            var marker2 = _reader.ReadChars(4);
+            var dataBytesCount = _reader.ReadInt32();
 
             for (int i = 0; i < N; i++)
             {

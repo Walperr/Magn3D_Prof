@@ -24,10 +24,14 @@ namespace GRIDs.Exporters
         {
             _writer.Write(new []{'D', 'S', 'R', 'B'});
             
-            _writer.Write(new byte[] {4, 0, 0, 0, 2, 0, 0, 0, 71, 82, 73, 68, 72, 0, 0, 0});
+            _writer.Write(new byte[] {4, 0, 0, 0, 2, 0, 0, 0});
             
-            _writer.Write(_grid.SNx);
+            _writer.Write(new []{'G', 'R', 'I', 'D'});
+            
+            _writer.Write(72);
+            
             _writer.Write(_grid.SNy);
+            _writer.Write(_grid.SNx);
             
             _writer.Write(_grid.Xmin);
             _writer.Write(_grid.Ymin);
@@ -40,9 +44,11 @@ namespace GRIDs.Exporters
             
             _writer.Write(Enumerable.Repeat(byte.MinValue,8).ToArray());
             
-            _writer.Write(1.7E31);
+            _writer.Write(1.70141E38);
             
-            _writer.Write(new []{'D', 'A', 'T', 'A', ' ', '7', '\0', '\0' });
+            _writer.Write(new []{'D', 'A', 'T', 'A'});
+            
+            _writer.Write(_grid.Z.Count * 8);
 
             foreach (var z in _grid.Z)
                 if(double.IsNaN(z)) _writer.Write(1.70141E38);

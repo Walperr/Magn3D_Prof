@@ -43,7 +43,7 @@ namespace GRIDs.Parsers
             for(int i = 0; i < N; i++)
             {
                 z[i] = _reader.ReadSingle();
-                if (z[i].ToString(CultureInfo.InvariantCulture) == 1.70141e38d.ToString(CultureInfo.InvariantCulture))
+                if (z[i] >= 1.70141e38f)
                     z[i] = double.NaN;
                 if (i < sNx)
                     x[i] = xMin + i * dx;

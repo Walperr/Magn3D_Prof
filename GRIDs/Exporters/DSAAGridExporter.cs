@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using GRIDs.Exporters.Interfaces;
+using Microsoft.SqlServer.Server;
 
 namespace GRIDs.Exporters
 {
@@ -35,18 +37,15 @@ namespace GRIDs.Exporters
             {
                 var line = "";
                 
-                for (int j = 0; j < 10; j++)
+                for (int j = 0; j <= 10; j++)
                 {
                     if(i+j >= _grid.Z.Count)
                         break;
-                    if (double.IsNaN(_grid.Z[i + j])) line += "1.70141E+38";
-                    else line += _grid.Z[i + j];
-                    
-                    if (j < 9) line += " ";
+                    if (double.IsNaN(_grid.Z[i + j])) line += "1.70141e38 ";
+                    else line += _grid.Z[i + j].ToString("F16") + " ";
                 }
                 
                 _writer.WriteLine(line.Replace(',', '.'));
-                _writer.WriteLine();
             }
             
             _writer.Close();
