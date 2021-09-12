@@ -1,12 +1,13 @@
 ﻿using System.IO;
 using System.Text;
+using GRIDs.Parsers.Interfaces;
 
-namespace GRIDs
+namespace GRIDs.Parsers
 {
-    public class GridParser : IGRDParser
+    public class GridParser : IGridParser
     {
         private readonly BinaryReader _reader;
-        private IGRDParser _parser;
+        private IGridParser _parser;
         private const string DSRB = "DSRB";
         private const string DSBB = "DSBB";
         private const string DSAA = "DSAA";
@@ -50,5 +51,7 @@ namespace GRIDs
 
             return _parser.ReadGRD();
         }
+
+        public void SkipFormat() => _reader.ReadChars(4);
     }
 }

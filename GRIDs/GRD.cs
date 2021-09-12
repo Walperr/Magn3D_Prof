@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using GRIDs.Exporters;
+using GRIDs.Exporters.Interfaces;
+using GRIDs.Parsers;
+using GRIDs.Parsers.Interfaces;
 using Vectors;
 
 namespace GRIDs
@@ -10,7 +14,7 @@ namespace GRIDs
     public class GRD
     {
         private int _N, _sNx, _sNy;
-        private double _x_min, _x_max, _y_min, _y_max, _z_min, _z_max, _z_mean;
+        private double _x_min, _x_max, _y_min, _y_max, _z_min, _z_max, _z_mean, _dX, _dY;
         private List<double> _z,_x,_y;
 
         public int SNx => _sNx;
@@ -19,6 +23,20 @@ namespace GRIDs
         public List<double> Y => _y;
         public List<double> Z => _z;
 
+        public double Xmin => _x_min;
+        public double Xmax => _x_max;
+        
+        public double Ymin => _y_min;
+        public double Ymax => _y_max;
+        
+        public double Zmin => _z_min;
+        public double Zmax => _z_max;
+        public double Zmean => _z_mean;
+
+        public double dX => _dX;
+        public double dY => _dY;
+
+
         /// <summary>
         /// Создает сетку с заданным размером и шагом, устанавливая значение в каждом узле, равным z_values
         /// </summary>
@@ -26,9 +44,11 @@ namespace GRIDs
         {
             _x_min = x_min;
             _x_max = x_max;
-
+            _dX = dx;
+            
             _y_min = y_min;
             _y_max = y_max;
+            _dY = dy;
 
             _x = new List<double>();
 
@@ -66,9 +86,13 @@ namespace GRIDs
             _sNy = y.Length;
         
             _x_min = x[0];
-            _x_max = x[_sNx-1];
+            _x_max = x[_sNx - 1];
+            _dX = (_x_max - _x_min) / (_sNx - 1);
+            
             _y_min = y[0];
             _y_max = y[_sNy - 1];
+            _dY = (_y_max - _y_min) / (_sNy - 1);
+            
             _z_min = z_min;
             _z_max = z.Max();
             _z = z.ToList();
@@ -94,12 +118,20 @@ namespace GRIDs
         /// <returns></returns>
         public static GRD ReadGRD(string filename)
         {
-            using (GridParser parser = new GridParser(new BinaryReader(File.OpenRead(filename),Encoding.Default)))
+            using (IGridParser parser = new GridParser(new BinaryReader(File.OpenRead(filename),Encoding.Default)))
             {
                 return parser.ReadGRD();
             }
         }
 
+        public void SaveGRD(string filename)
+        {
+            using (IGridExporter exporter = new GridExporter(new BinaryWriter(File.OpenWrite(filename),Encoding.Default),this))
+            {
+                exporter.SaveGrid();
+            }
+        }
+        
         /// <summary>
         /// Возвращает координаты точки с индексами i,j
         /// </summary>
@@ -108,73 +140,16 @@ namespace GRIDs
             return new Vector3(_x[i],_y[j], _z[_x.Count*j+i]);
         }
 
-        public double GetxMax()
-        {
-            return _x_max;
-        }
-        public double GetyMax()
-        {
-            return _y_max;
-        }
-        public double GetzMax()
-        {
-            return _z_max;
-        }
-        public double GetxMin()
-        {
-            return _x_min;
-        }
-        public double GetyMin()
-        {
-            return _y_min;
-        }
-        public double GetzMin()
-        {
-            return _z_min;
-        }
-        public double GetzMean()
-        {
-            return _z_mean;
-        }
-
         public Vector2 GetXY(double z_value)
         {
             for (int i = 0; i < _x.Count; i++)
             for (int j = 0; j < _y.Count; j++)
-                if (z_value == GetCoordinates(i, j).Z)
+                if (Math.Abs(z_value - GetCoordinates(i, j).Z) < 0.001)
                     return new Vector2(_x[i], _y[j]);
 
             throw new ArgumentException("z_value not found");
         }
     
-        public void SaveGRD(string filename)
-        {
-            BinaryWriter writer = new BinaryWriter(File.OpenWrite(filename), Encoding.Default);
-
-            writer.Write('D');
-            writer.Write('S');
-            writer.Write('B');
-            writer.Write('B');
-
-            writer.Write(Convert.ToInt16(_sNx));
-            writer.Write(Convert.ToInt16(_sNy));
-
-            writer.Write(_x_min);
-            writer.Write(_x_max);
-            writer.Write(_y_min);
-            writer.Write(_y_max);
-
-            writer.Write(_z_min);
-            writer.Write(_z_max);
-
-            for(int i = 0; i < _N; i++)
-            {
-                writer.Write((float)_z[i]);
-            }
-        
-            writer.Close();
-        }
-
         public void SaveDAT(string filename)
         {
             string s = "";

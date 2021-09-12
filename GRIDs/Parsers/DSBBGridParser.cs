@@ -1,9 +1,10 @@
 ﻿using System.Globalization;
 using System.IO;
+using GRIDs.Parsers.Interfaces;
 
-namespace GRIDs
+namespace GRIDs.Parsers
 {
-    public class DSBBGridParser : IGRDParser
+    public class DSBBGridParser : IGridParser
     {
         private readonly BinaryReader _reader;
 
@@ -52,6 +53,11 @@ namespace GRIDs
             _reader.Close();
 
             return new GRD(zMin, zMax, x, y, z);
+        }
+
+        public void SkipFormat()
+        {
+            _reader.ReadChars(4);
         }
 
         public void Dispose()

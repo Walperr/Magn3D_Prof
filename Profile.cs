@@ -101,7 +101,7 @@ namespace Magn3D_Prof
             Hmax.OnValueChanged += Draw;
 
             Hmin.minimum = -1000;
-            Hmin.SetValue(-Global.Relief.GetzMax());
+            Hmin.SetValue(-Global.Relief.Zmax);
             Hmin.OnValueChanged += Draw;
 
             if (Global.HeigthMaps != null)
@@ -114,13 +114,13 @@ namespace Magn3D_Prof
 
             Top.DeferUpdate = true;
             float aspectRatio = (float)(Top.ClientRectangle.Width - Top.Padding.Horizontal) / (float)(Top.ClientRectangle.Height - Top.Padding.Vertical);
-            Top.ViewHeight = (int)((Global.Relief.GetxMax() - Global.Relief.GetxMin()) / aspectRatio);
-            Top.ViewXmin = (int)Global.Relief.GetxMin();
-            Top.ViewYmin = (int)Global.Relief.GetyMin();
+            Top.ViewHeight = (int)((Global.Relief.Xmax - Global.Relief.Xmin) / aspectRatio);
+            Top.ViewXmin = (int)Global.Relief.Xmin;
+            Top.ViewYmin = (int)Global.Relief.Ymin;
             Top.DeferUpdate = false;
 
             CurrentGrid = Global.Relief;
-            Top.CPalette = ColorPalette.GetTerrain(CurrentGrid.GetzMin(),CurrentGrid.GetzMax());
+            Top.CPalette = ColorPalette.GetTerrain(CurrentGrid.Zmin,CurrentGrid.Zmax);
             
             UpdateProfilePoints(sender,e);
         }
@@ -328,9 +328,9 @@ namespace Magn3D_Prof
 
         private void addbody_Click(object sender, EventArgs e)
         {
-            var startPoint = Global.MeasuredField[0].GetXY(Global.MeasuredField[0].GetzMax());
+            var startPoint = Global.MeasuredField[0].GetXY(Global.MeasuredField[0].Zmax);
 
-            if (Global.MeasuredField[0].GetzMax() == 0) startPoint = new Vector2(SettingsForm.minX, SettingsForm.minY);
+            if (Global.MeasuredField[0].Zmax == 0) startPoint = new Vector2(SettingsForm.minX, SettingsForm.minY);
 
             var Prism = new Prismbody(startPoint.x, startPoint.y, 5, 5, 5, 2, 2, 2, 0, 0, 90, 3, 0, 0, false);
 
@@ -428,17 +428,17 @@ namespace Magn3D_Prof
 
         public void UpdateNumerics(object sender, EventArgs e)
         {
-            Point0X.maximum = Global.Relief.GetxMax();
-            Point0X.minimum = Global.Relief.GetxMin();
+            Point0X.maximum = Global.Relief.Xmax;
+            Point0X.minimum = Global.Relief.Xmin;
 
-            Point1X.maximum = Global.Relief.GetxMax();
-            Point1X.minimum = Global.Relief.GetxMin();
+            Point1X.maximum = Global.Relief.Xmax;
+            Point1X.minimum = Global.Relief.Xmin;
 
-            Point0Y.maximum = Global.Relief.GetyMax();
-            Point0Y.minimum = Global.Relief.GetyMin();
+            Point0Y.maximum = Global.Relief.Ymax;
+            Point0Y.minimum = Global.Relief.Ymin;
 
-            Point1Y.maximum = Global.Relief.GetyMax();
-            Point1Y.minimum = Global.Relief.GetyMin();
+            Point1Y.maximum = Global.Relief.Ymax;
+            Point1Y.minimum = Global.Relief.Ymin;
 
             Point0X.Decimalplaces = (int)SettingsForm.decimals;
             Point0Y.Decimalplaces = (int)SettingsForm.decimals;
@@ -577,12 +577,12 @@ namespace Magn3D_Prof
 
         private void resetView_Click(object sender, EventArgs e)
         {
-            Top.ViewHeight = (int)(CurrentGrid.GetyMax() - CurrentGrid.GetyMin());
+            Top.ViewHeight = (int)(CurrentGrid.Ymax - CurrentGrid.Ymin);
             var ar = (float)(Top.ClientRectangle.Width - Top.Padding.Horizontal) /
                      (float)(Top.ClientRectangle.Height - Top.Padding.Vertical);
-            Top.ViewXmin = (int) ((CurrentGrid.GetxMax() - CurrentGrid.GetxMin() - Top.ViewHeight * ar) / 2) +
-                             (int)CurrentGrid.GetxMin();
-            Top.ViewYmin = (int) CurrentGrid.GetyMin();
+            Top.ViewXmin = (int) ((CurrentGrid.Xmax - CurrentGrid.Xmin - Top.ViewHeight * ar) / 2) +
+                             (int)CurrentGrid.Xmin;
+            Top.ViewYmin = (int) CurrentGrid.Ymin;
         }
 
         private void Slit_Click(object sender, EventArgs e)
@@ -595,13 +595,13 @@ namespace Magn3D_Prof
             if (chooseGrid.SelectedIndex == 0)
             {
                 CurrentGrid = Global.Relief;
-                Top.CPalette = ColorPalette.GetTerrain(CurrentGrid.GetzMin(),CurrentGrid.GetzMax());
+                Top.CPalette = ColorPalette.GetTerrain(CurrentGrid.Zmin,CurrentGrid.Zmax);
                 Top.Grid = CurrentGrid;
             }
             else
             {
                 CurrentGrid = Global.MeasuredField[chooseGrid.SelectedIndex - 1];
-                Top.CPalette = ColorPalette.GetRainbow(CurrentGrid.GetzMin(), CurrentGrid.GetzMax());
+                Top.CPalette = ColorPalette.GetRainbow(CurrentGrid.Zmin, CurrentGrid.Zmax);
                 Top.Grid = CurrentGrid;
             }
             panel1.Refresh();

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.IO;
+using GRIDs.Parsers.Interfaces;
 
-namespace GRIDs
+namespace GRIDs.Parsers
 {
-    public class DSRBGridParser : IGRDParser
+    public class DSRBGridParser : IGridParser
     {
         private readonly BinaryReader _reader;
 
@@ -19,7 +19,7 @@ namespace GRIDs
             int sNx, sNy, N;
             double xMin, yMin, zMin, zMax, dx, dy;
 
-            _reader.ReadBytes(16);
+            var t = _reader.ReadBytes(16);
 
             sNx = _reader.ReadInt32();//rows
             sNy = _reader.ReadInt32();//cols
@@ -36,7 +36,7 @@ namespace GRIDs
             dy = _reader.ReadDouble();//dy
             zMin = _reader.ReadDouble();//zmin
             zMax = _reader.ReadDouble();//zmax
-            _reader.ReadChars(8);//?
+            var g = _reader.ReadChars(8);//?
             var nodataValues = _reader.ReadDouble().ToString(CultureInfo.InvariantCulture);//Nodatavalues
             var marker2 = _reader.ReadChars(8);
 
@@ -53,6 +53,11 @@ namespace GRIDs
             _reader.Close();
 
             return new GRD(zMin, zMax, x, y, z);
+        }
+
+        public void SkipFormat()
+        {
+            _reader.ReadChars(4);
         }
 
         public void Dispose()

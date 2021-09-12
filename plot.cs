@@ -202,8 +202,8 @@ namespace ploting
 
                  }
 
-                var min = (float) _grid.GetzMin();
-                var max = (float) _grid.GetzMax();
+                var min = (float) _grid.Zmin;
+                var max = (float) _grid.Zmax;
 
                 DrawColor(graphics, pts, min, max);
                 DrawContour(graphics, pts, min, max, _contoursCount);
@@ -211,11 +211,11 @@ namespace ploting
                 
                 var edges = new PointF[4];
 
-                var Xmin = (_grid.GetxMin() - _viewport.X) * ClientRectangle.Width / _viewport.Width - Padding.Left;
-                var Xmax = (_grid.GetxMax() - _viewport.X) * ClientRectangle.Width / _viewport.Width - Padding.Left;
+                var Xmin = (_grid.Xmin - _viewport.X) * ClientRectangle.Width / _viewport.Width - Padding.Left;
+                var Xmax = (_grid.Xmax - _viewport.X) * ClientRectangle.Width / _viewport.Width - Padding.Left;
 
-                var Ymin = (_grid.GetyMin() - _viewport.Y) * ClientRectangle.Height / _viewport.Height - Padding.Top;
-                var Ymax = (_grid.GetyMax() - _viewport.Y) * ClientRectangle.Height / _viewport.Height - Padding.Top;
+                var Ymin = (_grid.Ymin - _viewport.Y) * ClientRectangle.Height / _viewport.Height - Padding.Top;
+                var Ymax = (_grid.Ymax - _viewport.Y) * ClientRectangle.Height / _viewport.Height - Padding.Top;
 
                 edges[0] = new PointF((float)Xmin, (float)Ymin);
                 edges[1] = new PointF((float)Xmin, (float)Ymax);
@@ -233,15 +233,15 @@ namespace ploting
                 if(_labelsCountY > 0)
                     dY = (float)((Ymax - Ymin) / _labelsCountY);
 
-                var lenX = _grid.GetxMax() - _grid.GetxMin();
-                var lenY = _grid.GetyMax() - _grid.GetyMin();
+                var lenX = _grid.Xmax - _grid.Xmin;
+                var lenY = _grid.Ymax - _grid.Ymin;
 
                 for (int i = 0; i <= _labelsCountX; i++)
                 {
                     var down = new PointF((float) Xmin + i * dX, (float) Ymax + dY / 5);
                     var up = new PointF((float)Xmin + i * dX, (float)Ymin - dY / 5);
 
-                    var x = _grid.GetxMin() + i * lenX / _labelsCountX;
+                    var x = _grid.Xmin + i * lenX / _labelsCountX;
 
                     graphics.DrawString(x.ToString("0.0"), this.Font, Brushes.Black, up.X,up.Y - this.Font.Height);
                     graphics.DrawString(x.ToString("0.0"), this.Font, Brushes.Black, down);
@@ -253,7 +253,7 @@ namespace ploting
                     var left = new PointF((float)Xmin - dX / 5, (float)Ymin + i * dY);
                     var right = new PointF((float)Xmax + dX / 5, (float)Ymin + i * dY);
 
-                    var y = _grid.GetyMin() + i * lenY / _labelsCountY;
+                    var y = _grid.Ymin + i * lenY / _labelsCountY;
 
                     var format = new StringFormat(StringFormatFlags.DirectionRightToLeft);
 

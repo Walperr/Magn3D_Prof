@@ -228,8 +228,11 @@ namespace Magn3D_Prof
 
             if (File.Exists(relName))
                 LoadRelief(relName);
-            else if(relName != "\r\n  ")
+            else if (relName != "\r\n  ")
+            {
+                Relief = new GRD(SettingsForm.minX,SettingsForm.maxX,SettingsForm.minY,SettingsForm.maxY,SettingsForm.stepX,SettingsForm.stepY,0);
                 MessageBox.Show(relName + " не найден", "Ошибка!");
+            }
 
             MeasFieldNames.Clear();
             HeightNames.Clear();
@@ -246,7 +249,7 @@ namespace Magn3D_Prof
 
                 GRD field = GRD.ReadGRD(FielNames[i]);
 
-                if (field.GetxMax() < Relief.GetxMax() || field.GetyMax() < Relief.GetyMax() || field.GetxMin() > Relief.GetxMin() || field.GetyMin() > Relief.GetyMin())
+                if (field.Xmax < Relief.Xmax || field.Ymax < Relief.Ymax || field.Xmin > Relief.Xmin || field.Ymin > Relief.Ymin)
                 {
                     MessageBox.Show("файл " + FielNames[i] + " имеет неверный размер", "Невозможно загрузить сетку");
                     continue;
@@ -262,7 +265,7 @@ namespace Magn3D_Prof
                 catch (Exception)
                 {
                     MessageBox.Show(HeigNames[i] + " Невозможно загрузить", "Ошибка");
-                    HeigthMaps.Add(new GRD(Relief.GetxMin(), Relief.GetxMax(), Relief.GetyMin(), Relief.GetyMax(), SettingsForm.stepX, SettingsForm.stepY, 0));
+                    HeigthMaps.Add(new GRD(Relief.Xmin, Relief.Xmax, Relief.Ymin, Relief.Ymax, SettingsForm.stepX, SettingsForm.stepY, 0));
                     HeightNames.Add("");
                 }
             }
@@ -439,11 +442,11 @@ namespace Magn3D_Prof
         {
             Relief = GRD.ReadGRD(filename);
 
-            SettingsForm.maxX = Relief.GetxMax();
-            SettingsForm.maxY = Relief.GetyMax();
+            SettingsForm.maxX = Relief.Xmax;
+            SettingsForm.maxY = Relief.Ymax;
 
-            SettingsForm.minX = Relief.GetxMin();
-            SettingsForm.minY = Relief.GetyMin();
+            SettingsForm.minX = Relief.Xmin;
+            SettingsForm.minY = Relief.Ymin;
 
             foreach (var prof in Profiles)
                 prof.UpdateNumerics(this, new EventArgs());
@@ -718,16 +721,16 @@ namespace Magn3D_Prof
         {
             string output = "";
 
-            output += "Рельеф - " + reliefName + "\nСреднее значение = " + Relief.GetzMean().ToString("F2") + "\nСетки измеренных полей:\n";
+            output += "Рельеф - " + reliefName + "\nСреднее значение = " + Relief.Zmean.ToString("F2") + "\nСетки измеренных полей:\n";
 
 
             for(int i = 0; i < MeasFieldNames.Count; i++)
-                output += i + " - " + MeasFieldNames[i] + "\nСреднее значение = " + MeasuredField[i].GetzMean().ToString("F2") + "\n";
+                output += i + " - " + MeasFieldNames[i] + "\nСреднее значение = " + MeasuredField[i].Zmean.ToString("F2") + "\n";
             
             output += "Сетки высот точек наблюдения:\n";
 
             for (int i = 0; i < HeightNames.Count; i++)
-                output += i + " - " + HeightNames[i] + "\nСреднее значение = " + HeigthMaps[i].GetzMean().ToString("F2") + "\n";
+                output += i + " - " + HeightNames[i] + "\nСреднее значение = " + HeigthMaps[i].Zmean.ToString("F2") + "\n";
 
             MessageBox.Show(output, "Загруженные сетки");
         }
@@ -782,7 +785,7 @@ namespace Magn3D_Prof
                 
                 GRD field = GRD.ReadGRD(filename);
 
-                if (!(field.GetxMax() < Relief.GetxMax() || field.GetyMax() < Relief.GetyMax() || field.GetxMin() > Relief.GetxMin() || field.GetyMin() > Relief.GetyMin()))
+                if (!(field.Xmax < Relief.Xmax || field.Ymax < Relief.Ymax || field.Xmin > Relief.Xmin || field.Ymin > Relief.Ymin))
                 {
                     MessageBox.Show("файл " + filename.Substring(filename.LastIndexOf("\\")+1) + " имеет неверный размер", "Невозможно загрузить сетку");
                     continue;
@@ -806,7 +809,7 @@ namespace Magn3D_Prof
                 }
                 catch (Exception)
                 {
-                    HeigthMaps.Add(new GRD(Relief.GetxMin(), Relief.GetxMax(), Relief.GetyMin(), Relief.GetyMax(), SettingsForm.stepX, SettingsForm.stepY, 0));
+                    HeigthMaps.Add(new GRD(Relief.Xmin, Relief.Xmax, Relief.Ymin, Relief.Ymax, SettingsForm.stepX, SettingsForm.stepY, 0));
                     temp += " - " + "None";
                     HeightNames.Add("");
                 }

@@ -91,7 +91,7 @@ namespace Magn3D_Prof
             H.minimum = 0;
             listBox1.Items.Clear();
             foreach(var name in Global.HeightNames)
-                listBox1.Items.Add(name + "\t mean = \t" + Global.HeigthMaps[listBox1.Items.Count].GetzMean().ToString("F"+SettingsForm.decimals) + " м");
+                listBox1.Items.Add(name + "\t mean = \t" + Global.HeigthMaps[listBox1.Items.Count].Zmean.ToString("F"+SettingsForm.decimals) + " м");
         }
 
         private void button2_Click(object sender, EventArgs e)

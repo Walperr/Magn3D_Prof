@@ -1,9 +1,11 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using System.IO;
+using GRIDs.Parsers.Interfaces;
 
-namespace GRIDs
+namespace GRIDs.Parsers
 {
-    public class DSAAGridParser : IGRDParser
+    public class DSAAGridParser : IGridParser
     {
         private readonly StreamReader _reader;
 
@@ -22,7 +24,6 @@ namespace GRIDs
             double[] z, x, y;
             int sNx, sNy, N;
             double xMin, xMax, yMin, yMax, zMin, zMax, dx, dy;
-
             
             _reader.ReadLine();
 
@@ -86,7 +87,12 @@ namespace GRIDs
         
             return new GRD(zMin, zMax, x, y, z);
         }
-        
+
+        public void SkipFormat()
+        {
+            throw new NotImplementedException();
+        }
+
         private static int GetCharCount(string s, char c)
         {
             int count = 0;
