@@ -11,6 +11,7 @@ using System.Xml.Schema;
 using GRIDs;
 using Magn3D_Prof;
 using Vectors;
+using OpenCvSharp;
 
 namespace ploting
 {
