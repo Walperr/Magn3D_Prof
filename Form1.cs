@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml;
+using GRIDs;
+using Vectors;
 
 namespace Magn3D_Prof
 {

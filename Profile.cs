@@ -11,7 +11,9 @@ using System.Windows.Forms;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using GRIDs;
 using ploting;
+using Vectors;
 
 namespace Magn3D_Prof
 {

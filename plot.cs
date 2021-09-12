@@ -8,7 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Schema;
+using GRIDs;
 using Magn3D_Prof;
+using Vectors;
 
 namespace ploting
 {

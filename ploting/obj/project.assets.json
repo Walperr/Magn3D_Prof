@@ -26,17 +26,21 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vladb\\.nuget\\packages\\": {}
+    "C:\\Users\\vladb\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vladb\\source\\repos\\Magn3D_Prof\\ploting\\ploting.csproj",
+      "projectUniqueName": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\ploting\\ploting.csproj",
       "projectName": "ploting",
-      "projectPath": "C:\\Users\\vladb\\source\\repos\\Magn3D_Prof\\ploting\\ploting.csproj",
+      "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\ploting\\ploting.csproj",
       "packagesPath": "C:\\Users\\vladb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vladb\\source\\repos\\Magn3D_Prof\\ploting\\obj\\",
+      "outputPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\ploting\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\vladb\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -52,8 +56,8 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\vladb\\source\\repos\\Magn3D_Prof\\Magn3D_Prof.csproj": {
-              "projectPath": "C:\\Users\\vladb\\source\\repos\\Magn3D_Prof\\Magn3D_Prof.csproj"
+            "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Magn3D_Prof.csproj": {
+              "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Magn3D_Prof.csproj"
             }
           }
         }
@@ -85,7 +89,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
