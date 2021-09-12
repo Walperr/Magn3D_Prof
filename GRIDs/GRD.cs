@@ -13,10 +13,11 @@ namespace GRIDs
         private double _x_min, _x_max, _y_min, _y_max, _z_min, _z_max, _z_mean;
         private List<double> _z,_x,_y;
 
-        public int SNx { get => _sNx;}
-        public int SNy { get => _sNy; }
-        public List<double> X { get => _x;}
-        public List<double> Y { get => _y;}
+        public int SNx => _sNx;
+        public int SNy => _sNy;
+        public List<double> X => _x;
+        public List<double> Y => _y;
+        public List<double> Z => _z;
 
         /// <summary>
         /// Создает сетку с заданным размером и шагом, устанавливая значение в каждом узле, равным z_values

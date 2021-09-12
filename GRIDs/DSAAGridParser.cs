@@ -58,8 +58,8 @@ namespace GRIDs
             zMin = double.Parse(s.Substring(0, j).Replace('.', ','), System.Globalization.NumberStyles.Any);
             zMax = double.Parse(s.Substring(j + 1).Replace('.', ','), System.Globalization.NumberStyles.Any);
 
-            dx = (xMax - xMin) / sNx;
-            dy = (yMax - yMin) / sNy;
+            dx = (xMax - xMin) / (sNx - 1);
+            dy = (yMax - yMin) / (sNy - 1);
             int i = 0;
             while (!_reader.EndOfStream)
             {

@@ -36,8 +36,8 @@ namespace GRIDs
             zMin = _reader.ReadDouble();
             zMax = _reader.ReadDouble();
 
-            dx = (xMax - xMin) / sNx;
-            dy = (yMax - yMin) / sNy;
+            dx = (xMax - xMin) / (sNx-1);
+            dy = (yMax - yMin) / (sNy-1);
 
             for(int i = 0; i < N; i++)
             {

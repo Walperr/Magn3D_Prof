@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GRIDs", "GRIDs\GRIDs.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vectors", "Vectors\Vectors.csproj", "{B3B6C8E3-02A4-4245-A99A-CA55C7BC8503}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GridUnitTests", "GridUnitTests\GridUnitTests.csproj", "{BEB5C9A8-F65D-4361-9192-E704C5C9860B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{B3B6C8E3-02A4-4245-A99A-CA55C7BC8503}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3B6C8E3-02A4-4245-A99A-CA55C7BC8503}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3B6C8E3-02A4-4245-A99A-CA55C7BC8503}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEB5C9A8-F65D-4361-9192-E704C5C9860B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEB5C9A8-F65D-4361-9192-E704C5C9860B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEB5C9A8-F65D-4361-9192-E704C5C9860B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEB5C9A8-F65D-4361-9192-E704C5C9860B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
