@@ -7,9 +7,9 @@ namespace GRIDs.Exporters
     public class DSBBGridExporter : IGridExporter
     {
         private readonly BinaryWriter _writer;
-        private readonly GRD _grid;
+        private readonly IGrid _grid;
 
-        public DSBBGridExporter(BinaryWriter writer, GRD grid)
+        public DSBBGridExporter(BinaryWriter writer, IGrid grid)
         {
             _writer = writer;
             _grid = grid;
@@ -24,8 +24,8 @@ namespace GRIDs.Exporters
         {
             _writer.Write(new []{'D','S','B', 'B'});
             
-            _writer.Write(Convert.ToInt16(_grid.SNx));
-            _writer.Write(Convert.ToInt16(_grid.SNy));
+            _writer.Write(Convert.ToInt16(_grid.X.Count));
+            _writer.Write(Convert.ToInt16(_grid.Y.Count));
             
             _writer.Write(_grid.Xmin);
             _writer.Write(_grid.Xmax);

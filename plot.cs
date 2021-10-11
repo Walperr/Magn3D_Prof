@@ -11,7 +11,6 @@ using System.Xml.Schema;
 using GRIDs;
 using Magn3D_Prof;
 using Vectors;
-using OpenCvSharp;
 
 namespace ploting
 {
@@ -33,7 +32,7 @@ namespace ploting
         private Vector2 _start;
         private Vector2 _end;
 
-        private GRD _grid;
+        private IGrid _grid;
         
 
         public plot()
@@ -86,7 +85,7 @@ namespace ploting
 
 
         [Browsable(false)]
-        public GRD Grid
+        public IGrid Grid
         {
             get => _grid;
             set

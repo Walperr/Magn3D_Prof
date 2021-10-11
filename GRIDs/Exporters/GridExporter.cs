@@ -12,7 +12,7 @@ namespace GRIDs.Exporters
         private const string DSBB = "DSBB";
         private const string DSAA = "DSAA";
 
-        public GridExporter(BinaryWriter writer, GRD grid, string format = DSRB)
+        public GridExporter(BinaryWriter writer, IGrid grid, string format = DSRB)
         {
             switch (format)
             {

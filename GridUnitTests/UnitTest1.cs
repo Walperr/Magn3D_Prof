@@ -14,13 +14,13 @@ namespace GridUnitTests
 {
     public class Tests
     {
-        private GRD _DSRBGrid;
-        private GRD _DSBBGrid;
-        private GRD _DSAAGrid;
-
-        private GRD _DSRBExportedGrid;
-        private GRD _DSBBExportedGrid;
-        private GRD _DSAAExportedGrid;
+        private IGrid _DSRBGrid;
+        private IGrid _DSBBGrid;
+        private IGrid _DSAAGrid;
+                
+        private IGrid _DSRBExportedGrid;
+        private IGrid _DSBBExportedGrid;
+        private IGrid _DSAAExportedGrid;
         
         [SetUp]
         public void Setup()
@@ -38,9 +38,9 @@ namespace GridUnitTests
 //            _DSAAExportedGrid = LoadDSAA("DSAANew.grd");
         }
 
-        private GRD LoadDSRB(string filename)
+        private IGrid LoadDSRB(string filename)
         {
-            GRD grid;
+            IGrid grid;
             
             using (IGridParser parser = new DSRBGridParser(new BinaryReader(File.OpenRead(filename),Encoding.Default)))
             { 
@@ -51,9 +51,9 @@ namespace GridUnitTests
             return grid;
         }
         
-        private GRD LoadDSBB(string filename)
+        private IGrid LoadDSBB(string filename)
         {
-            GRD grid;
+            IGrid grid;
             
             using (IGridParser parser = new DSBBGridParser(new BinaryReader(File.OpenRead(filename),Encoding.Default)))
             { 
@@ -64,9 +64,9 @@ namespace GridUnitTests
             return grid;
         }
         
-        private GRD LoadDSAA(string filename)
+        private IGrid LoadDSAA(string filename)
         {
-            GRD grid;
+            IGrid grid;
             
             using (IGridParser parser = new DSAAGridParser(new StreamReader(File.OpenRead(filename),Encoding.Default)))
             { 

@@ -16,11 +16,11 @@ namespace Magn3D_Prof
 {
     public partial class Global : Form
     {
-        public static GRD Relief;
+        public static IGrid Relief;
 
-        public static List<GRD> HeigthMaps = new List<GRD>();
+        public static List<IGrid> HeigthMaps = new List<IGrid>();
 
-        public static List<GRD> MeasuredField = new List<GRD>();
+        public static List<IGrid> MeasuredField = new List<IGrid>();
         
         public static Vector3 T0 = new Vector3(3000,2000,700);
 
@@ -180,8 +180,8 @@ namespace Magn3D_Prof
             if (!FieldHeigthLoad)
             {
 
-                HeigthMaps = new List<GRD>();
-                MeasuredField = new List<GRD>();
+                HeigthMaps = new List<IGrid>();
+                MeasuredField = new List<IGrid>();
 
                 for (int i = 0; i < SettingsForm.Hcount; i++)
                 {
@@ -247,7 +247,7 @@ namespace Magn3D_Prof
                     continue;
                 }
 
-                GRD field = GRD.ReadGRD(FielNames[i]);
+                IGrid field = GRD.ReadGRD(FielNames[i]);
 
                 if (field.Xmax < Relief.Xmax || field.Ymax < Relief.Ymax || field.Xmin > Relief.Xmin || field.Ymin > Relief.Ymin)
                 {
@@ -454,7 +454,7 @@ namespace Magn3D_Prof
             filename = ProjectPath + filename.Substring(filename.LastIndexOf("\\"));
 
             if(!File.Exists(filename))
-                Relief.SaveGRD(filename);
+                ((GRD)Relief).SaveGRD(filename);
 
             //загрузитьСеткуИзмеренныхПолейToolStripMenuItem.Enabled = true;
             ReliefLoaded = true;
@@ -771,8 +771,8 @@ namespace Magn3D_Prof
 
             if (openFileDialog2.ShowDialog() != DialogResult.OK) return;
 
-            MeasuredField = new List<GRD>();
-            HeigthMaps = new List<GRD>();
+            MeasuredField = new List<IGrid>();
+            HeigthMaps = new List<IGrid>();
             MeasFieldNames.Clear();
             HeightNames.Clear();
 
@@ -783,7 +783,7 @@ namespace Magn3D_Prof
                 string filenameH = filename.Insert(filename.IndexOf('.'), "H");
 
                 
-                GRD field = GRD.ReadGRD(filename);
+                IGrid field = GRD.ReadGRD(filename);
 
                 if (!(field.Xmax < Relief.Xmax || field.Ymax < Relief.Ymax || field.Xmin > Relief.Xmin || field.Ymin > Relief.Ymin))
                 {
@@ -793,7 +793,7 @@ namespace Magn3D_Prof
 
                 MeasuredField.Add(field);
                 if(!File.Exists(ProjectPath + filename.Substring(filename.LastIndexOf("\\"))))
-                    field.SaveGRD(ProjectPath + filename.Substring(filename.LastIndexOf("\\")));
+                    ((GRD)field).SaveGRD(ProjectPath + filename.Substring(filename.LastIndexOf("\\")));
 
                 MeasFieldNames.Add(ProjectPath + filename.Substring(filename.LastIndexOf("\\")));
 
@@ -805,7 +805,7 @@ namespace Magn3D_Prof
                     filenameH = ProjectPath + filenameH.Substring(filename.LastIndexOf("\\"));
                     HeightNames.Add(filenameH);
                     if(!File.Exists(ProjectPath + filenameH.Substring(filename.LastIndexOf("\\"))))
-                        HeigthMaps.Last().SaveGRD(filenameH);
+                        ((GRD)HeigthMaps.Last()).SaveGRD(filenameH);
                 }
                 catch (Exception)
                 {

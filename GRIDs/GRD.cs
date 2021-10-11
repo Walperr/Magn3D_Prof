@@ -11,7 +11,7 @@ using Vectors;
 
 namespace GRIDs
 {
-    public class GRD
+    public class GRD : IGrid
     {
         private int _N, _sNx, _sNy;
         private double _x_min, _x_max, _y_min, _y_max, _z_min, _z_max, _z_mean, _dX, _dY;
@@ -35,8 +35,7 @@ namespace GRIDs
 
         public double dX => _dX;
         public double dY => _dY;
-
-
+        
         /// <summary>
         /// Создает сетку с заданным размером и шагом, устанавливая значение в каждом узле, равным z_values
         /// </summary>
@@ -116,7 +115,7 @@ namespace GRIDs
         /// </summary>
         /// <param name="filename">Путь к файлу</param>
         /// <returns></returns>
-        public static GRD ReadGRD(string filename)
+        public static IGrid ReadGRD(string filename)
         {
             using (IGridParser parser = new GridParser(new BinaryReader(File.OpenRead(filename),Encoding.Default)))
             {

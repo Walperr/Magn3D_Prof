@@ -4,7 +4,7 @@ namespace GRIDs.Parsers.Interfaces
 {
     public interface IGridParser : IDisposable
     {
-        GRD ReadGRD();
+        IGrid ReadGRD();
         void SkipFormat();
     }
 }

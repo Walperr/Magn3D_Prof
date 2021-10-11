@@ -13,7 +13,7 @@ namespace GRIDs.Parsers
             _reader = reader;
         }
         
-        public GRD ReadGRD()
+        public IGrid ReadGRD()
         {
             double[] z, x, y;
             int sNx, sNy, N;

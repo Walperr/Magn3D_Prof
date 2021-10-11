@@ -8,9 +8,9 @@ namespace GRIDs.Exporters
     public class DSAAGridExporter : IGridExporter
     {
         private readonly StreamWriter _writer;
-        private readonly GRD _grid;
+        private readonly IGrid _grid;
 
-        public DSAAGridExporter(StreamWriter writer, GRD grid)
+        public DSAAGridExporter(StreamWriter writer, IGrid grid)
         {
             _writer = writer;
             _grid = grid;
@@ -25,7 +25,7 @@ namespace GRIDs.Exporters
         {
             _writer.WriteLine("DSAA");
             
-            _writer.WriteLine(_grid.SNx + " " + _grid.SNy);
+            _writer.WriteLine(_grid.X.Count + " " + _grid.Y.Count);
             
             _writer.WriteLine((_grid.Xmin + " " + _grid.Xmax).Replace(',', '.'));
             

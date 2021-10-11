@@ -106,9 +106,9 @@ namespace Magn3D_Prof
             List<double> F = new List<double>();
 
             progressBar1.Value = 0;
-            for (int j = 0; j < grid.SNy; j++)
+            for (int j = 0; j < grid.Y.Count; j++)
             {
-                for (int i = 0; i < grid.SNx; i++)
+                for (int i = 0; i < grid.X.Count; i++)
                 {
                     double Fx = 0, Fy = 0, Fz = 0;
 
@@ -128,7 +128,7 @@ namespace Magn3D_Prof
                     if (Fmax < dT) Fmax = dT;
 
                     F.Add(dT);
-                    progressBar1.Value = F.Count / (grid.SNx*grid.SNy) * 100;
+                    progressBar1.Value = F.Count / (grid.X.Count * grid.Y.Count) * 100;
                 }
             }
             GRD field = new GRD(Fmin, Fmax, grid.X.ToArray(), grid.Y.ToArray(), F.ToArray());

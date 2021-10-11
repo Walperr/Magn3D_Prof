@@ -573,7 +573,7 @@ namespace Magn3D_Prof
             Top.Grid = CurrentGrid;
         }
 
-        public GRD CurrentGrid { get; set; }
+        public IGrid CurrentGrid { get; set; }
 
         private void resetView_Click(object sender, EventArgs e)
         {

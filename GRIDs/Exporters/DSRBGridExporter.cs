@@ -7,9 +7,9 @@ namespace GRIDs.Exporters
     public class DSRBGridExporter : IGridExporter
     {
         private readonly BinaryWriter _writer;
-        private readonly GRD _grid;
+        private readonly IGrid _grid;
 
-        public DSRBGridExporter(BinaryWriter writer, GRD grid)
+        public DSRBGridExporter(BinaryWriter writer, IGrid grid)
         {
             _writer = writer;
             _grid = grid;
@@ -30,8 +30,8 @@ namespace GRIDs.Exporters
             
             _writer.Write(72);
             
-            _writer.Write(_grid.SNy);
-            _writer.Write(_grid.SNx);
+            _writer.Write(_grid.X.Count);
+            _writer.Write(_grid.Y.Count);
             
             _writer.Write(_grid.Xmin);
             _writer.Write(_grid.Ymin);

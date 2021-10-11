@@ -24,7 +24,7 @@ namespace GRIDs.Parsers
             _parser?.Dispose();
         }
 
-        public GRD ReadGRD()
+        public IGrid ReadGRD()
         {
             var marker = _reader.ReadChars(4);
 
