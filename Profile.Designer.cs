@@ -43,7 +43,6 @@ namespace Magn3D_Prof
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Profile));
             this.ProfileSplit = new System.Windows.Forms.SplitContainer();
             this.LeftSplit = new System.Windows.Forms.SplitContainer();
             this.label7 = new System.Windows.Forms.Label();
@@ -82,11 +81,7 @@ namespace Magn3D_Prof
             this.Hmax = new Magn3D_Prof.Numeric();
             this.Slit = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.resetView = new System.Windows.Forms.Button();
             this.chooseGrid = new System.Windows.Forms.ComboBox();
-            this.Top = new ploting.plot();
             ((System.ComponentModel.ISupportInitialize) (this.ProfileSplit)).BeginInit();
             this.ProfileSplit.Panel1.SuspendLayout();
             this.ProfileSplit.Panel2.SuspendLayout();
@@ -104,10 +99,6 @@ namespace Magn3D_Prof
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.Slit)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ProfileSplit
@@ -622,7 +613,7 @@ namespace Magn3D_Prof
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.splitContainer1);
+            this.tabPage2.Controls.Add(this.chooseGrid);
             this.tabPage2.Location = new System.Drawing.Point(25, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -631,81 +622,16 @@ namespace Magn3D_Prof
             this.tabPage2.Text = "Сверху";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.panel1);
-            this.splitContainer1.Panel1.Controls.Add(this.resetView);
-            this.splitContainer1.Panel1.Controls.Add(this.chooseGrid);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.Top);
-            this.splitContainer1.Size = new System.Drawing.Size(857, 357);
-            this.splitContainer1.SplitterDistance = 91;
-            this.splitContainer1.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 108);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(5, 10, 60, 5);
-            this.panel1.Size = new System.Drawing.Size(91, 249);
-            this.panel1.TabIndex = 4;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // resetView
-            // 
-            this.resetView.AutoSize = true;
-            this.resetView.Image = ((System.Drawing.Image) (resources.GetObject("resetView.Image")));
-            this.resetView.Location = new System.Drawing.Point(6, 30);
-            this.resetView.Name = "resetView";
-            this.resetView.Size = new System.Drawing.Size(81, 72);
-            this.resetView.TabIndex = 0;
-            this.resetView.TabStop = false;
-            this.resetView.UseVisualStyleBackColor = true;
-            this.resetView.Click += new System.EventHandler(this.resetView_Click);
-            // 
             // chooseGrid
             // 
-            this.chooseGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chooseGrid.FormattingEnabled = true;
             this.chooseGrid.Items.AddRange(new object[] {"рельеф"});
-            this.chooseGrid.Location = new System.Drawing.Point(0, 0);
+            this.chooseGrid.Location = new System.Drawing.Point(6, 6);
             this.chooseGrid.Name = "chooseGrid";
             this.chooseGrid.Size = new System.Drawing.Size(91, 24);
             this.chooseGrid.TabIndex = 3;
             this.chooseGrid.Text = "рельеф";
             this.chooseGrid.SelectedIndexChanged += new System.EventHandler(this.chooseGrid_SelectedIndexChanged);
-            // 
-            // Top
-            // 
-            this.Top.ContoursCount = 15;
-            this.Top.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.Top.DeferUpdate = false;
-            this.Top.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Top.Grid = null;
-            this.Top.LabelsCountX = 5;
-            this.Top.LabelsCountY = 5;
-            this.Top.Location = new System.Drawing.Point(0, 0);
-            this.Top.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Top.Name = "Top";
-            this.Top.Padding = new System.Windows.Forms.Padding(5);
-            this.Top.Size = new System.Drawing.Size(762, 357);
-            this.Top.TabIndex = 0;
-            this.Top.ViewHeight = 0;
-            this.Top.ViewXmin = 0;
-            this.Top.ViewYmin = 0;
-            this.Top.Enter += new System.EventHandler(this.Top_Enter);
-            this.Top.Leave += new System.EventHandler(this.Top_Leave);
             // 
             // Profile
             // 
@@ -737,11 +663,6 @@ namespace Magn3D_Prof
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize) (this.Slit)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize) (this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
         }
 
@@ -750,8 +671,6 @@ namespace Magn3D_Prof
         private System.Windows.Forms.ComboBox chooseGrid;
 
         private System.Windows.Forms.ComboBox comboBox1;
-
-        private System.Windows.Forms.SplitContainer splitContainer1;
 
         #endregion
 
@@ -793,7 +712,5 @@ namespace Magn3D_Prof
         public Magn3D_Prof.Numeric Hmin;
         private Magn3D_Prof.Numeric Hmax;
         private System.Windows.Forms.DataVisualization.Charting.Chart Slit;
-        private ploting.plot Top;
-        private System.Windows.Forms.Button resetView;
     }
 }

@@ -13,6 +13,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using GRIDs;
 using ploting;
+using test;
 using Vectors;
 
 namespace Magn3D_Prof
@@ -27,6 +28,8 @@ namespace Magn3D_Prof
         private Vector3 ZeroPoint;
         private double _Angle;
         private double sko;
+
+        private SurfacePlotControlManager _surfacePlotControlManager;
 
         internal List<Vector3> PointsH1;
         internal List<Vector3> PointsH2;
@@ -112,16 +115,6 @@ namespace Magn3D_Prof
             Hi1.Decimalplaces = 0;
             Hi2.Decimalplaces = 0;
 
-            Top.DeferUpdate = true;
-            float aspectRatio = (float)(Top.ClientRectangle.Width - Top.Padding.Horizontal) / (float)(Top.ClientRectangle.Height - Top.Padding.Vertical);
-            Top.ViewHeight = (int)((Global.Relief.Xmax - Global.Relief.Xmin) / aspectRatio);
-            Top.ViewXmin = (int)Global.Relief.Xmin;
-            Top.ViewYmin = (int)Global.Relief.Ymin;
-            Top.DeferUpdate = false;
-
-            CurrentGrid = Global.Relief;
-            Top.CPalette = ColorPalette.GetTerrain(CurrentGrid.Zmin,CurrentGrid.Zmax);
-            
             UpdateProfilePoints(sender,e);
         }
         private void UpdateProfilePoints(object sender, EventArgs e)
@@ -147,11 +140,6 @@ namespace Magn3D_Prof
 
             foreach (var control in bodyControls)
                 control.UpdateParameters();
-
-            Top.DeferUpdate = true;
-            Top.Start = new Vector2(P0X, P0Y);
-            Top.DeferUpdate = false;
-            Top.End = new Vector2(P1X, P1Y);
 
             RecalculatePoints();
         }
@@ -569,23 +557,12 @@ namespace Magn3D_Prof
             Magn3D_Prof.Draw.DrawBodyPoints(Slit, Point0, Point1, chart1.ChartAreas[0].AxisX.Minimum, chart1.ChartAreas[0].AxisX.Maximum, Hmin.GetValue(), Hmax.GetValue());
            // Magn3D_Prof.Draw.DrawBodyPointsTOP(DrawPlace2, Point0, Point1, SettingsForm.minX, SettingsForm.maxX,
                                                //SettingsForm.minY, SettingsForm.maxY);
-            
-            Top.Grid = CurrentGrid;
+           
         }
 
         public IGrid CurrentGrid { get; set; }
 
-        private void resetView_Click(object sender, EventArgs e)
-        {
-            Top.ViewHeight = (int)(CurrentGrid.Ymax - CurrentGrid.Ymin);
-            var ar = (float)(Top.ClientRectangle.Width - Top.Padding.Horizontal) /
-                     (float)(Top.ClientRectangle.Height - Top.Padding.Vertical);
-            Top.ViewXmin = (int) ((CurrentGrid.Xmax - CurrentGrid.Xmin - Top.ViewHeight * ar) / 2) +
-                             (int)CurrentGrid.Xmin;
-            Top.ViewYmin = (int) CurrentGrid.Ymin;
-        }
-
-        private void Slit_Click(object sender, EventArgs e)
+       private void Slit_Click(object sender, EventArgs e)
         {
             Slit.Focus();
             Draw(sender,e);
@@ -595,37 +572,12 @@ namespace Magn3D_Prof
             if (chooseGrid.SelectedIndex == 0)
             {
                 CurrentGrid = Global.Relief;
-                Top.CPalette = ColorPalette.GetTerrain(CurrentGrid.Zmin,CurrentGrid.Zmax);
-                Top.Grid = CurrentGrid;
+
             }
             else
             {
                 CurrentGrid = Global.MeasuredField[chooseGrid.SelectedIndex - 1];
-                Top.CPalette = ColorPalette.GetRainbow(CurrentGrid.Zmin, CurrentGrid.Zmax);
-                Top.Grid = CurrentGrid;
-            }
-            panel1.Refresh();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-            var pal = Top.CPalette;
-            var rect = panel1.ClientRectangle;
-
-            var hStep = (rect.Height - panel1.Padding.Vertical) / (pal.Colors.Length - 1);
-
-            for (int i = 0; i < pal.Colors.Length - 1; i++)
-            {
-                var x1 = rect.X + panel1.Padding.Left;
-                var x2 = rect.X + rect.Width - panel1.Padding.Right;
-                var y = rect.Y + panel1.Padding.Top + i * hStep;
                 
-                var y2 = rect.Y + panel1.Padding.Top + (i+1) * hStep;
-                
-                var curRect = new Rectangle(x1, y, x2 - x1, y2 - y);
-                e.Graphics.FillRectangle(new SolidBrush(pal.Colors[i]),curRect);
-                e.Graphics.DrawRectangle(Pens.Black,curRect);
-                e.Graphics.DrawString(pal.Values[i].ToString("F1"),Font,Brushes.Black,x2,y);
             }
         }
     }

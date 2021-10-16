@@ -130,6 +130,12 @@
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SurfacePlotControlManager.cs" />
+    <Compile Include="SurfaceViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SurfaceViewer.Designer.cs">
+      <DependentUpon>SurfaceViewer.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BodyControl.resx">
       <DependentUpon>BodyControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +165,9 @@
     </Compile>
     <EmbeddedResource Include="SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SurfaceViewer.resx">
+      <DependentUpon>SurfaceViewer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
