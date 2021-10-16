@@ -13,7 +13,6 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using GRIDs;
 using ploting;
-using test;
 using Vectors;
 
 namespace Magn3D_Prof
@@ -28,8 +27,6 @@ namespace Magn3D_Prof
         private Vector3 ZeroPoint;
         private double _Angle;
         private double sko;
-
-        private SurfacePlotControlManager _surfacePlotControlManager;
 
         internal List<Vector3> PointsH1;
         internal List<Vector3> PointsH2;

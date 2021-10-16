@@ -5,7 +5,6 @@ C:\Users\vladb\RiderProjects\Magn3D_Prof1\GRIDs\bin\Debug\net472\Vectors.pdb
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\GRIDs\obj\Debug\net472\GRIDs.csproj.CoreCompileInputs.cache
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\GRIDs\obj\Debug\net472\GRIDs.AssemblyInfoInputs.cache
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\GRIDs\obj\Debug\net472\GRIDs.AssemblyInfo.cs
-C:\Users\vladb\RiderProjects\Magn3D_Prof1\GRIDs\obj\Debug\net472\GRIDs.csproj.CopyComplete
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\GRIDs\obj\Debug\net472\GRIDs.dll
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\GRIDs\obj\Debug\net472\GRIDs.pdb
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\GRIDs\obj\Debug\net472\GRIDs.csproj.AssemblyReference.cache
