@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vectors", "Vectors\Vectors.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GridUnitTests", "GridUnitTests\GridUnitTests.csproj", "{BEB5C9A8-F65D-4361-9192-E704C5C9860B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenControls.Wpf.SurfacePlot", "OpenControls.Wpf.SurfacePlot\OpenControls.Wpf.SurfacePlot.csproj", "{546D9E1E-3B53-4CFB-9BAE-F621BCAA41AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenControls.Wpf.Utilities", "OpenControls.Wpf.Utilities\OpenControls.Wpf.Utilities.csproj", "{117F1160-81BF-42CD-B48C-E73BEC059B30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{BEB5C9A8-F65D-4361-9192-E704C5C9860B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEB5C9A8-F65D-4361-9192-E704C5C9860B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BEB5C9A8-F65D-4361-9192-E704C5C9860B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{546D9E1E-3B53-4CFB-9BAE-F621BCAA41AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{546D9E1E-3B53-4CFB-9BAE-F621BCAA41AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{546D9E1E-3B53-4CFB-9BAE-F621BCAA41AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{546D9E1E-3B53-4CFB-9BAE-F621BCAA41AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{117F1160-81BF-42CD-B48C-E73BEC059B30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{117F1160-81BF-42CD-B48C-E73BEC059B30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{117F1160-81BF-42CD-B48C-E73BEC059B30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{117F1160-81BF-42CD-B48C-E73BEC059B30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

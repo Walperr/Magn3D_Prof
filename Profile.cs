@@ -112,6 +112,8 @@ namespace Magn3D_Prof
             Hi1.Decimalplaces = 0;
             Hi2.Decimalplaces = 0;
 
+            surfaceVIewer1.Surface = Global.Relief;
+            
             UpdateProfilePoints(sender,e);
         }
         private void UpdateProfilePoints(object sender, EventArgs e)
@@ -557,9 +559,7 @@ namespace Magn3D_Prof
            
         }
 
-        public IGrid CurrentGrid { get; set; }
-
-       private void Slit_Click(object sender, EventArgs e)
+        private void Slit_Click(object sender, EventArgs e)
         {
             Slit.Focus();
             Draw(sender,e);
@@ -568,12 +568,12 @@ namespace Magn3D_Prof
         {
             if (chooseGrid.SelectedIndex == 0)
             {
-                CurrentGrid = Global.Relief;
+                surfaceVIewer1.Surface = Global.Relief;
 
             }
             else
             {
-                CurrentGrid = Global.MeasuredField[chooseGrid.SelectedIndex - 1];
+                surfaceVIewer1.Surface = Global.MeasuredField[chooseGrid.SelectedIndex - 1];
                 
             }
         }

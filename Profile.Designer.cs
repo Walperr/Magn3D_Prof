@@ -81,6 +81,7 @@ namespace Magn3D_Prof
             this.Hmax = new Magn3D_Prof.Numeric();
             this.Slit = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.surfaceVIewer1 = new Magn3D_Prof.SurfaceVIewer();
             this.chooseGrid = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize) (this.ProfileSplit)).BeginInit();
             this.ProfileSplit.Panel1.SuspendLayout();
@@ -613,6 +614,7 @@ namespace Magn3D_Prof
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.surfaceVIewer1);
             this.tabPage2.Controls.Add(this.chooseGrid);
             this.tabPage2.Location = new System.Drawing.Point(25, 4);
             this.tabPage2.Name = "tabPage2";
@@ -622,13 +624,22 @@ namespace Magn3D_Prof
             this.tabPage2.Text = "Сверху";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // surfaceVIewer1
+            // 
+            this.surfaceVIewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.surfaceVIewer1.Location = new System.Drawing.Point(3, 27);
+            this.surfaceVIewer1.Name = "surfaceVIewer1";
+            this.surfaceVIewer1.Size = new System.Drawing.Size(857, 333);
+            this.surfaceVIewer1.TabIndex = 4;
+            // 
             // chooseGrid
             // 
+            this.chooseGrid.Dock = System.Windows.Forms.DockStyle.Top;
             this.chooseGrid.FormattingEnabled = true;
             this.chooseGrid.Items.AddRange(new object[] {"рельеф"});
-            this.chooseGrid.Location = new System.Drawing.Point(6, 6);
+            this.chooseGrid.Location = new System.Drawing.Point(3, 3);
             this.chooseGrid.Name = "chooseGrid";
-            this.chooseGrid.Size = new System.Drawing.Size(91, 24);
+            this.chooseGrid.Size = new System.Drawing.Size(857, 24);
             this.chooseGrid.TabIndex = 3;
             this.chooseGrid.Text = "рельеф";
             this.chooseGrid.SelectedIndexChanged += new System.EventHandler(this.chooseGrid_SelectedIndexChanged);
@@ -665,6 +676,8 @@ namespace Magn3D_Prof
             this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private Magn3D_Prof.SurfaceVIewer surfaceVIewer1;
 
         private System.Windows.Forms.Panel panel1;
 
