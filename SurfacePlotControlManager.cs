@@ -14,36 +14,24 @@ namespace Magn3D_Prof
     {
         private IGrid _lowQualitySurface;
         private IGrid _originalSurface;
-        
-        private int _lowQualitySurfaceResolutionX = 200;
-        private int _lowQualitySurfaceResolutionY = 200;
-        
-        private SurfacePlotControl _surfacePlotControl = new SurfacePlotControl();
-        private PropertyGrid _propertyGrid = new PropertyGrid() {Dock = DockStyle.Fill};
-        
+
+        private int _lowQualitySurfaceResolution = 40000;
+
+        private readonly SurfacePlotControl _surfacePlotControl = new SurfacePlotControl();
+        private readonly PropertyGrid _propertyGrid = new PropertyGrid() {Dock = DockStyle.Fill};
+
         private IConfiguration _configuration;
         private IConfiguration _configurationInfo;
         private Control _surfacePlotParentControl;
         private Control _propertyGridParentControl;
 
-        public int LowQualitySurfaceResolutionX
+        public int LowQualitySurfaceResolution
         {
-            get => _lowQualitySurfaceResolutionX;
+            get => _lowQualitySurfaceResolution;
             set
             {
-                _lowQualitySurfaceResolutionX = value;
-                
-                RefreshDisplaySurface();
-            }
-        }
-        
-        public int LowQualitySurfaceResolutionY
-        {
-            get => _lowQualitySurfaceResolutionY;
-            set
-            {
-                _lowQualitySurfaceResolutionY = value;
-                
+                _lowQualitySurfaceResolution = value;
+
                 RefreshDisplaySurface();
             }
         }
@@ -54,7 +42,7 @@ namespace Magn3D_Prof
             set
             {
                 _originalSurface = value;
-                
+
                 RefreshDisplaySurface();
             }
         }
@@ -66,18 +54,18 @@ namespace Magn3D_Prof
             {
                 var oldValue = _surfacePlotParentControl;
 
-                if(oldValue != null)
+                if (oldValue != null)
                     oldValue.ClientSizeChanged -= SurfacePlotParentControlOnClientSizeChanged;
 
                 oldValue?.Controls.Remove(_surfacePlotControl);
-                
+
                 _surfacePlotParentControl = value;
-                
-                if(_surfacePlotParentControl == null) return;
-                
+
+                if (_surfacePlotParentControl == null) return;
+
                 _surfacePlotParentControl.Controls.Add(_surfacePlotControl);
                 _surfacePlotParentControl.ClientSizeChanged += SurfacePlotParentControlOnClientSizeChanged;
-                
+
                 _surfacePlotControl.SetBounds(
                     _surfacePlotParentControl.ClientRectangle.X,
                     _surfacePlotParentControl.ClientRectangle.Y,
@@ -102,21 +90,21 @@ namespace Magn3D_Prof
         public SurfacePlotControlManager(Control parentControl)
         {
             SurfacePlotParentControl = parentControl;
-            
+
             //Initialize configuration
-            
+
             _configuration = new Configuration();
-            
+
             _configuration.BackgroundColour = Color.DarkGray;
             _configuration.TransparentLabelBackground = true;
             _configuration.ShowGrid = false;
             _configuration.ColorBarSelector = ColorBarsLoader.ColorBars.Terrain;
             _configuration.ShadingAlgorithm = ShadingAlgorithm.ColorBar;
-            
+
             _surfacePlotControl.Initialise(_configuration);
-            
+
             //Initialize propertyGrid
-            
+
             _configurationInfo = new ConfigurationPropertiesInfo(_configuration);
 
             _propertyGrid.PropertySort = PropertySort.Categorized;
@@ -131,80 +119,86 @@ namespace Magn3D_Prof
             _surfacePlotControl.Parent.ClientSizeChanged -= SurfacePlotParentControlOnClientSizeChanged;
             _surfacePlotControl?.Dispose();
             _propertyGrid?.Dispose();
+            _configuration = null;
+            _configurationInfo = null;
         }
 
         private void SurfacePlotParentControlOnClientSizeChanged(object sender, EventArgs e)
         {
             _surfacePlotControl.SetBounds(
-                ((Control)sender).ClientRectangle.X,
-                ((Control)sender).ClientRectangle.Y,
-                ((Control)sender).ClientRectangle.Width,
-                ((Control)sender).ClientRectangle.Height);
+                ((Control) sender).ClientRectangle.X,
+                ((Control) sender).ClientRectangle.Y,
+                ((Control) sender).ClientRectangle.Width,
+                ((Control) sender).ClientRectangle.Height);
         }
 
         private void RefreshDisplaySurface()
         {
             if (_originalSurface == null) return;
 
-            double zMax;
-            double zMin;
-            
-            if (_originalSurface.X.Count * _originalSurface.Y.Count <=
-                _lowQualitySurfaceResolutionX * _lowQualitySurfaceResolutionY)
+            if (_originalSurface.Z.Count <= _lowQualitySurfaceResolution)
             {
                 _lowQualitySurface = _originalSurface;
             }
             else
             {
-                var dx = (_originalSurface.Xmax - _originalSurface.Xmin) / (_lowQualitySurfaceResolutionX - 1);
-                var dy = (_originalSurface.Ymax - _originalSurface.Ymin) / (_lowQualitySurfaceResolutionY - 1);
+                var xCount = (int)Math.Sqrt(_lowQualitySurfaceResolution * _originalSurface.X.Count /
+                                             (float)_originalSurface.Y.Count);
+                
+                var yCount = (int)Math.Sqrt(_lowQualitySurfaceResolution * _originalSurface.Y.Count /
+                                            (float)_originalSurface.X.Count);
 
-                List<double> xValues = Enumerable.Repeat(_originalSurface.Xmin, _lowQualitySurfaceResolutionX)
+                var dx = (_originalSurface.Xmax - _originalSurface.Xmin) / (xCount - 1);
+                var dy = (_originalSurface.Ymax - _originalSurface.Ymin) / (yCount - 1);
+
+                List<double> xValues = Enumerable.Repeat(_originalSurface.Xmin, xCount)
                     .Select((e, i) => e + (i) * dx).ToList();
-                List<double> yValues = Enumerable.Repeat(_originalSurface.Ymin, _lowQualitySurfaceResolutionY)
+                List<double> yValues = Enumerable.Repeat(_originalSurface.Ymin, yCount)
                     .Select((e, i) => e + (i) * dy).ToList();
                 List<Vector2> points = new List<Vector2>();
 
-                for (int j = 0; j < _lowQualitySurfaceResolutionY; j++)
-                for (int i = 0; i < _lowQualitySurfaceResolutionX; i++)
-                    points.Add(new Vector2(xValues[i] / 1000000, yValues[j] / 1000000));
+                for (int j = 0; j < yCount; j++)
+                for (int i = 0; i < xCount; i++)
+                    points.Add(new Vector2(xValues[i], yValues[j]));
 
                 var zValues = _originalSurface.Interp(0, points);
 
-                zMax = zValues.Where(z => !double.IsNaN(z)).Max();
-                zMin = zValues.Where(z => !double.IsNaN(z)).Min();
+                var zMax = zValues.Where(z => !double.IsNaN(z)).Max();
+                var zMin = zValues.Where(z => !double.IsNaN(z)).Min();
 
                 _lowQualitySurface = new GRD(zMin, zMax, xValues.ToArray(), yValues.ToArray(), zValues.ToArray());
             }
+         
+            ApplySurfaceDataToControl();
+        }
 
-            var xCount = Math.Min(_lowQualitySurfaceResolutionX, _lowQualitySurface.X.Count);
-            var yCount = Math.Min(_lowQualitySurfaceResolutionY, _lowQualitySurface.Y.Count);
-
+        private void ApplySurfaceDataToControl()
+        {
             List<List<float>> drawData = new List<List<float>>();
-            
-            for (int i = 0; i < xCount; ++i)
+
+            for (int i = 0; i < _lowQualitySurface.X.Count; ++i)
             {
                 List<float> list = new List<float>();
                 drawData.Add(list);
-                for (int j = 0; j < yCount; ++j)
+                for (int j = 0; j < _lowQualitySurface.Y.Count; ++j)
                 {
-                    list.Add((float)_lowQualitySurface.GetCoordinates(i,j).Z);
+                    list.Add((float) _lowQualitySurface.GetCoordinates(i, j).Z);
                 }
             }
 
-            zMin = _lowQualitySurface.Z.Min();
-            zMax = _lowQualitySurface.Z.Max();
+            float zMin = (float) _lowQualitySurface.Z.Where(z => !double.IsNaN(z)).Min();
+            float zMax = (float) _lowQualitySurface.Z.Where(z => !double.IsNaN(z)).Max();
 
             float xMin = (float) _lowQualitySurface.Xmin;
             float yMin = (float) _lowQualitySurface.Ymin;
-            
+
             float xMax = (float) _lowQualitySurface.Xmax;
             float yMax = (float) _lowQualitySurface.Ymax;
 
-            _configuration.MaximumLevel = (short)zMax;
-            _configuration.MinimumLevel = (short)zMin;
-            
-            _surfacePlotControl.SetData(drawData, xMin, xMax, 21, yMin, yMax, 21, (float)zMin, (float)zMax, 21);
+            _configurationInfo.MaximumLevel = (short) zMax;
+            _configurationInfo.MinimumLevel = (short) zMin;
+
+            _surfacePlotControl.SetData(drawData, xMin, xMax, 21, yMin, yMax, 21, zMin, zMax, 21);
         }
     }
 }

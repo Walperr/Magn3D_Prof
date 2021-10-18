@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
@@ -150,7 +151,8 @@ namespace OpenControls.Wpf.SurfacePlot
             }
 
             _axisScaling = 1000f / (float)Math.Max(lineData.Count - 1, lineData[0].Count - 1);
-
+            _iConfiguration.ZScale = 270 / (_axisScaling * (zMax - zMin));
+            
             _lineData = lineData;
             LoadVertices();
         }
@@ -739,15 +741,15 @@ namespace OpenControls.Wpf.SurfacePlot
 
             float zGridRange = (float)(_axisScaling * (_zAxisLabels.MaxValue - _zAxisLabels.MinValue) * ZScale);
             float zGridInc = zGridRange / (float)(_zAxisLabels.Labels.Count - 1);
-            float zMin = -zGridRange / 2;
-            float zMax = -zMin;
+            float zMin = (float)(_zAxisLabels.MinValue * ZScale * _axisScaling);
+            float zMax = (float)(_zAxisLabels.MaxValue * ZScale * _axisScaling);
             float xMax = _axisScaling * (_lineData.Count - 1);
             float yMax = _axisScaling * (_lineData[0].Count - 1);
 
             if (_iConfiguration.ShowAxes && (_iConfiguration.ViewProjection == ViewProjection.ThreeDimensional))
             {
                 Color lineColour = _iConfiguration.FrameColour;
-                float z = (_iConfiguration.XYLabelPosition == XYLabelPosition.Bottom) ? zMin : 0f;
+                float z = (_iConfiguration.XYLabelPosition == XYLabelPosition.Bottom) ? zMin : (zMax + zMin) / 2;
 
                 GL.Begin(PrimitiveType.LineStrip);
                 GL.Color3(lineColour);
@@ -871,7 +873,7 @@ namespace OpenControls.Wpf.SurfacePlot
                 {
                     y += flipAxisTitle ? _zAxisLabels.MaxLabelLength : -_zAxisLabels.MaxLabelLength;
                 }
-                _textRenderer.DrawText(-0.5f * _textRenderer.MeasureTextLength(text), y, 0, text);
+                _textRenderer.DrawText(-0.5f * _textRenderer.MeasureTextLength(text), y, zMax/2-zMin/2, text);
             }
 
             _textRenderer.SetTiltInRadians((Math.PI * (double)_iConfiguration.LabelAngleInDegrees) / 180f);
@@ -894,7 +896,7 @@ namespace OpenControls.Wpf.SurfacePlot
             float labelOffset = (
                                 !_iConfiguration.ViewProjection.IsBirdsEye() &&
                                 (_iConfiguration.XYLabelPosition == XYLabelPosition.Bottom)
-                           ) ? zMin : 0f;
+                           ) ? zMin : (zMax - zMin) / 2;
 
             if (_iConfiguration.ShowAxesTitles /*&& !_iConfiguration.ViewProjection.IsOrthographic()*/)
             {

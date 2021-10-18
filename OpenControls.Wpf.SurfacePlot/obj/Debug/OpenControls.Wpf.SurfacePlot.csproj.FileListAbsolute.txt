@@ -74,6 +74,5 @@ C:\Users\vladb\RiderProjects\Magn3D_Prof1\OpenControls.Wpf.SurfacePlot\obj\Debug
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\OpenControls.Wpf.SurfacePlot\obj\Debug\OpenControls.Wpf.SurfacePlot.Properties.Resources.resources
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\OpenControls.Wpf.SurfacePlot\obj\Debug\OpenControls.Wpf.SurfacePlot.csproj.GenerateResource.cache
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\OpenControls.Wpf.SurfacePlot\obj\Debug\OpenControls.Wpf.SurfacePlot.csproj.CoreCompileInputs.cache
-C:\Users\vladb\RiderProjects\Magn3D_Prof1\OpenControls.Wpf.SurfacePlot\obj\Debug\OpenControls.Wpf.SurfacePlot.csproj.CopyComplete
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\OpenControls.Wpf.SurfacePlot\obj\Debug\OpenControls.Wpf.SurfacePlot.dll
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\OpenControls.Wpf.SurfacePlot\obj\Debug\OpenControls.Wpf.SurfacePlot.pdb
