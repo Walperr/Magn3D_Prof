@@ -47,6 +47,8 @@ namespace Magn3D_Prof
             }
         }
 
+        public Color Background => _configuration.BackgroundColour;
+
         public Control SurfacePlotParentControl
         {
             get => _surfacePlotParentControl;
@@ -81,10 +83,17 @@ namespace Magn3D_Prof
             {
                 {
                     _propertyGridParentControl?.Controls.Remove(_propertyGrid);
+                    _configuration.ConfigurationChanged -= ConfigurationInfoOnConfigurationChanged; 
                     _propertyGridParentControl = value;
+                    _configuration.ConfigurationChanged += ConfigurationInfoOnConfigurationChanged;
                     _propertyGridParentControl.Controls.Add(_propertyGrid);
                 }
             }
+        }
+
+        private void ConfigurationInfoOnConfigurationChanged(ConfigurationItem configurationitem)
+        {
+            _propertyGrid.Refresh();
         }
 
         public SurfacePlotControlManager(Control parentControl)
@@ -100,6 +109,7 @@ namespace Magn3D_Prof
             _configuration.ShowGrid = false;
             _configuration.ColorBarSelector = ColorBarsLoader.ColorBars.Terrain;
             _configuration.ShadingAlgorithm = ShadingAlgorithm.ColorBar;
+            _configuration.ViewProjection = ViewProjection.Top;
 
             _surfacePlotControl.Initialise(_configuration);
 
@@ -197,7 +207,7 @@ namespace Magn3D_Prof
 
             _configurationInfo.MaximumLevel = (short) zMax;
             _configurationInfo.MinimumLevel = (short) zMin;
-
+            
             _surfacePlotControl.SetData(drawData, xMin, xMax, 21, yMin, yMax, 21, zMin, zMax, 21);
         }
     }

@@ -71,6 +71,8 @@ namespace OpenControls.Wpf.SurfacePlot.Model
 
         private void RecalculateValues(double maxValue, double minValue)
         {
+            if(Math.Abs(maxValue - minValue) < 0.001) return;
+        
             var lastMin = _values.Min();
             var lastMax = _values.Max();
             

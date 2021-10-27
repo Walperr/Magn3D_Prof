@@ -20,12 +20,12 @@ namespace OpenControls.Wpf.SurfacePlot.ViewModel
             ViewProjectionTypes = new System.Collections.ObjectModel.ObservableCollection<ViewProjectionType>
             {
                 new ViewProjectionType() { ViewProjection = Model.ViewProjection.ThreeDimensional, Name = "3D" },
-                new ViewProjectionType() { ViewProjection = Model.ViewProjection.BirdsEye_0, Name = "Birds Eye - 0 Degrees" },
-                new ViewProjectionType() { ViewProjection = Model.ViewProjection.BirdsEye_90, Name = "Birds Eye - 90 Degrees" },
-                new ViewProjectionType() { ViewProjection = Model.ViewProjection.BirdsEye_180, Name = "Birds Eye - 180 Degrees" },
-                new ViewProjectionType() { ViewProjection = Model.ViewProjection.BirdsEye_270, Name = "Birds Eye - 270 Degrees" },
-                new ViewProjectionType() { ViewProjection = Model.ViewProjection.Orthographic_Front, Name = "Orthographic - Front" },
-                new ViewProjectionType() { ViewProjection = Model.ViewProjection.Orthographic_Side, Name = "Orthographic - Side" },
+                // new ViewProjectionType() { ViewProjection = Model.ViewProjection.BirdsEye_0, Name = "Birds Eye - 0 Degrees" },
+                // new ViewProjectionType() { ViewProjection = Model.ViewProjection.BirdsEye_90, Name = "Birds Eye - 90 Degrees" },
+                new ViewProjectionType() { ViewProjection = Model.ViewProjection.Top, Name = "Birds Eye - 180 Degrees" },
+                // new ViewProjectionType() { ViewProjection = Model.ViewProjection.BirdsEye_270, Name = "Birds Eye - 270 Degrees" },
+                // new ViewProjectionType() { ViewProjection = Model.ViewProjection.Orthographic_Front, Name = "Orthographic - Front" },
+                // new ViewProjectionType() { ViewProjection = Model.ViewProjection.Orthographic_Side, Name = "Orthographic - Side" },
             };
             ViewProjection = IConfiguration.ViewProjection;
             XYLabelPositions = new System.Collections.ObjectModel.ObservableCollection<Model.XYLabelPosition>() { Model.XYLabelPosition.Middle, Model.XYLabelPosition.Bottom };

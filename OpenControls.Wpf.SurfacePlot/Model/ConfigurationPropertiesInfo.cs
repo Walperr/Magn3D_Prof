@@ -109,7 +109,7 @@ namespace OpenControls.Wpf.SurfacePlot.Model
         [Category("Axes")]
         public double ZScale
         {
-            get => _configuration.ZScale;
+            get => Math.Round(_configuration.ZScale,3);
             set => _configuration.ZScale = value;
         }
 

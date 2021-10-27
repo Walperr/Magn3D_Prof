@@ -129,7 +129,8 @@ namespace OpenControls.Wpf.SurfacePlot
                     xMin, 
                     xMax, 
                     numberOfXLabels, 
-                    _iConfiguration.ViewProjection == ViewProjection.BirdsEye_270,
+                    //_iConfiguration.ViewProjection == ViewProjection.BirdsEye_270,
+                    false,
                     ILabelFormatter.XLabel,
                     _textRenderer.MeasureTextLength);
 
@@ -137,7 +138,7 @@ namespace OpenControls.Wpf.SurfacePlot
                     yMin, 
                     yMax, 
                     numberOfYLabels, 
-                    (_iConfiguration.ViewProjection == ViewProjection.BirdsEye_180),
+                    (_iConfiguration.ViewProjection == ViewProjection.Top),
                     ILabelFormatter.YLabel,
                     _textRenderer.MeasureTextLength);
 
@@ -151,12 +152,12 @@ namespace OpenControls.Wpf.SurfacePlot
             }
 
             _axisScaling = 1000f / (float)Math.Max(lineData.Count - 1, lineData[0].Count - 1);
-            _iConfiguration.ZScale = 270 / (_axisScaling * (zMax - zMin));
+            _iConfiguration.ZScale = Math.Abs(zMax - zMin) > 0.001 ? 270 / (_axisScaling * (zMax - zMin)) : 1;
             
             _lineData = lineData;
             LoadVertices();
         }
-
+        
         // Scales the Z values according to user preferences
         public double ZScale
         {
@@ -254,6 +255,10 @@ namespace OpenControls.Wpf.SurfacePlot
 
         private Color4 GetVertexColour(float zValue)
         {
+            if (!double.IsNaN(zValue))
+            {
+                
+            }
             if (_iConfiguration.ShadingAlgorithm == ShadingAlgorithm.ColorBar)
                 return _iConfiguration.ColorBar.GetColor(zValue);
             else
@@ -475,36 +480,36 @@ namespace OpenControls.Wpf.SurfacePlot
             float yRotationInDegrees = _yRotationInDegrees;
             float zRotationInDegrees = _zRotationInDegrees;
 
-            if (_iConfiguration.ViewProjection == ViewProjection.Orthographic_Front)
-            {
-                xRotationInDegrees = 90;
-                yRotationInDegrees = 180;
-                zRotationInDegrees = 180;
-            }
-            else if (_iConfiguration.ViewProjection == ViewProjection.Orthographic_Side)
-            {
-                xRotationInDegrees = 90;
-                yRotationInDegrees = 180;
-                zRotationInDegrees = 270;
-            }
-            else if (_iConfiguration.ViewProjection.IsBirdsEye())
+            // if (_iConfiguration.ViewProjection == ViewProjection.Orthographic_Front)
+            // {
+            //     xRotationInDegrees = 90;
+            //     yRotationInDegrees = 180;
+            //     zRotationInDegrees = 180;
+            // }
+            // else if (_iConfiguration.ViewProjection == ViewProjection.Orthographic_Side)
+            // {
+            //     xRotationInDegrees = 90;
+            //     yRotationInDegrees = 180;
+            //     zRotationInDegrees = 270;
+            // }
+            /*else*/ if (_iConfiguration.ViewProjection.IsBirdsEye())
             {
                 xRotationInDegrees = -180;
                 yRotationInDegrees = 0;
                 switch (_iConfiguration.ViewProjection)
                 {
-                    case ViewProjection.BirdsEye_0:
-                        zRotationInDegrees = 0;
-                        break;
-                    case ViewProjection.BirdsEye_90:
-                        zRotationInDegrees = 90;
-                        break;
-                    case ViewProjection.BirdsEye_180:
+                    // case ViewProjection.BirdsEye_0:
+                    //     zRotationInDegrees = 0;
+                    //     break;
+                    // case ViewProjection.BirdsEye_90:
+                    //     zRotationInDegrees = 90;
+                    //     break;
+                    case ViewProjection.Top:
                         zRotationInDegrees = 180;
                         break;
-                    case ViewProjection.BirdsEye_270:
-                        zRotationInDegrees = 270;
-                        break;
+                    // case ViewProjection.BirdsEye_270:
+                    //     zRotationInDegrees = 270;
+                    //     break;
                 }
             }
 
@@ -554,6 +559,17 @@ namespace OpenControls.Wpf.SurfacePlot
             /*
              * Inefficient but it works!
              */
+            
+            float zOffset = Single.MaxValue;
+                
+            foreach (var list in _lineData)
+            foreach (var val in list)
+                if (!float.IsNaN(val) && zOffset >= val)
+                    zOffset = val;
+
+            zOffset *= (float)(_axisScaling * ZScale * -1);
+
+            zOffset -= (float) (_axisScaling * (_zAxisLabels.MaxValue - _zAxisLabels.MinValue) * ZScale) / 2; 
 
             GL.PointSize(4);
             for (int index = 0; index < vertices.Vertices.Length; index += 5)
@@ -564,7 +580,7 @@ namespace OpenControls.Wpf.SurfacePlot
                     0,
                     _axisScaling * vertices.Vertices[index].X,
                     _axisScaling * vertices.Vertices[index].Y,
-                    _iConfiguration.ViewProjection.IsBirdsEye() ? 0 : _axisScaling * vertices.Vertices[index].Z * (float)ZScale);
+                    _iConfiguration.ViewProjection.IsBirdsEye() ? 0 : _axisScaling * vertices.Vertices[index].Z * (float)ZScale + zOffset);
                 GL.DrawArrays(PrimitiveType.Points, 0, 1);
             }
             GL.PointSize(1);
@@ -578,6 +594,16 @@ namespace OpenControls.Wpf.SurfacePlot
             }
 
             float axisScaling = 0.25f * _axisScaling;
+            float zOffset = Single.MaxValue;
+                
+            foreach (var list in _lineData)
+            foreach (var val in list)
+                if (!float.IsNaN(val) && zOffset >= val)
+                    zOffset = val;
+
+            zOffset *= (float)(_axisScaling * ZScale * -1);
+
+            zOffset -= (float) (_axisScaling * (_zAxisLabels.MaxValue - _zAxisLabels.MinValue) * ZScale) / 2; 
 
             GL.Begin(PrimitiveType.Triangles);
             for (int index = 0; index < vertices.Vertices.Length; index += 5)
@@ -615,7 +641,7 @@ namespace OpenControls.Wpf.SurfacePlot
                     GL.Vertex3(_axisScaling * vertices.Vertices[indexStart].X,
                         _axisScaling * vertices.Vertices[indexStart].Y, _iConfiguration.ViewProjection.IsBirdsEye()
                             ? float.IsNaN(vertices.Vertices[indexStart].Z) ? float.NaN : 0f
-                            : _axisScaling * vertices.Vertices[indexStart].Z * ZScale);
+                            : _axisScaling * vertices.Vertices[indexStart].Z * ZScale + zOffset);
 
                     if (_iConfiguration.ShadingMethod == ShadingMethod.Interpolated)
                     {
@@ -626,13 +652,13 @@ namespace OpenControls.Wpf.SurfacePlot
                         _axisScaling * vertices.Vertices[indexStart + 1].Y,
                         _iConfiguration.ViewProjection.IsBirdsEye()
                             ? float.IsNaN(vertices.Vertices[indexStart + 1].Z) ? float.NaN : 0f
-                            : _axisScaling * vertices.Vertices[indexStart + 1].Z * ZScale);
+                            : _axisScaling * vertices.Vertices[indexStart + 1].Z * ZScale + zOffset);
 
                     if (_iConfiguration.ShadingMethod == ShadingMethod.Interpolated)
                     {
                         GL.Color4(midpointR, midpointG, midpointB, 1);
                     }
-                    GL.Vertex3(midpointX, midpointY, _iConfiguration.ViewProjection.IsBirdsEye() ? float.IsNaN(midpointZ) ? float.NaN : 0  : midpointZ * ZScale);
+                    GL.Vertex3(midpointX, midpointY, _iConfiguration.ViewProjection.IsBirdsEye() ? float.IsNaN(midpointZ) ? float.NaN : 0  : midpointZ * ZScale + zOffset);
                 }
             }
 
@@ -675,7 +701,17 @@ namespace OpenControls.Wpf.SurfacePlot
                  * Too big a value and the grid appears to float above the shading
                  * Too small a value and the grid is seen from the underside
                  */
-                float z0 = (_zAxisLabels.MaxValue - _zAxisLabels.MinValue) * 0.001f;
+                
+                float zOffset = Single.MaxValue;
+                
+                foreach (var list in _lineData)
+                    foreach (var val in list)
+                        if (!float.IsNaN(val) && zOffset >= val)
+                            zOffset = val;
+
+                zOffset *= (float)(_axisScaling * ZScale * -1);
+
+                zOffset -= (float) (_axisScaling * (_zAxisLabels.MaxValue - _zAxisLabels.MinValue) * ZScale) / 2 + 0.001f; 
 
                 System.Drawing.Color lineColour = _iConfiguration.GridColour;
                 for (int x = 0; x < _lineData.Count; ++x)
@@ -685,7 +721,7 @@ namespace OpenControls.Wpf.SurfacePlot
 
                     for (int y = 0; y < _lineData[x].Count; ++y)
                     {
-                        GL.Vertex3(_axisScaling * x, _axisScaling * y, _iConfiguration.ViewProjection.IsBirdsEye() ? 0 : z0 + _axisScaling * (float)_lineData[x][y] * (float)ZScale);
+                        GL.Vertex3(_axisScaling * x, _axisScaling * y, _iConfiguration.ViewProjection.IsBirdsEye() ? 0 : zOffset + _axisScaling * _lineData[x][y] * (float)ZScale);
                     }
                     GL.End();
                 }
@@ -697,7 +733,7 @@ namespace OpenControls.Wpf.SurfacePlot
                     GL.Color3(lineColour);
                     for (int x = 0; x < _lineData.Count; ++x)
                     {
-                        GL.Vertex3(_axisScaling * x, _axisScaling * y, _iConfiguration.ViewProjection.IsBirdsEye() ? 0 : z0 + _axisScaling * (float)_lineData[x][y] * (float)ZScale);
+                        GL.Vertex3(_axisScaling * x, _axisScaling * y, _iConfiguration.ViewProjection.IsBirdsEye() ? 0 : zOffset + _axisScaling * _lineData[x][y] * (float)ZScale);
                     }
                     GL.End();
                 }
@@ -732,7 +768,7 @@ namespace OpenControls.Wpf.SurfacePlot
                     DrawPoints(_rawDataValues);
                 }
             }
-
+            
             /*
              * Draw the frame
              * 
@@ -741,15 +777,15 @@ namespace OpenControls.Wpf.SurfacePlot
 
             float zGridRange = (float)(_axisScaling * (_zAxisLabels.MaxValue - _zAxisLabels.MinValue) * ZScale);
             float zGridInc = zGridRange / (float)(_zAxisLabels.Labels.Count - 1);
-            float zMin = (float)(_zAxisLabels.MinValue * ZScale * _axisScaling);
-            float zMax = (float)(_zAxisLabels.MaxValue * ZScale * _axisScaling);
+            float zMin = -zGridRange / 2;
+            float zMax = -zMin;
             float xMax = _axisScaling * (_lineData.Count - 1);
             float yMax = _axisScaling * (_lineData[0].Count - 1);
 
             if (_iConfiguration.ShowAxes && (_iConfiguration.ViewProjection == ViewProjection.ThreeDimensional))
             {
                 Color lineColour = _iConfiguration.FrameColour;
-                float z = (_iConfiguration.XYLabelPosition == XYLabelPosition.Bottom) ? zMin : (zMax + zMin) / 2;
+                float z = (_iConfiguration.XYLabelPosition == XYLabelPosition.Bottom) ? zMin : 0;
 
                 GL.Begin(PrimitiveType.LineStrip);
                 GL.Color3(lineColour);
@@ -862,8 +898,8 @@ namespace OpenControls.Wpf.SurfacePlot
             _textRenderer.SetTiltInRadians(0);
 
             bool flipAxisTitle =
-                (_iConfiguration.ViewProjection == ViewProjection.BirdsEye_180) ||
-                (_iConfiguration.ViewProjection == ViewProjection.BirdsEye_270);
+                (_iConfiguration.ViewProjection == ViewProjection.Top); //||
+                // (_iConfiguration.ViewProjection == ViewProjection.BirdsEye_270);
 
             if (_iConfiguration.ShowAxesTitles && (_iConfiguration.ViewProjection == ViewProjection.ThreeDimensional))
             {
@@ -878,7 +914,7 @@ namespace OpenControls.Wpf.SurfacePlot
 
             _textRenderer.SetTiltInRadians((Math.PI * (double)_iConfiguration.LabelAngleInDegrees) / 180f);
 
-            if (_iConfiguration.ViewProjection == ViewProjection.BirdsEye_180)
+            if (_iConfiguration.ViewProjection == ViewProjection.Top)
             {
                 translation = Matrix4.CreateTranslation(0, yMax, 0);
                 rotation = Matrix4.CreateRotationX(0.5F * (float)Math.PI);
@@ -896,7 +932,7 @@ namespace OpenControls.Wpf.SurfacePlot
             float labelOffset = (
                                 !_iConfiguration.ViewProjection.IsBirdsEye() &&
                                 (_iConfiguration.XYLabelPosition == XYLabelPosition.Bottom)
-                           ) ? zMin : (zMax - zMin) / 2;
+                           ) ? zMin : 0;
 
             if (_iConfiguration.ShowAxesTitles /*&& !_iConfiguration.ViewProjection.IsOrthographic()*/)
             {
@@ -944,16 +980,16 @@ namespace OpenControls.Wpf.SurfacePlot
             // X labels
 
             _textRenderer.SetTiltInRadians((Math.PI * (double)_iConfiguration.LabelAngleInDegrees) / 180f);
-            if (_iConfiguration.ViewProjection == ViewProjection.BirdsEye_270)
-            {
-                translation = Matrix4.CreateTranslation(xMax, 0, 0);
-                rotation = Matrix4.CreateRotationX(1.5F * (float)Math.PI) * Matrix4.CreateRotationZ(1.5F * (float)Math.PI) * Matrix4.CreateRotationY((float)Math.PI);
-            }
-            else
-            {
+            // if (_iConfiguration.ViewProjection == ViewProjection.BirdsEye_270)
+            // {
+            //     translation = Matrix4.CreateTranslation(xMax, 0, 0);
+            //     rotation = Matrix4.CreateRotationX(1.5F * (float)Math.PI) * Matrix4.CreateRotationZ(1.5F * (float)Math.PI) * Matrix4.CreateRotationY((float)Math.PI);
+            // }
+            // else
+            // {
                 translation = Matrix4.CreateTranslation(0, yMax, 0);
                 rotation = Matrix4.CreateRotationX(0.5F * (float)Math.PI) * Matrix4.CreateRotationZ(0.5F * (float)Math.PI);
-            }
+            // }
             textModelView = rotation * translation * _modelview;
 
             GL.MatrixMode(MatrixMode.Modelview);
@@ -1010,37 +1046,37 @@ namespace OpenControls.Wpf.SurfacePlot
                         x = 0.5f * (float)System.Math.Sqrt(xMax * xMax + yMax * yMax) + 1f * width;
                         x += _zAxisLabels.MaxLabelLength;
                         break;
-                    case ViewProjection.BirdsEye_90:
-                    case ViewProjection.BirdsEye_270:
-                        x = 0.5f * (float)System.Math.Max(xMax, yMax) + 3f * width;
-                        x += _zAxisLabels.MaxLabelLength;
-                        if (_iConfiguration.ShowAxesTitles)
-                        {
-                            x += 2f * textHeight;
-                        }
-                        break;
-                    case ViewProjection.Orthographic_Front:
-                    case ViewProjection.Orthographic_Side:
-                    case ViewProjection.BirdsEye_0:
-                    case ViewProjection.BirdsEye_180:
+                    // case ViewProjection.BirdsEye_90:
+                    // case ViewProjection.BirdsEye_270:
+                    //     x = 0.5f * (float)System.Math.Max(xMax, yMax) + 3f * width;
+                    //     x += _zAxisLabels.MaxLabelLength;
+                    //     if (_iConfiguration.ShowAxesTitles)
+                    //     {
+                    //         x += 2f * textHeight;
+                    //     }
+                    //     break;
+                    // case ViewProjection.Orthographic_Front:
+                    // case ViewProjection.Orthographic_Side:
+                    // case ViewProjection.BirdsEye_0:
+                    case ViewProjection.Top:
                         x = 0.5f * (float)System.Math.Max(xMax, yMax) + 3f * width;
                         break;
                 }
 
-                float y = zMin - 1.5f * zGridInc - 0.5f * textHeight;
-                float yBar = zMin - 2f * zGridInc;
+                float y = -50 - 1.5f * 10 - 0.5f * textHeight;
+                float yBar = - 60;
                 switch (_iConfiguration.ViewProjection)
                 {
-                    case ViewProjection.BirdsEye_180:
-                    case ViewProjection.BirdsEye_270:
-                        yBar += 2f * zGridInc;
-                        y += 2f * zGridInc;
+                    case ViewProjection.Top:
+                    // case ViewProjection.BirdsEye_270:
+                        yBar += 20;
+                        y += 20;
                         break;
-                    case ViewProjection.BirdsEye_0:
-                    case ViewProjection.BirdsEye_90:
-                        yBar += zGridInc;
-                        y += zGridInc;
-                        break;
+                    // case ViewProjection.BirdsEye_0:
+                    // case ViewProjection.BirdsEye_90:
+                    //     yBar += zGridInc;
+                    //     y += zGridInc;
+                    //     break;
                 }
                 _textRenderer.SetTiltInRadians(0);
 
@@ -1048,22 +1084,23 @@ namespace OpenControls.Wpf.SurfacePlot
                 
                 float zRaw = _zAxisLabels.MinValue;
                 float zRawInc = (_zAxisLabels.MaxValue - _zAxisLabels.MinValue) / (float)(_zAxisLabels.Labels.Count - 1);
-                for (int i = 0; i < _zAxisLabels.Labels.Count; ++i, y += 2*zGridInc, zRaw += zRawInc, yBar += 2*zGridInc)
+                for (int i = 0; i < _zAxisLabels.Labels.Count; ++i, y += 20, zRaw += zRawInc, yBar += 20)
                 {
-                    _textRenderer.DrawText(x - _xCentre + width*2 + width*2, y - _yCentre, 0, _zAxisLabels.Labels[i].Text);
+                    _textRenderer.DrawText(x - _xCentre + width * 2 + width * 2, y - _yCentre, 0,
+                        _zAxisLabels.Labels[i].Text);
                     
                     GL.Begin(PrimitiveType.Polygon);
                     GL.Color4(GetVertexColour(zRaw));
                     GL.Vertex3(x - _xCentre, yBar - _yCentre, 0);
-                    GL.Vertex3(x - _xCentre, yBar - _yCentre + 2*zGridInc, 0);
-                    GL.Vertex3(x - _xCentre + width*2, yBar - _yCentre + 2*zGridInc, 0);
-                    GL.Vertex3(x - _xCentre + width*2, yBar - _yCentre, 0);
+                    GL.Vertex3(x - _xCentre, yBar - _yCentre + 20, 0);
+                    GL.Vertex3(x - _xCentre + width * 2, yBar - _yCentre + 20, 0);
+                    GL.Vertex3(x - _xCentre + width * 2, yBar - _yCentre, 0);
                     GL.Vertex3(x - _xCentre, yBar - _yCentre, 0);
                     GL.End();
                 }
-                
-                SwapBuffers();
             }
+            
+            SwapBuffers();
         }
 
         #region Model.ConfigurationChangedEventHandler
@@ -1085,12 +1122,13 @@ namespace OpenControls.Wpf.SurfacePlot
                     break;
                 case ConfigurationItem.ViewProjection:
                     _xAxisLabels.Refresh(
-                        _iConfiguration.ViewProjection == ViewProjection.BirdsEye_270,
+                        // _iConfiguration.ViewProjection == ViewProjection.BirdsEye_270,
+                        false,
                         ILabelFormatter.XLabel,
                         _textRenderer.MeasureTextLength);
 
                     _yAxisLabels.Refresh(
-                        (_iConfiguration.ViewProjection == ViewProjection.BirdsEye_180),
+                        (_iConfiguration.ViewProjection == ViewProjection.Top),
                         ILabelFormatter.YLabel,
                         _textRenderer.MeasureTextLength);
 

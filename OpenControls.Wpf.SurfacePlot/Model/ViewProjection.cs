@@ -3,12 +3,12 @@
     public enum ViewProjection
     {
         ThreeDimensional,
-        Orthographic_Front,
-        Orthographic_Side,
-        BirdsEye_0,
-        BirdsEye_90,
-        BirdsEye_180,
-        BirdsEye_270,
+        // Orthographic_Front,
+        // Orthographic_Side,
+        // BirdsEye_0,
+        // BirdsEye_90,
+        Top,
+        // BirdsEye_270,
     }
 
     public static class ViewProjectionExtensionMethods
@@ -17,10 +17,10 @@
         {
             switch (viewProjection)
             {
-                case ViewProjection.BirdsEye_0:
-                case ViewProjection.BirdsEye_90:
-                case ViewProjection.BirdsEye_180:
-                case ViewProjection.BirdsEye_270:
+                // case ViewProjection.BirdsEye_0:
+                // case ViewProjection.BirdsEye_90:
+                case ViewProjection.Top:
+                // case ViewProjection.BirdsEye_270:
                     return true;
             }
             return false;

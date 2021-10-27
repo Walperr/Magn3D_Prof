@@ -31,5 +31,15 @@ namespace Magn3D_Prof
                 OriginalSurface = Surface
             };
         }
+
+        private void showProperties_Click(object sender, EventArgs e)
+        {
+            splitContainer1.Panel1Collapsed = !splitContainer1.Panel1Collapsed;
+
+            if(splitContainer1.Panel1Collapsed)
+                showProperties.Text = ">";
+            else
+                showProperties.Text = "<";
+        }
     }
 }
