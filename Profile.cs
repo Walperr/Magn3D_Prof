@@ -111,8 +111,6 @@ namespace Magn3D_Prof
             }
             Hi1.Decimalplaces = 0;
             Hi2.Decimalplaces = 0;
-
-            surfaceVIewer1.Surface = Global.Relief;
             
             UpdateProfilePoints(sender,e);
         }
@@ -576,6 +574,11 @@ namespace Magn3D_Prof
                 surfaceVIewer1.Surface = Global.MeasuredField[chooseGrid.SelectedIndex - 1];
                 
             }
+        }
+
+        private void surfaceVIewer1_Load(object sender, EventArgs e)
+        {
+            surfaceVIewer1.Surface = Global.Relief;
         }
     }
 }

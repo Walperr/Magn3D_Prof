@@ -630,7 +630,9 @@ namespace Magn3D_Prof
             this.surfaceVIewer1.Location = new System.Drawing.Point(3, 27);
             this.surfaceVIewer1.Name = "surfaceVIewer1";
             this.surfaceVIewer1.Size = new System.Drawing.Size(857, 333);
+            this.surfaceVIewer1.Surface = null;
             this.surfaceVIewer1.TabIndex = 4;
+            this.surfaceVIewer1.Load += new System.EventHandler(this.surfaceVIewer1_Load);
             // 
             // chooseGrid
             // 
