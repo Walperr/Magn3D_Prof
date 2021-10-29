@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
 using GRIDs;
+using OpenControls.Wpf.SurfacePlot.Common;
 
 namespace Magn3D_Prof
 {
     public partial class SurfaceVIewer : UserControl
     {
 
-        private SurfacePlotControlManager _surfacePlotControlManager;
+        private ISurfacePlotControlManager _surfacePlotControlManager;
         public IGrid Surface
         {
-            get => _surfacePlotControlManager?.OriginalSurface;
+            get => _surfacePlotControlManager?.OriginalSurface as IGrid;
             set
             {
                 if(_surfacePlotControlManager == null) return;

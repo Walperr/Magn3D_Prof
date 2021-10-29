@@ -416,7 +416,7 @@ namespace OpenControls.Wpf.SurfacePlot.ViewModel
         }
 
         // The z value below which all vertices are painted blue
-        public short BlueLevel
+        public double MinimumLevel
         {
             get
             {
@@ -433,7 +433,7 @@ namespace OpenControls.Wpf.SurfacePlot.ViewModel
         }
 
         // The z value above which all vertices are painted red
-        public short RedLevel
+        public double MaximumLevel
         {
             get
             {
@@ -453,17 +453,17 @@ namespace OpenControls.Wpf.SurfacePlot.ViewModel
         {
             get
             {
-                return (short)-Math.Log(-BlueLevel, 2);
+                return (short)-Math.Log(-MinimumLevel, 2);
             }
             set
             {
                 if (value == 0)
                 {
-                    BlueLevel = 0;
+                    MinimumLevel = 0;
                 }
                 else
                 {
-                    BlueLevel = (short)-(1 << -value);
+                    MinimumLevel = (short)-(1 << -value);
                 }
                 NotifyPropertyChanged("BlueLevelSlider");
             }
@@ -473,17 +473,17 @@ namespace OpenControls.Wpf.SurfacePlot.ViewModel
         {
             get
             {
-                return (short)Math.Log(RedLevel, 2);
+                return (short)Math.Log(MaximumLevel, 2);
             }
             set
             {
                 if (value == 0)
                 {
-                    RedLevel = 0;
+                    MaximumLevel = 0;
                 }
                 else
                 {
-                    RedLevel = (short)(1 << value);
+                    MaximumLevel = (short)(1 << value);
                 }
                 NotifyPropertyChanged("RedLevelSlider");
             }

@@ -31,8 +31,8 @@ namespace OpenControls.Wpf.SurfacePlot.Model
         bool ShowScatterPlot { get; set; }
         bool ShowShading { get; set; }
         ShadingAlgorithm ShadingAlgorithm { get; set; }
-        short MinimumLevel { get; set; }
-        short MaximumLevel { get; set; }
+        double MinimumLevel { get; set; }
+        double MaximumLevel { get; set; }
         bool Hold { get; set; }
         bool HoldMaximum { get; set; }
 

@@ -201,27 +201,27 @@ namespace OpenControls.Wpf.SurfacePlot
         Color4 _orange = new Color4(1f, 0.5f, 0f, 0f);
         Color4 _red = new Color4(1f, 0f, 0f, 0f);
 
-        private Color4 GetVertexColour(float zValue, ShadingAlgorithm shadingAlgorithm, short blueLevel, short redLevel)
+        private Color4 GetVertexColour(float zValue, ShadingAlgorithm shadingAlgorithm, double blueLevel, double redLevel)
         {
             if (shadingAlgorithm == ShadingAlgorithm.FixedLevels)
             {
                 if (zValue > redLevel)
                 {
-                    zValue = redLevel;
+                    zValue = (float)redLevel;
                 }
                 else if (zValue < blueLevel)
                 {
-                    zValue = blueLevel;
+                    zValue = (float)blueLevel;
                 }
             }
             else
             {
-                redLevel = (short)MaxZValue;
-                blueLevel = (short)MinZValue;
+                redLevel = MaxZValue;
+                blueLevel = MinZValue;
             }
 
             Int16 delta = (Int16)(zValue - blueLevel);
-            float fraction = (redLevel == blueLevel) ? 1.0f : ((float)delta) / (float)(redLevel - blueLevel);
+            float fraction = (redLevel == blueLevel) ? 1.0f : (delta) / (float)(redLevel - blueLevel);
             Color4 color1;
             Color4 color2;
             if (fraction > 0.75f)
@@ -604,7 +604,7 @@ namespace OpenControls.Wpf.SurfacePlot
             zOffset *= (float)(_axisScaling * ZScale * -1);
 
             zOffset -= (float) (_axisScaling * (_zAxisLabels.MaxValue - _zAxisLabels.MinValue) * ZScale) / 2; 
-
+            
             GL.Begin(PrimitiveType.Triangles);
             for (int index = 0; index < vertices.Vertices.Length; index += 5)
             {

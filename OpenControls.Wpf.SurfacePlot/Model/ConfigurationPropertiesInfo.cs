@@ -109,7 +109,7 @@ namespace OpenControls.Wpf.SurfacePlot.Model
         [Category("Axes")]
         public double ZScale
         {
-            get => Math.Round(_configuration.ZScale,3);
+            get => _configuration.ZScale;
             set => _configuration.ZScale = value;
         }
 
@@ -203,14 +203,14 @@ namespace OpenControls.Wpf.SurfacePlot.Model
         }
 
         [Category("Levels")]
-        public short MinimumLevel
+        public double MinimumLevel
         {
             get => _configuration.MinimumLevel;
             set => _configuration.MinimumLevel = value;
         }
 
         [Category("Levels")]
-        public short MaximumLevel
+        public double MaximumLevel
         {
             get => _configuration.MaximumLevel;
             set => _configuration.MaximumLevel = value;

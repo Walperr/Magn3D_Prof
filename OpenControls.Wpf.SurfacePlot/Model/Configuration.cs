@@ -364,8 +364,8 @@ namespace OpenControls.Wpf.SurfacePlot.Model
             }
         }
 
-        private short _minimumLevel;
-        public short MinimumLevel
+        private double _minimumLevel;
+        public double MinimumLevel
         {
             get => _minimumLevel;
             set
@@ -379,8 +379,8 @@ namespace OpenControls.Wpf.SurfacePlot.Model
             }
         }
 
-        private short _maximumLevel;
-        public short MaximumLevel
+        private double _maximumLevel;
+        public double MaximumLevel
         {
             get => _maximumLevel;
             set

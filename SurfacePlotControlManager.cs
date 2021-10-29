@@ -6,11 +6,12 @@ using System.Windows.Forms;
 using GRIDs;
 using OpenControls.Wpf.SurfacePlot.Model;
 using OpenControls.Wpf.SurfacePlot;
+using OpenControls.Wpf.SurfacePlot.Common;
 using Vectors;
 
 namespace Magn3D_Prof
 {
-    public class SurfacePlotControlManager : IDisposable
+    public class SurfacePlotControlManager : ISurfacePlotControlManager
     {
         private IGrid _lowQualitySurface;
         private IGrid _originalSurface;
@@ -36,12 +37,15 @@ namespace Magn3D_Prof
             }
         }
 
-        public IGrid OriginalSurface
+        public object OriginalSurface
         {
             get => _originalSurface;
             set
             {
-                _originalSurface = value;
+                if(value is not IGrid surface)
+                    return;
+                
+                _originalSurface = surface;
 
                 RefreshDisplaySurface();
             }
@@ -148,7 +152,8 @@ namespace Magn3D_Prof
 
             if (_originalSurface.Z.Count <= _lowQualitySurfaceResolution)
             {
-                _lowQualitySurface = _originalSurface;
+                _lowQualitySurface = new GRD(_originalSurface.Zmin, _originalSurface.Zmax, _originalSurface.X.ToArray(),
+                    _originalSurface.Y.ToArray(), _originalSurface.Z.ToArray());
             }
             else
             {
@@ -171,7 +176,7 @@ namespace Magn3D_Prof
                 for (int i = 0; i < xCount; i++)
                     points.Add(new Vector2(xValues[i], yValues[j]));
 
-                var zValues = _originalSurface.Interp(0, points);
+                var zValues = _originalSurface.Interp(0, points).Select(x => x / 1000);
 
                 var zMax = zValues.Where(z => !double.IsNaN(z)).Max();
                 var zMin = zValues.Where(z => !double.IsNaN(z)).Min();
