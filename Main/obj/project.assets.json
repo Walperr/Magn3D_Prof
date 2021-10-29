@@ -1,0 +1,587 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.7.2": {
+      "OpenTK/3.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net20/OpenTK.dll": {}
+        },
+        "runtime": {
+          "lib/net20/OpenTK.dll": {}
+        }
+      },
+      "OpenTK.GLControl/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "OpenTK": "3.1.0"
+        },
+        "compile": {
+          "lib/net20/OpenTK.GLControl.dll": {}
+        },
+        "runtime": {
+          "lib/net20/OpenTK.GLControl.dll": {}
+        }
+      },
+      "System.Drawing.Common/5.0.2": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Drawing",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.Drawing.Common.dll": {}
+        },
+        "runtime": {
+          "lib/net461/System.Drawing.Common.dll": {}
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/5.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.Runtime.CompilerServices.Unsafe.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Runtime.CompilerServices.Unsafe.dll": {}
+        }
+      },
+      "GRIDs/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.2",
+        "dependencies": {
+          "Vectors": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GRIDs.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GRIDs.dll": {}
+        }
+      },
+      "OpenControls.Wpf.SurfacePlot/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "OpenControls.Wpf.Utilities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/OpenControls.Wpf.SurfacePlot.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OpenControls.Wpf.SurfacePlot.dll": {}
+        }
+      },
+      "OpenControls.Wpf.Utilities/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/OpenControls.Wpf.Utilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OpenControls.Wpf.Utilities.dll": {}
+        }
+      },
+      "Vectors/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.2",
+        "compile": {
+          "bin/placeholder/Vectors.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Vectors.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win": {
+      "OpenTK/3.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net20/OpenTK.dll": {}
+        },
+        "runtime": {
+          "lib/net20/OpenTK.dll": {}
+        }
+      },
+      "OpenTK.GLControl/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "OpenTK": "3.1.0"
+        },
+        "compile": {
+          "lib/net20/OpenTK.GLControl.dll": {}
+        },
+        "runtime": {
+          "lib/net20/OpenTK.GLControl.dll": {}
+        }
+      },
+      "System.Drawing.Common/5.0.2": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Drawing",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.Drawing.Common.dll": {}
+        },
+        "runtime": {
+          "lib/net461/System.Drawing.Common.dll": {}
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/5.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.Runtime.CompilerServices.Unsafe.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Runtime.CompilerServices.Unsafe.dll": {}
+        }
+      },
+      "GRIDs/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.2",
+        "dependencies": {
+          "Vectors": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GRIDs.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GRIDs.dll": {}
+        }
+      },
+      "OpenControls.Wpf.SurfacePlot/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "OpenControls.Wpf.Utilities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/OpenControls.Wpf.SurfacePlot.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OpenControls.Wpf.SurfacePlot.dll": {}
+        }
+      },
+      "OpenControls.Wpf.Utilities/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/OpenControls.Wpf.Utilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OpenControls.Wpf.Utilities.dll": {}
+        }
+      },
+      "Vectors/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.2",
+        "compile": {
+          "bin/placeholder/Vectors.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Vectors.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-x64": {
+      "OpenTK/3.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net20/OpenTK.dll": {}
+        },
+        "runtime": {
+          "lib/net20/OpenTK.dll": {}
+        }
+      },
+      "OpenTK.GLControl/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "OpenTK": "3.1.0"
+        },
+        "compile": {
+          "lib/net20/OpenTK.GLControl.dll": {}
+        },
+        "runtime": {
+          "lib/net20/OpenTK.GLControl.dll": {}
+        }
+      },
+      "System.Drawing.Common/5.0.2": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Drawing",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.Drawing.Common.dll": {}
+        },
+        "runtime": {
+          "lib/net461/System.Drawing.Common.dll": {}
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/5.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.Runtime.CompilerServices.Unsafe.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Runtime.CompilerServices.Unsafe.dll": {}
+        }
+      },
+      "GRIDs/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.2",
+        "dependencies": {
+          "Vectors": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GRIDs.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GRIDs.dll": {}
+        }
+      },
+      "OpenControls.Wpf.SurfacePlot/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "OpenControls.Wpf.Utilities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/OpenControls.Wpf.SurfacePlot.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OpenControls.Wpf.SurfacePlot.dll": {}
+        }
+      },
+      "OpenControls.Wpf.Utilities/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/OpenControls.Wpf.Utilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OpenControls.Wpf.Utilities.dll": {}
+        }
+      },
+      "Vectors/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.2",
+        "compile": {
+          "bin/placeholder/Vectors.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Vectors.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-x86": {
+      "OpenTK/3.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net20/OpenTK.dll": {}
+        },
+        "runtime": {
+          "lib/net20/OpenTK.dll": {}
+        }
+      },
+      "OpenTK.GLControl/3.1.0": {
+        "type": "package",
+        "dependencies": {
+          "OpenTK": "3.1.0"
+        },
+        "compile": {
+          "lib/net20/OpenTK.GLControl.dll": {}
+        },
+        "runtime": {
+          "lib/net20/OpenTK.GLControl.dll": {}
+        }
+      },
+      "System.Drawing.Common/5.0.2": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Drawing",
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.Drawing.Common.dll": {}
+        },
+        "runtime": {
+          "lib/net461/System.Drawing.Common.dll": {}
+        }
+      },
+      "System.Runtime.CompilerServices.Unsafe/5.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "mscorlib"
+        ],
+        "compile": {
+          "ref/net461/System.Runtime.CompilerServices.Unsafe.dll": {}
+        },
+        "runtime": {
+          "lib/net45/System.Runtime.CompilerServices.Unsafe.dll": {}
+        }
+      },
+      "GRIDs/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.2",
+        "dependencies": {
+          "Vectors": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GRIDs.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GRIDs.dll": {}
+        }
+      },
+      "OpenControls.Wpf.SurfacePlot/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "OpenControls.Wpf.Utilities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/OpenControls.Wpf.SurfacePlot.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OpenControls.Wpf.SurfacePlot.dll": {}
+        }
+      },
+      "OpenControls.Wpf.Utilities/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/OpenControls.Wpf.Utilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OpenControls.Wpf.Utilities.dll": {}
+        }
+      },
+      "Vectors/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.2",
+        "compile": {
+          "bin/placeholder/Vectors.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Vectors.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "OpenTK/3.1.0": {
+      "sha512": "xoP5kb81lRSY5RzbntaFA9yXK+aGF5SLShhns55MyZtxtNafIxRH5KvRTFss/N653brTzE+AfepjKsbMexYlBQ==",
+      "type": "package",
+      "path": "opentk/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/OpenTK.dll.config",
+        "lib/net20/OpenTK.dll",
+        "lib/net20/OpenTK.pdb",
+        "lib/net20/OpenTK.xml",
+        "opentk.3.1.0.nupkg.sha512",
+        "opentk.nuspec"
+      ]
+    },
+    "OpenTK.GLControl/3.1.0": {
+      "sha512": "BjDzF+MhJd2LaZYzkXmgkzzXgHAko/Iur4rGy6+DPdZA1Jcc0X6jXZ6QsUsjlLRNzgevO7uAj2h1TqX7sguaYg==",
+      "type": "package",
+      "path": "opentk.glcontrol/3.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/OpenTK.GLControl.dll",
+        "lib/net20/OpenTK.GLControl.pdb",
+        "lib/net20/OpenTK.GLControl.xml",
+        "opentk.glcontrol.3.1.0.nupkg.sha512",
+        "opentk.glcontrol.nuspec"
+      ]
+    },
+    "System.Drawing.Common/5.0.2": {
+      "sha512": "rvr/M1WPf24ljpvvrVd74+NdjRUJu1bBkspkZcnzSZnmAUQWSvanlQ0k/hVHk+cHufZbZfu7vOh/vYc0q5Uu/A==",
+      "type": "package",
+      "path": "system.drawing.common/5.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net461/System.Drawing.Common.dll",
+        "lib/netcoreapp3.0/System.Drawing.Common.dll",
+        "lib/netcoreapp3.0/System.Drawing.Common.xml",
+        "lib/netstandard2.0/System.Drawing.Common.dll",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/net461/System.Drawing.Common.dll",
+        "ref/netcoreapp3.0/System.Drawing.Common.dll",
+        "ref/netcoreapp3.0/System.Drawing.Common.xml",
+        "ref/netstandard2.0/System.Drawing.Common.dll",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/unix/lib/netcoreapp2.0/System.Drawing.Common.dll",
+        "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll",
+        "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.xml",
+        "runtimes/win/lib/netcoreapp2.0/System.Drawing.Common.dll",
+        "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll",
+        "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.xml",
+        "system.drawing.common.5.0.2.nupkg.sha512",
+        "system.drawing.common.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "System.Runtime.CompilerServices.Unsafe/5.0.0": {
+      "sha512": "ZD9TMpsmYJLrxbbmdvhwt9YEgG5WntEnZ/d1eH8JBX9LBp+Ju8BSBhUGbZMNVHHomWo2KVImJhTDl2hIgw/6MA==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net45/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net45/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/net461/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/netstandard2.1/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard2.1/System.Runtime.CompilerServices.Unsafe.xml",
+        "system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
+    "GRIDs/1.0.0": {
+      "type": "project",
+      "path": "../GRIDs/GRIDs.csproj",
+      "msbuildProject": "../GRIDs/GRIDs.csproj"
+    },
+    "OpenControls.Wpf.SurfacePlot/1.0.0": {
+      "type": "project",
+      "path": "../OpenControls.Wpf.SurfacePlot/OpenControls.Wpf.SurfacePlot.csproj",
+      "msbuildProject": "../OpenControls.Wpf.SurfacePlot/OpenControls.Wpf.SurfacePlot.csproj"
+    },
+    "OpenControls.Wpf.Utilities/1.0.0": {
+      "type": "project",
+      "path": "../OpenControls.Wpf.Utilities/OpenControls.Wpf.Utilities.csproj",
+      "msbuildProject": "../OpenControls.Wpf.Utilities/OpenControls.Wpf.Utilities.csproj"
+    },
+    "Vectors/1.0.0": {
+      "type": "project",
+      "path": "../Vectors/Vectors.csproj",
+      "msbuildProject": "../Vectors/Vectors.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.7.2": [
+      "GRIDs >= 1.0.0",
+      "OpenControls.Wpf.SurfacePlot >= 1.0.0",
+      "OpenTK.GLControl >= 3.1.0",
+      "System.Drawing.Common >= 5.0.2",
+      "System.Runtime.CompilerServices.Unsafe >= 5.0.0",
+      "Vectors >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\vladb\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Main\\Magn3D_Prof.csproj",
+      "projectName": "Magn3D_Prof",
+      "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Main\\Magn3D_Prof.csproj",
+      "packagesPath": "C:\\Users\\vladb\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Main\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\vladb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net472"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net472": {
+          "projectReferences": {
+            "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\GRIDs\\GRIDs.csproj": {
+              "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\GRIDs\\GRIDs.csproj"
+            },
+            "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\OpenControls.Wpf.SurfacePlot\\OpenControls.Wpf.SurfacePlot.csproj": {
+              "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\OpenControls.Wpf.SurfacePlot\\OpenControls.Wpf.SurfacePlot.csproj"
+            },
+            "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Vectors\\Vectors.csproj": {
+              "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Vectors\\Vectors.csproj"
+            }
+          }
+        }
+      }
+    },
+    "frameworks": {
+      "net472": {
+        "dependencies": {
+          "OpenTK.GLControl": {
+            "target": "Package",
+            "version": "[3.1.0, )"
+          },
+          "System.Drawing.Common": {
+            "target": "Package",
+            "version": "[5.0.2, )"
+          },
+          "System.Runtime.CompilerServices.Unsafe": {
+            "target": "Package",
+            "version": "[5.0.0, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}

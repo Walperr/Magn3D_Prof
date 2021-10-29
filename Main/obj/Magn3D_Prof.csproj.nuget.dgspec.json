@@ -1,0 +1,200 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Main\\Magn3D_Prof.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\GRIDs\\GRIDs.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\GRIDs\\GRIDs.csproj",
+        "projectName": "GRIDs",
+        "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\GRIDs\\GRIDs.csproj",
+        "packagesPath": "C:\\Users\\vladb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\GRIDs\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\vladb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "targetAlias": "net472",
+            "projectReferences": {
+              "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Vectors\\Vectors.csproj": {
+                "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Vectors\\Vectors.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "targetAlias": "net472",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21463.6\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Main\\Magn3D_Prof.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Main\\Magn3D_Prof.csproj",
+        "projectName": "Magn3D_Prof",
+        "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Main\\Magn3D_Prof.csproj",
+        "packagesPath": "C:\\Users\\vladb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Main\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\vladb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\GRIDs\\GRIDs.csproj": {
+                "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\GRIDs\\GRIDs.csproj"
+              },
+              "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\OpenControls.Wpf.SurfacePlot\\OpenControls.Wpf.SurfacePlot.csproj": {
+                "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\OpenControls.Wpf.SurfacePlot\\OpenControls.Wpf.SurfacePlot.csproj"
+              },
+              "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Vectors\\Vectors.csproj": {
+                "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Vectors\\Vectors.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "dependencies": {
+            "OpenTK.GLControl": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "System.Drawing.Common": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "System.Runtime.CompilerServices.Unsafe": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\OpenControls.Wpf.SurfacePlot\\OpenControls.Wpf.SurfacePlot.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\OpenControls.Wpf.SurfacePlot\\OpenControls.Wpf.SurfacePlot.csproj",
+        "projectName": "OpenControls.Wpf.SurfacePlot",
+        "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\OpenControls.Wpf.SurfacePlot\\OpenControls.Wpf.SurfacePlot.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\OpenControls.Wpf.Utilities\\OpenControls.Wpf.Utilities.csproj": {
+                "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\OpenControls.Wpf.Utilities\\OpenControls.Wpf.Utilities.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\OpenControls.Wpf.Utilities\\OpenControls.Wpf.Utilities.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\OpenControls.Wpf.Utilities\\OpenControls.Wpf.Utilities.csproj",
+        "projectName": "OpenControls.Wpf.Utilities",
+        "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\OpenControls.Wpf.Utilities\\OpenControls.Wpf.Utilities.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Vectors\\Vectors.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Vectors\\Vectors.csproj",
+        "projectName": "Vectors",
+        "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Vectors\\Vectors.csproj",
+        "packagesPath": "C:\\Users\\vladb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Vectors\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\vladb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "targetAlias": "net472",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "targetAlias": "net472",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21463.6\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -255,10 +255,6 @@ namespace OpenControls.Wpf.SurfacePlot
 
         private Color4 GetVertexColour(float zValue)
         {
-            if (!double.IsNaN(zValue))
-            {
-                
-            }
             if (_iConfiguration.ShadingAlgorithm == ShadingAlgorithm.ColorBar)
                 return _iConfiguration.ColorBar.GetColor(zValue);
             else
