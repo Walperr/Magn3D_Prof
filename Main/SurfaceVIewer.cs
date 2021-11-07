@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Forms;
 using GRIDs;
 using OpenControls.Wpf.SurfacePlot.Common;
@@ -19,6 +20,8 @@ namespace Magn3D_Prof.Main
             }
         }
 
+        public ObservableCollection<Prismbody> Bodies => ((SurfacePlotControlManager)_surfacePlotControlManager)?.Bodies;
+
         public SurfaceVIewer()
         {
             InitializeComponent();
@@ -29,7 +32,7 @@ namespace Magn3D_Prof.Main
             _surfacePlotControlManager = new SurfacePlotControlManager(splitContainer1.Panel2)
             {
                 PropertyGridParentControl = splitContainer1.Panel1,
-                OriginalSurface = Surface
+                OriginalSurface = Surface,
             };
         }
 

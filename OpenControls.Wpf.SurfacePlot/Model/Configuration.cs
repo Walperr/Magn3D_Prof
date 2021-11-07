@@ -7,7 +7,7 @@ namespace OpenControls.Wpf.SurfacePlot.Model
         public Configuration()
         {
             Zoom = 100;
-            ShadingAlgorithm = Model.ShadingAlgorithm.FixedLevels;
+            ShadingAlgorithm = ShadingAlgorithm.FixedLevels;
             MinimumLevel = -64;
             MaximumLevel = 2048;
             Perspective = 1.0f;
@@ -15,7 +15,7 @@ namespace OpenControls.Wpf.SurfacePlot.Model
             ShowScatterPlot = false;
             ShowShading = true;
             ShadingMethod = ShadingMethod.Interpolated;
-            LabelFontSize = 10;
+            LabelFontSize = 15;
             LabelColour = Color.White;
             ShowLabels = true;
             XYLabelPosition = XYLabelPosition.Bottom;
@@ -44,14 +44,14 @@ namespace OpenControls.Wpf.SurfacePlot.Model
             }
             set
             {
-                if (value > MaximumZoom)
-                {
-                    value = MaximumZoom;
-                }
-                else if (value < MinimumZoom)
-                {
-                    value = MinimumZoom;
-                }
+                // if (value > MaximumZoom)
+                // {
+                //     value = MaximumZoom;
+                // }
+                // else if (value < MinimumZoom)
+                // {
+                //     value = MinimumZoom;
+                // }
                 _zoom = value;
                 ConfigurationChanged?.Invoke(ConfigurationItem.Zoom);
             }
@@ -61,7 +61,7 @@ namespace OpenControls.Wpf.SurfacePlot.Model
         {
             get
             {
-                return 1000;
+                return 10000;
             }
         }
 
@@ -69,7 +69,7 @@ namespace OpenControls.Wpf.SurfacePlot.Model
         {
             get
             {
-                return 1;
+                return -1;
             }
         }
 
@@ -463,6 +463,10 @@ namespace OpenControls.Wpf.SurfacePlot.Model
                 return _colorBar;
             }
         }
+
+        public Color BodiesColor { get; set; }
+
+        public Color BodiesEdges { get; set; }
 
         #endregion IRawDataConfiguration
     }

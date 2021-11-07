@@ -21,7 +21,7 @@ namespace Magn3D_Prof.Main
 
         private Vector3 J_vector; // Вектор намагниченности
 
-        public List<Vector3> Verticles; // Координаты вершин призмы
+        public List<Vector3> Vertices; // Координаты вершин призмы
 
         private List<List<List<Vector4>>> Fields = new List<List<List<Vector4>>>(); // Fields[i][j][k] i - индекс профиля, j  - индекс карты высот, k - индекс точки наблюдения X {X, Fx, Fy, Fz}
 
@@ -59,7 +59,7 @@ namespace Magn3D_Prof.Main
         /// </summary>
         public void UpdateBody()
         {
-            Verticles = new List<Vector3>();
+            Vertices = new List<Vector3>();
 
             Vector3 bias = new Vector3(X, Y, 0); // Смещение верхней грани в плоскости x0y относительно начала координат
 
@@ -83,16 +83,16 @@ namespace Magn3D_Prof.Main
                 if (double.IsNaN(Zs[i]))
                     Zs[i] = Global.Relief.Zmean;
             
-            Verticles.Add(new Vector3(-b / 2, -d / 2, h1 - Zs[0])); // 1 Точка грани
-            Verticles.Add(new Vector3(b / 2, -d / 2, h2 - Zs[1])); // 2 Точка грани
-            Verticles.Add(new Vector3(-b / 2, d / 2, h3 - Zs[2])); // 3 Точка грани
-            Verticles.Add(new Vector3(b / 2, d / 2, h2 - h1 + h3 - Zs[3])); // 4 Точка грани (координата z рассчитывается на основе первых 3 точек)
+            Vertices.Add(new Vector3(-b / 2, -d / 2, h1 - Zs[0])); // 1 Точка грани
+            Vertices.Add(new Vector3(b / 2, -d / 2, h2 - Zs[1])); // 2 Точка грани
+            Vertices.Add(new Vector3(-b / 2, d / 2, h3 - Zs[2])); // 3 Точка грани
+            Vertices.Add(new Vector3(b / 2, d / 2, h2 - h1 + h3 - Zs[3])); // 4 Точка грани (координата z рассчитывается на основе первых 3 точек)
 
             // Поворачиваем основание вокруг оси Z на угол ф
-            Verticles[0] = RotateZaxis(Verticles[0], alpha * Math.PI / 180) + bias;
-            Verticles[1] = RotateZaxis(Verticles[1], alpha * Math.PI / 180) + bias;
-            Verticles[2] = RotateZaxis(Verticles[2], alpha * Math.PI / 180) + bias;
-            Verticles[3] = RotateZaxis(Verticles[3], alpha * Math.PI / 180) + bias;
+            Vertices[0] = RotateZaxis(Vertices[0], alpha * Math.PI / 180) + bias;
+            Vertices[1] = RotateZaxis(Vertices[1], alpha * Math.PI / 180) + bias;
+            Vertices[2] = RotateZaxis(Vertices[2], alpha * Math.PI / 180) + bias;
+            Vertices[3] = RotateZaxis(Vertices[3], alpha * Math.PI / 180) + bias;
 
             // Рассчитываем координаты вектора оси призмы (вектор с началом в центре верхнего основания и концом в центре нижнего)
             double Lx = L * Math.Cos(fi * Math.PI / 180) * Math.Cos(beta * Math.PI / 180);
@@ -107,19 +107,19 @@ namespace Magn3D_Prof.Main
                 double h = (h3 - h2) / 2 + h2; // Считаем его координату z как проекцию на горизонтальную плоскость
 
                 // Считаем координаты нижнего основания, добавляя смещение вдоль оси призмы
-                Verticles.Add(new Vector3(Verticles[0].X, Verticles[0].Y, h)+ L_vec);
-                Verticles.Add(new Vector3(Verticles[1].X, Verticles[1].Y, h)+ L_vec);
-                Verticles.Add(new Vector3(Verticles[2].X, Verticles[2].Y, h)+ L_vec);
-                Verticles.Add(new Vector3(Verticles[3].X, Verticles[3].Y, h)+ L_vec);
+                Vertices.Add(new Vector3(Vertices[0].X, Vertices[0].Y, h)+ L_vec);
+                Vertices.Add(new Vector3(Vertices[1].X, Vertices[1].Y, h)+ L_vec);
+                Vertices.Add(new Vector3(Vertices[2].X, Vertices[2].Y, h)+ L_vec);
+                Vertices.Add(new Vector3(Vertices[3].X, Vertices[3].Y, h)+ L_vec);
             }
             else
             { // Иначе
 
                 // Копируем верхнее основание и смещаем на L вдоль оси призмы
-                Verticles.Add(Verticles[0] + L_vec);
-                Verticles.Add(Verticles[1] + L_vec);
-                Verticles.Add(Verticles[2] + L_vec);
-                Verticles.Add(Verticles[3] + L_vec);
+                Vertices.Add(Vertices[0] + L_vec);
+                Vertices.Add(Vertices[1] + L_vec);
+                Vertices.Add(Vertices[2] + L_vec);
+                Vertices.Add(Vertices[3] + L_vec);
 
             }
 
@@ -154,23 +154,23 @@ namespace Magn3D_Prof.Main
 
             // Добавляем 12 слагаемых поля от каждого треугольника (в прямоугольной призме их 12)
             // Координаты каждого треугольника пересчитываются индивидуальной для каждого в системе координат (см. Статью)
-            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Verticles[0] * 100, Verticles[2] * 100, Verticles[1] * 100 }, Verticles[4] * 100));
-            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Verticles[1] * 100, Verticles[2] * 100, Verticles[3] * 100 }, Verticles[4] * 100));
+            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Vertices[0] * 100, Vertices[2] * 100, Vertices[1] * 100 }, Vertices[4] * 100));
+            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Vertices[1] * 100, Vertices[2] * 100, Vertices[3] * 100 }, Vertices[4] * 100));
 
-            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Verticles[4] * 100, Verticles[5] * 100, Verticles[6] * 100 }, Verticles[0] * 100));
-            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Verticles[5] * 100, Verticles[7] * 100, Verticles[6] * 100 }, Verticles[0] * 100));
+            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Vertices[4] * 100, Vertices[5] * 100, Vertices[6] * 100 }, Vertices[0] * 100));
+            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Vertices[5] * 100, Vertices[7] * 100, Vertices[6] * 100 }, Vertices[0] * 100));
 
-            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Verticles[0] * 100, Verticles[4] * 100, Verticles[2] * 100 }, Verticles[1] * 100));
-            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Verticles[2] * 100, Verticles[4] * 100, Verticles[6] * 100 }, Verticles[1] * 100));
+            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Vertices[0] * 100, Vertices[4] * 100, Vertices[2] * 100 }, Vertices[1] * 100));
+            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Vertices[2] * 100, Vertices[4] * 100, Vertices[6] * 100 }, Vertices[1] * 100));
 
-            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Verticles[1] * 100, Verticles[3] * 100, Verticles[5] * 100 }, Verticles[0] * 100));
-            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Verticles[3] * 100, Verticles[7] * 100, Verticles[5] * 100 }, Verticles[0] * 100));
+            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Vertices[1] * 100, Vertices[3] * 100, Vertices[5] * 100 }, Vertices[0] * 100));
+            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Vertices[3] * 100, Vertices[7] * 100, Vertices[5] * 100 }, Vertices[0] * 100));
 
-            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Verticles[0] * 100, Verticles[1] * 100, Verticles[4] * 100 }, Verticles[2] * 100));
-            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Verticles[1] * 100, Verticles[5] * 100, Verticles[4] * 100 }, Verticles[2] * 100));
+            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Vertices[0] * 100, Vertices[1] * 100, Vertices[4] * 100 }, Vertices[2] * 100));
+            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Vertices[1] * 100, Vertices[5] * 100, Vertices[4] * 100 }, Vertices[2] * 100));
 
-            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Verticles[2] * 100, Verticles[6] * 100, Verticles[3] * 100 }, Verticles[0] * 100));
-            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Verticles[3] * 100, Verticles[6] * 100, Verticles[7] * 100 }, Verticles[0] * 100));
+            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Vertices[2] * 100, Vertices[6] * 100, Vertices[3] * 100 }, Vertices[0] * 100));
+            temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Vertices[3] * 100, Vertices[6] * 100, Vertices[7] * 100 }, Vertices[0] * 100));
 
             return J_vector * temp * k; // Домножаем на вектор намагниченности и возвращаем результат, переводя в наноТесла
         }

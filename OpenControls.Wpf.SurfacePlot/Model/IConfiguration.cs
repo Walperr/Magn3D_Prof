@@ -38,5 +38,7 @@ namespace OpenControls.Wpf.SurfacePlot.Model
 
         ColorBarsLoader.ColorBars ColorBarSelector { get; set; }
         IColorBar ColorBar { get; }
+        Color BodiesColor { get; set; }
+        Color BodiesEdges { get; set; }
     }
 }

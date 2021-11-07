@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Drawing;
 using System.Linq;
 using OpenTK;
@@ -25,7 +27,7 @@ namespace OpenControls.Wpf.SurfacePlot
         {
             _iConfiguration = iConfiguration;
             _iConfiguration.ConfigurationChanged += ConfigurationChangedEventHandler;
-
+            
             MaxZValue = 0;
             MinZValue = 0;
             CreateTextRenderer();
@@ -43,26 +45,28 @@ namespace OpenControls.Wpf.SurfacePlot
 
         public bool IsRunning { get; set; }
 
-        public string XAxisTitle { get; set; }
-        public string YAxisTitle { get; set; }
-        public string ZAxisTitle { get; set; }
-
-        private string GetXAxisTitle()
+        public string XAxisTitle
         {
-            return XAxisTitle != null ? XAxisTitle : "X Axis";
+            get => _xAxisTitle ?? "X Axis";
+            set => _xAxisTitle = value;
         }
 
-        private string GetYAxisTitle()
+        public string YAxisTitle
         {
-            return YAxisTitle != null ? YAxisTitle : "Y Axis";
+            get => _yAxisTitle ?? "Y Axis";
+            set => _yAxisTitle = value;
         }
 
-        private string GetZAxisTitle()
+        public string ZAxisTitle
         {
-            return ZAxisTitle != null ? ZAxisTitle : "Z Axis";
+            get => _zAxisTitle ?? "Z Axis";
+            set => _zAxisTitle = value;
         }
 
         Model.ILabelFormatter _iLabelFormatter;
+
+        private List<Vector3[]> _bodies = new();
+
         public Model.ILabelFormatter ILabelFormatter
         {
             get
@@ -529,6 +533,10 @@ namespace OpenControls.Wpf.SurfacePlot
          * The Model View matrix transforms the model into the projection space, and applies any rotations. 
          */
         Matrix4 _modelview;
+        private string _xAxisTitle;
+        private string _yAxisTitle;
+        private string _zAxisTitle;
+
         private void UpdateModelViewMatrix()
         {
             GetCurrentTranslation(out float xRange, out Matrix4 translation);
@@ -545,7 +553,7 @@ namespace OpenControls.Wpf.SurfacePlot
             GL.LoadMatrix(ref _modelview);
         }
 
-        void DrawPoints(VertexStore vertices)
+        private void DrawPoints(VertexStore vertices)
         {
             if ((vertices == null) || (vertices.NumberOfNodes != _lineData.Count * _lineData[0].Count))
             {
@@ -582,7 +590,7 @@ namespace OpenControls.Wpf.SurfacePlot
             GL.PointSize(1);
         }
 
-        void DrawShadedSurface(VertexStore vertices)
+        private void DrawShadedSurface(VertexStore vertices)
         {
             if ((vertices == null) || (vertices.NumberOfNodes != _lineData.Count * _lineData[0].Count))
             {
@@ -590,7 +598,7 @@ namespace OpenControls.Wpf.SurfacePlot
             }
 
             float axisScaling = 0.25f * _axisScaling;
-            float zOffset = Single.MaxValue;
+            float zOffset = float.MaxValue;
                 
             foreach (var list in _lineData)
             foreach (var val in list)
@@ -659,6 +667,157 @@ namespace OpenControls.Wpf.SurfacePlot
             }
 
             GL.End();
+        }
+
+        private void DrawPrisms()
+        {
+            if(_bodies.Count == 0) return; 
+            
+            var color = _iConfiguration.BodiesColor;
+            
+            foreach (var body in GetTransformedBodies())
+            {
+                //Drawing body quads
+                
+                GL.Begin(PrimitiveType.Quads);
+                GL.Color3(color);
+                
+                GL.Vertex3(body[0]);
+                GL.Vertex3(body[1]);
+                GL.Vertex3(body[3]);
+                GL.Vertex3(body[2]);
+
+                var colorLowEdge = Color.FromArgb(color.R / 2, color.G / 2,
+                    color.B / 2);
+                
+                GL.Color3(colorLowEdge);
+                GL.Vertex3(body[4]);
+                GL.Vertex3(body[5]);
+                GL.Vertex3(body[7]);
+                GL.Vertex3(body[6]);
+                
+                
+                GL.Color3(color);
+                GL.Vertex3(body[0]);
+                GL.Vertex3(body[1]);
+                GL.Vertex3(body[5]);
+                GL.Vertex3(body[4]);
+                
+                GL.Vertex3(body[3]);
+                GL.Vertex3(body[2]);
+                GL.Vertex3(body[6]);
+                GL.Vertex3(body[7]);
+                
+                GL.Vertex3(body[1]);
+                GL.Vertex3(body[3]);
+                GL.Vertex3(body[7]);
+                GL.Vertex3(body[5]);
+                
+                GL.Vertex3(body[0]);
+                GL.Vertex3(body[2]);
+                GL.Vertex3(body[6]);
+                GL.Vertex3(body[4]);
+                
+                GL.End();
+                
+                //Drawing body edges
+                
+                GL.Begin(PrimitiveType.Lines);
+                GL.Color3(_iConfiguration.BodiesEdges);
+                
+                GL.Vertex3(body[0]);
+                GL.Vertex3(body[1]);
+                
+                GL.Vertex3(body[1]);
+                GL.Vertex3(body[3]);
+                
+                GL.Vertex3(body[3]);
+                GL.Vertex3(body[2]);
+                
+                GL.Vertex3(body[2]);
+                GL.Vertex3(body[0]);
+                
+                GL.Vertex3(body[4]);
+                GL.Vertex3(body[5]);
+                
+                GL.Vertex3(body[5]);
+                GL.Vertex3(body[7]);
+                
+                GL.Vertex3(body[7]);
+                GL.Vertex3(body[6]);
+                
+                GL.Vertex3(body[6]);
+                GL.Vertex3(body[4]);
+                
+                GL.Vertex3(body[0]);
+                GL.Vertex3(body[4]);
+                
+                GL.Vertex3(body[1]);
+                GL.Vertex3(body[5]);
+                
+                GL.Vertex3(body[2]);
+                GL.Vertex3(body[6]);
+                
+                GL.Vertex3(body[3]);
+                GL.Vertex3(body[7]);
+                
+                GL.End();
+            }
+        }
+
+        public void AddBodies(IEnumerable<Vector3[]> bodies)
+        {
+            foreach (var body in bodies)
+            {
+                if(body.Length != 8)
+                    continue;
+                
+                _bodies.Add(body);
+            }
+        }
+
+        private IEnumerable<Vector3[]> GetTransformedBodies()
+        {
+            var axisScaling = _axisScaling;
+
+            var xLim = _lineData.Count;
+            var yLim = _lineData[0].Count;
+            
+            var xMin = _xAxisLabels.MinValue;
+            var xMax = _xAxisLabels.MaxValue;
+            
+            var yMin = _yAxisLabels.MinValue;
+            var yMax = _yAxisLabels.MaxValue;
+            
+            float zOffset = float.MaxValue;
+                
+            foreach (var list in _lineData)
+            foreach (var val in list)
+                if (!float.IsNaN(val) && zOffset >= val)
+                    zOffset = val;
+
+            zOffset *= (float)(axisScaling * ZScale * -1);
+
+            zOffset -= (float) (axisScaling * (_zAxisLabels.MaxValue - _zAxisLabels.MinValue) * ZScale) / 2;
+
+            var bodies = _bodies.Select(body => body.ToArray()).ToArray();
+            
+            foreach (var body in bodies)
+            {
+                for (var i = 0; i < body.Length; i++)
+                {
+                    body[i].X = (body[i].X - xMin) / (xMax - xMin) * xLim * axisScaling;
+                    body[i].Y = (body[i].Y - yMin) / (yMax - yMin) * yLim * axisScaling;
+                    body[i].Z = _iConfiguration.ViewProjection.IsBirdsEye() ? 0 : -(float)ZScale * axisScaling * body[i].Z + zOffset;
+                }
+            }
+
+            return bodies;
+        }
+
+        public void ClearBodies()
+        {
+            _bodies.Clear();
         }
 
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
@@ -764,7 +923,15 @@ namespace OpenControls.Wpf.SurfacePlot
                     DrawPoints(_rawDataValues);
                 }
             }
-            
+
+            if (_iConfiguration.ViewProjection.IsBirdsEye())
+            {
+                GL.Disable(EnableCap.DepthTest);
+                DrawPrisms();
+                GL.Enable(EnableCap.DepthTest);
+            }
+            else DrawPrisms();
+
             /*
              * Draw the frame
              * 
@@ -899,7 +1066,7 @@ namespace OpenControls.Wpf.SurfacePlot
 
             if (_iConfiguration.ShowAxesTitles && (_iConfiguration.ViewProjection == ViewProjection.ThreeDimensional))
             {
-                string text = GetZAxisTitle();
+                string text = ZAxisTitle;
                 float y = flipAxisTitle ? 3f * textHeight : - 3f * textHeight;
                 if (_iConfiguration.ShowLabels)
                 {
@@ -932,7 +1099,7 @@ namespace OpenControls.Wpf.SurfacePlot
 
             if (_iConfiguration.ShowAxesTitles /*&& !_iConfiguration.ViewProjection.IsOrthographic()*/)
             {
-                string text = GetXAxisTitle();
+                string text = XAxisTitle;
                 float z = flipAxisTitle ? -3f * textHeight : yMax + 3f * textHeight;
                 if (_iConfiguration.ShowLabels)
                 {
@@ -993,7 +1160,7 @@ namespace OpenControls.Wpf.SurfacePlot
 
             if (_iConfiguration.ShowAxesTitles /*&& !_iConfiguration.ViewProjection.IsOrthographic()*/)
             {
-                string text = GetYAxisTitle();
+                string text = YAxisTitle;
                 float z = flipAxisTitle ? -3f * textHeight : xMax + 3f * textHeight;
                 if (_iConfiguration.ShowLabels)
                 {

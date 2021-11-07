@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -7,7 +8,9 @@ using GRIDs;
 using OpenControls.Wpf.SurfacePlot;
 using OpenControls.Wpf.SurfacePlot.Common;
 using OpenControls.Wpf.SurfacePlot.Model;
-using Vectors;
+using OpenTK;
+using Configuration = OpenControls.Wpf.SurfacePlot.Model.Configuration;
+using Vector2 = Vectors.Vector2;
 
 namespace Magn3D_Prof.Main
 {
@@ -50,6 +53,8 @@ namespace Magn3D_Prof.Main
                 RefreshDisplaySurface();
             }
         }
+
+        public ObservableCollection<Prismbody> Bodies { get; } = new ObservableCollection<Prismbody>();
 
         public Color Background => _configuration.BackgroundColour;
 
@@ -126,6 +131,13 @@ namespace Magn3D_Prof.Main
             _propertyGrid.HelpVisible = false;
             _propertyGrid.ToolbarVisible = false;
             _propertyGrid.CommandsVisibleIfAvailable = false;
+            
+            //Initialize ObservaibleCollection
+
+            Bodies.CollectionChanged += (sender, args) =>
+            {
+                ApplyBodiesToControl();
+            };
         }
 
         public void Dispose()
@@ -214,6 +226,19 @@ namespace Magn3D_Prof.Main
             _configurationInfo.MinimumLevel = (short) zMin;
             
             _surfacePlotControl.SetData(drawData, xMin, xMax, 21, yMin, yMax, 21, zMin, zMax, 21);
+        }
+
+        private void ApplyBodiesToControl()
+        {
+            _surfacePlotControl.ClearBodies();
+
+            foreach (var prismbody in Bodies)
+            {
+                var body = prismbody.Vertices.Select(
+                    vert => new Vector3((float) vert.X, (float) vert.Y, (float) vert.Z)).ToArray();
+
+                _surfacePlotControl.AddBodies(new[] {body});
+            }
         }
     }
 }

@@ -470,9 +470,9 @@ namespace Magn3D_Prof.Main
             {
                 for (int i = 0; i < 8; i++)
                 {
-                    var nX = (float)((body.Verticles[i].X - _viewport.X) / _viewport.Width * ClientRectangle.Width -
+                    var nX = (float)((body.Vertices[i].X - _viewport.X) / _viewport.Width * ClientRectangle.Width -
                              Padding.Left);
-                    var nY = (float)((body.Verticles[i].Y - _viewport.Y) / _viewport.Height * ClientRectangle.Height -
+                    var nY = (float)((body.Vertices[i].Y - _viewport.Y) / _viewport.Height * ClientRectangle.Height -
                                      Padding.Top);
 
                     points[i] = new PointF(nX , nY);

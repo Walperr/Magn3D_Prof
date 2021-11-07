@@ -33,7 +33,7 @@ namespace Magn3D_Prof.Main
 
                 for (int j = 0; j < 8; j++)
                 {
-                    var point = Global.bodies[i].Verticles[j];
+                    var point = Global.bodies[i].Vertices[j];
                     point = Vector3.RotateCoordinates(l, m, n, point - p0);
                     // Добавляем точки на график как проекции вершин тела
                     double x = point.X;
@@ -102,7 +102,7 @@ namespace Magn3D_Prof.Main
 
                 for (int j = 0; j < 8; j++)
                 {
-                    var point = Global.bodies[i].Verticles[j];
+                    var point = Global.bodies[i].Vertices[j];
                     
                     // Добавляем точки на график как проекции вершин тела
                     double x = point.X;

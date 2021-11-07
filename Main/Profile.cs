@@ -325,6 +325,10 @@ namespace Magn3D_Prof.Main
                 profile.bodyControls.Add(body);
             }
             Draw(this, new EventArgs());
+            surfaceVIewer1?.Bodies?.Clear();
+
+            foreach (var prismbody in Global.bodies)
+                surfaceVIewer1?.Bodies?.Add(prismbody);
         }
         public void DeleteControls(int index)
         {
@@ -348,6 +352,10 @@ namespace Magn3D_Prof.Main
                 }
             }
             Draw(this, new EventArgs());
+            surfaceVIewer1?.Bodies?.Clear();
+
+            foreach (var prismbody in Global.bodies)
+                surfaceVIewer1?.Bodies?.Add(prismbody);
         }
 
         private void rememberField_Click(object sender, EventArgs e)

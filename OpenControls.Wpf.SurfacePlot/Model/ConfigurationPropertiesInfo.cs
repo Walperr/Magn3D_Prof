@@ -230,6 +230,19 @@ namespace OpenControls.Wpf.SurfacePlot.Model
         
         [Browsable(false)]
         public IColorBar ColorBar { get; }
+        
+        [Category("Body")]
+        public Color BodiesColor
+        {
+            get => _configuration.BodiesColor;
+            set => _configuration.BodiesColor = value;
+        }
+        [Category("Body")]
+        public Color BodiesEdges
+        {
+            get => _configuration.BodiesEdges;
+            set => _configuration.BodiesEdges = value;
+        }
 
         public void Dispose()
         {
