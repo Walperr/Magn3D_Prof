@@ -1,8 +1,9 @@
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\Vectors\bin\Debug\net472\Vectors.dll
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\Vectors\bin\Debug\net472\Vectors.pdb
-C:\Users\vladb\RiderProjects\Magn3D_Prof1\Vectors\obj\Debug\net472\Vectors.csprojAssemblyReference.cache
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\Vectors\obj\Debug\net472\Vectors.csproj.CoreCompileInputs.cache
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\Vectors\obj\Debug\net472\Vectors.AssemblyInfoInputs.cache
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\Vectors\obj\Debug\net472\Vectors.AssemblyInfo.cs
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\Vectors\obj\Debug\net472\Vectors.dll
 C:\Users\vladb\RiderProjects\Magn3D_Prof1\Vectors\obj\Debug\net472\Vectors.pdb
+C:\Users\vladb\RiderProjects\Magn3D_Prof1\Vectors\obj\Debug\net472\Vectors.csproj.AssemblyReference.cache
+C:\Users\vladb\RiderProjects\Magn3D_Prof1\Vectors\obj\Debug\net472\Vectors.GeneratedMSBuildEditorConfig.editorconfig

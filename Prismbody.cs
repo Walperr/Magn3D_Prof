@@ -123,14 +123,17 @@ namespace Magn3D_Prof
 
             }
 
-            double J = kappa * Global.T0.Getlength() / (1256.6370621219d * 1000) * 4 * Math.PI / 1000;
-
+            // каппа измеряется в 1e-5 единиц СИ.
+            double J = kappa * 1e-5 * Global.T0.Getlength() / MU0 * 1e-9 / (1000 / (4 * Math.PI)); // Ersted
+            
             J_vector = new Vector3(J * Math.Cos(I * Math.PI / 180) * Math.Cos(D * Math.PI / 180),
                                 J * Math.Cos(I * Math.PI / 180) * Math.Sin(D * Math.PI / 180), J * Math.Sin(I * Math.PI / 180));
 
             OnChangeParametrs(this, new EventArgs());
         }
 
+        private const double MU0 = 1.256637062121919192 * 1e-6;
+        
         // Поворот точки вокруг начала координат на угол ang
         private Vector3 RotateZaxis(Vector3 vec, double ang)
         {
@@ -172,7 +175,7 @@ namespace Magn3D_Prof
             temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Verticles[2] * 100, Verticles[6] * 100, Verticles[3] * 100 }, Verticles[0] * 100));
             temp = temp + IntegralTerm(M, ChangeSystem(new List<Vector3> { point, Verticles[3] * 100, Verticles[6] * 100, Verticles[7] * 100 }, Verticles[0] * 100));
 
-            return J_vector * temp * k; // Домножаем на вектор намагниченности и возвращаем результат, переводя в наноТесла
+            return J_vector * temp / (4 * Math.PI) * 1000 / (4 * Math.PI) / 1e-9 * MU0; // поле в наноТесла
         }
 
         // Пересчет вершин треугольника в новых координатах
