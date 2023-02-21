@@ -8,4 +8,8 @@
       <ProjectReference Include="..\Vectors\Vectors.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="obj\Release\net472" />
+    </ItemGroup>
+
 </Project>

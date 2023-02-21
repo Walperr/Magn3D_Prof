@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace Magn3D_Prof
         public double minimum = double.NegativeInfinity;
         public double maximum = double.PositiveInfinity;
         
-        public int Decimalplaces { get => decimalplaces; set { decimalplaces = value; Text.Text = Value.ToString("F" + Decimalplaces); } }
+        public int Decimalplaces { get => decimalplaces; set { decimalplaces = value; Text.Text = Value.ToString("F" + Decimalplaces, CultureInfo.InvariantCulture); } }
 
         public event EventHandler OnValueChanged;
 
@@ -36,7 +37,7 @@ namespace Magn3D_Prof
             if ((Char.IsControl(e.KeyChar) | e.KeyChar == 9))
             {
                 if (Text.Text.Length != 0) {
-                    ChangeValue(double.Parse(Text.Text.Replace('.', ','), System.Globalization.NumberStyles.Any));
+                    ChangeValue(double.Parse(Text.Text, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture));
                 }
                 else
                     ChangeValue(0);
@@ -52,7 +53,7 @@ namespace Magn3D_Prof
             {
                 if (Value == maximum) return;
                 if (Text.Text.Length != 0)
-                    ChangeValue(double.Parse(Text.Text.Replace('.', ','), System.Globalization.NumberStyles.Any));
+                    ChangeValue(double.Parse(Text.Text, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture));
                 else
                     ChangeValue(0);
                 ChangeValue(Value + Increment);
@@ -63,7 +64,7 @@ namespace Magn3D_Prof
             {
                 if (Value == minimum) return;
                 if (Text.Text.Length != 0)
-                    ChangeValue(double.Parse(Text.Text.Replace('.', ','), System.Globalization.NumberStyles.Any));
+                    ChangeValue(double.Parse(Text.Text, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture));
                 else
                     ChangeValue(0);
                 ChangeValue(Value - Increment);
@@ -75,7 +76,7 @@ namespace Magn3D_Prof
         private void Text_Leave(object sender, EventArgs e)
         {
             if (Text.Text.Length != 0)
-                ChangeValue(double.Parse(Text.Text.Replace('.', ','), System.Globalization.NumberStyles.Any));
+                ChangeValue(double.Parse(Text.Text, System.Globalization.NumberStyles.Any, CultureInfo.InvariantCulture));
             else
                 ChangeValue(0);
             OnValueChanged(this, new EventArgs());
@@ -86,7 +87,7 @@ namespace Magn3D_Prof
             this.Value = Math.Round(value,Decimalplaces,MidpointRounding.AwayFromZero);
             if (value > maximum) value = maximum;
             if (value < minimum) value = minimum;
-            Text.Text = value.ToString("F" + Decimalplaces);
+            Text.Text = value.ToString("F" + Decimalplaces, CultureInfo.InvariantCulture);
         }
 
         public void SetValue(double value)

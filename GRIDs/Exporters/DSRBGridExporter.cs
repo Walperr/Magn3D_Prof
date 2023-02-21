@@ -30,8 +30,8 @@ namespace GRIDs.Exporters
             
             _writer.Write(72);
             
-            _writer.Write(_grid.X.Count);
             _writer.Write(_grid.Y.Count);
+            _writer.Write(_grid.X.Count);
             
             _writer.Write(_grid.Xmin);
             _writer.Write(_grid.Ymin);

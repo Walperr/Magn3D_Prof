@@ -48,9 +48,9 @@ namespace Magn3D_Prof
             
             int N = y.Count * x.Count;
 
-            foreach(var Y in y)
+            foreach(var X in x)
             {
-                foreach (var X in x)
+                foreach (var Y in y)
                 {
                     double Fx = 0, Fy = 0, Fz = 0;
 

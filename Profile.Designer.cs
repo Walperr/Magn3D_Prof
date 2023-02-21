@@ -87,24 +87,24 @@ namespace Magn3D_Prof
             this.resetView = new System.Windows.Forms.Button();
             this.chooseGrid = new System.Windows.Forms.ComboBox();
             this.Top = new ploting.plot();
-            ((System.ComponentModel.ISupportInitialize) (this.ProfileSplit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfileSplit)).BeginInit();
             this.ProfileSplit.Panel1.SuspendLayout();
             this.ProfileSplit.Panel2.SuspendLayout();
             this.ProfileSplit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.LeftSplit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LeftSplit)).BeginInit();
             this.LeftSplit.Panel1.SuspendLayout();
             this.LeftSplit.Panel2.SuspendLayout();
             this.LeftSplit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.RigthSplit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RigthSplit)).BeginInit();
             this.RigthSplit.Panel1.SuspendLayout();
             this.RigthSplit.Panel2.SuspendLayout();
             this.RigthSplit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.Slit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Slit)).BeginInit();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.splitContainer1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -112,11 +112,12 @@ namespace Magn3D_Prof
             // 
             // ProfileSplit
             // 
-            this.ProfileSplit.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProfileSplit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.ProfileSplit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ProfileSplit.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.ProfileSplit.IsSplitterFixed = true;
             this.ProfileSplit.Location = new System.Drawing.Point(0, 0);
+            this.ProfileSplit.Margin = new System.Windows.Forms.Padding(2);
             this.ProfileSplit.Name = "ProfileSplit";
             // 
             // ProfileSplit.Panel1
@@ -126,8 +127,9 @@ namespace Magn3D_Prof
             // ProfileSplit.Panel2
             // 
             this.ProfileSplit.Panel2.Controls.Add(this.RigthSplit);
-            this.ProfileSplit.Size = new System.Drawing.Size(1280, 720);
+            this.ProfileSplit.Size = new System.Drawing.Size(960, 585);
             this.ProfileSplit.SplitterDistance = 382;
+            this.ProfileSplit.SplitterWidth = 3;
             this.ProfileSplit.TabIndex = 0;
             this.ProfileSplit.TabStop = false;
             // 
@@ -138,6 +140,7 @@ namespace Magn3D_Prof
             this.LeftSplit.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.LeftSplit.IsSplitterFixed = true;
             this.LeftSplit.Location = new System.Drawing.Point(0, 0);
+            this.LeftSplit.Margin = new System.Windows.Forms.Padding(2);
             this.LeftSplit.Name = "LeftSplit";
             this.LeftSplit.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -174,83 +177,82 @@ namespace Magn3D_Prof
             // 
             this.LeftSplit.Panel2.AutoScroll = true;
             this.LeftSplit.Panel2.Controls.Add(this.BodiesLabel);
-            this.LeftSplit.Size = new System.Drawing.Size(382, 720);
+            this.LeftSplit.Size = new System.Drawing.Size(382, 585);
             this.LeftSplit.SplitterDistance = 169;
+            this.LeftSplit.SplitterWidth = 3;
             this.LeftSplit.TabIndex = 0;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(440, 173);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(330, 141);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(25, 17);
+            this.label7.Size = new System.Drawing.Size(20, 13);
             this.label7.TabIndex = 47;
             this.label7.Text = "Z2";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(356, 173);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(267, 141);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(25, 17);
+            this.label6.Size = new System.Drawing.Size(20, 13);
             this.label6.TabIndex = 46;
             this.label6.Text = "Z1";
             // 
             // Hi2
             // 
             this.Hi2.Decimalplaces = 3;
-            this.Hi2.Location = new System.Drawing.Point(472, 173);
+            this.Hi2.Location = new System.Drawing.Point(354, 141);
+            this.Hi2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Hi2.Name = "Hi2";
-            this.Hi2.Size = new System.Drawing.Size(29, 26);
+            this.Hi2.Size = new System.Drawing.Size(22, 21);
             this.Hi2.TabIndex = 45;
             this.Hi2.TabStop = false;
             // 
             // Hi1
             // 
             this.Hi1.Decimalplaces = 3;
-            this.Hi1.Location = new System.Drawing.Point(388, 173);
+            this.Hi1.Location = new System.Drawing.Point(291, 141);
+            this.Hi1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Hi1.Name = "Hi1";
-            this.Hi1.Size = new System.Drawing.Size(29, 26);
+            this.Hi1.Size = new System.Drawing.Size(22, 21);
             this.Hi1.TabIndex = 44;
             this.Hi1.TabStop = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 173);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(5, 141);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(287, 17);
+            this.label5.Size = new System.Drawing.Size(222, 13);
             this.label5.TabIndex = 43;
             this.label5.Text = "Отображаемые эшелоны высот (индексы)";
             // 
             // PointsCount
             // 
             this.PointsCount.Decimalplaces = 3;
-            this.PointsCount.Location = new System.Drawing.Point(224, 141);
+            this.PointsCount.Location = new System.Drawing.Point(168, 115);
+            this.PointsCount.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PointsCount.Name = "PointsCount";
-            this.PointsCount.Size = new System.Drawing.Size(64, 26);
+            this.PointsCount.Size = new System.Drawing.Size(48, 21);
             this.PointsCount.TabIndex = 42;
             this.PointsCount.TabStop = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 141);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(5, 115);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(211, 17);
+            this.label4.Size = new System.Drawing.Size(159, 13);
             this.label4.TabIndex = 41;
             this.label4.Text = "Количество точек на профиле";
             // 
             // addbody
             // 
-            this.addbody.Location = new System.Drawing.Point(359, 111);
-            this.addbody.Margin = new System.Windows.Forms.Padding(4);
+            this.addbody.Location = new System.Drawing.Point(269, 90);
             this.addbody.Name = "addbody";
-            this.addbody.Size = new System.Drawing.Size(142, 27);
+            this.addbody.Size = new System.Drawing.Size(106, 22);
             this.addbody.TabIndex = 39;
             this.addbody.Text = "Новое тело";
             this.addbody.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -259,10 +261,9 @@ namespace Magn3D_Prof
             // 
             // rememberField
             // 
-            this.rememberField.Location = new System.Drawing.Point(359, 75);
-            this.rememberField.Margin = new System.Windows.Forms.Padding(4);
+            this.rememberField.Location = new System.Drawing.Point(269, 61);
             this.rememberField.Name = "rememberField";
-            this.rememberField.Size = new System.Drawing.Size(142, 28);
+            this.rememberField.Size = new System.Drawing.Size(106, 23);
             this.rememberField.TabIndex = 34;
             this.rememberField.Text = "Запомнить поле";
             this.rememberField.UseVisualStyleBackColor = true;
@@ -271,96 +272,94 @@ namespace Magn3D_Prof
             // Point1Y
             // 
             this.Point1Y.Decimalplaces = 3;
-            this.Point1Y.Location = new System.Drawing.Point(224, 112);
+            this.Point1Y.Location = new System.Drawing.Point(168, 91);
+            this.Point1Y.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Point1Y.Name = "Point1Y";
-            this.Point1Y.Size = new System.Drawing.Size(107, 26);
+            this.Point1Y.Size = new System.Drawing.Size(80, 21);
             this.Point1Y.TabIndex = 38;
             this.Point1Y.TabStop = false;
             // 
             // Point1X
             // 
             this.Point1X.Decimalplaces = 3;
-            this.Point1X.Location = new System.Drawing.Point(45, 112);
+            this.Point1X.Location = new System.Drawing.Point(34, 91);
+            this.Point1X.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Point1X.Name = "Point1X";
-            this.Point1X.Size = new System.Drawing.Size(107, 26);
+            this.Point1X.Size = new System.Drawing.Size(80, 21);
             this.Point1X.TabIndex = 37;
             this.Point1X.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(201, 115);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(151, 93);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(17, 17);
+            this.label1.Size = new System.Drawing.Size(14, 13);
             this.label1.TabIndex = 36;
             this.label1.Text = "Y";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 115);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(16, 93);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 17);
+            this.label2.Size = new System.Drawing.Size(14, 13);
             this.label2.TabIndex = 35;
             this.label2.Text = "X";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(160, 98);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(120, 80);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 17);
+            this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 34;
             this.label3.Text = "End";
             // 
             // Point0Y
             // 
             this.Point0Y.Decimalplaces = 3;
-            this.Point0Y.Location = new System.Drawing.Point(224, 78);
+            this.Point0Y.Location = new System.Drawing.Point(168, 63);
+            this.Point0Y.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Point0Y.Name = "Point0Y";
-            this.Point0Y.Size = new System.Drawing.Size(107, 28);
+            this.Point0Y.Size = new System.Drawing.Size(80, 23);
             this.Point0Y.TabIndex = 33;
             this.Point0Y.TabStop = false;
             // 
             // Point0X
             // 
             this.Point0X.Decimalplaces = 3;
-            this.Point0X.Location = new System.Drawing.Point(45, 78);
+            this.Point0X.Location = new System.Drawing.Point(34, 63);
+            this.Point0X.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Point0X.Name = "Point0X";
-            this.Point0X.Size = new System.Drawing.Size(107, 25);
+            this.Point0X.Size = new System.Drawing.Size(80, 20);
             this.Point0X.TabIndex = 32;
             this.Point0X.TabStop = false;
             // 
             // Point0YLabel
             // 
             this.Point0YLabel.AutoSize = true;
-            this.Point0YLabel.Location = new System.Drawing.Point(201, 81);
-            this.Point0YLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Point0YLabel.Location = new System.Drawing.Point(151, 66);
             this.Point0YLabel.Name = "Point0YLabel";
-            this.Point0YLabel.Size = new System.Drawing.Size(17, 17);
+            this.Point0YLabel.Size = new System.Drawing.Size(14, 13);
             this.Point0YLabel.TabIndex = 30;
             this.Point0YLabel.Text = "Y";
             // 
             // Point0XLabel
             // 
             this.Point0XLabel.AutoSize = true;
-            this.Point0XLabel.Location = new System.Drawing.Point(21, 81);
-            this.Point0XLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Point0XLabel.Location = new System.Drawing.Point(16, 66);
             this.Point0XLabel.Name = "Point0XLabel";
-            this.Point0XLabel.Size = new System.Drawing.Size(17, 17);
+            this.Point0XLabel.Size = new System.Drawing.Size(14, 13);
             this.Point0XLabel.TabIndex = 28;
             this.Point0XLabel.Text = "X";
             // 
             // Point0Label
             // 
             this.Point0Label.AutoSize = true;
-            this.Point0Label.Location = new System.Drawing.Point(155, 64);
-            this.Point0Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Point0Label.Location = new System.Drawing.Point(116, 52);
             this.Point0Label.Name = "Point0Label";
-            this.Point0Label.Size = new System.Drawing.Size(38, 17);
+            this.Point0Label.Size = new System.Drawing.Size(29, 13);
             this.Point0Label.TabIndex = 27;
             this.Point0Label.Text = "Start";
             // 
@@ -368,9 +367,10 @@ namespace Magn3D_Prof
             // 
             this.T0z.Decimalplaces = 3;
             this.T0z.Enabled = false;
-            this.T0z.Location = new System.Drawing.Point(394, 38);
+            this.T0z.Location = new System.Drawing.Point(296, 31);
+            this.T0z.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.T0z.Name = "T0z";
-            this.T0z.Size = new System.Drawing.Size(107, 30);
+            this.T0z.Size = new System.Drawing.Size(80, 24);
             this.T0z.TabIndex = 26;
             this.T0z.TabStop = false;
             // 
@@ -378,29 +378,28 @@ namespace Magn3D_Prof
             // 
             this.T0y.Decimalplaces = 3;
             this.T0y.Enabled = false;
-            this.T0y.Location = new System.Drawing.Point(224, 38);
+            this.T0y.Location = new System.Drawing.Point(168, 31);
+            this.T0y.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.T0y.Name = "T0y";
-            this.T0y.Size = new System.Drawing.Size(107, 34);
+            this.T0y.Size = new System.Drawing.Size(80, 28);
             this.T0y.TabIndex = 25;
             this.T0y.TabStop = false;
             // 
             // T0zLabel
             // 
             this.T0zLabel.AutoSize = true;
-            this.T0zLabel.Location = new System.Drawing.Point(356, 38);
-            this.T0zLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.T0zLabel.Location = new System.Drawing.Point(267, 31);
             this.T0zLabel.Name = "T0zLabel";
-            this.T0zLabel.Size = new System.Drawing.Size(32, 17);
+            this.T0zLabel.Size = new System.Drawing.Size(25, 13);
             this.T0zLabel.TabIndex = 23;
             this.T0zLabel.Text = "T0z";
             // 
             // T0yLabel
             // 
             this.T0yLabel.AutoSize = true;
-            this.T0yLabel.Location = new System.Drawing.Point(186, 38);
-            this.T0yLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.T0yLabel.Location = new System.Drawing.Point(140, 31);
             this.T0yLabel.Name = "T0yLabel";
-            this.T0yLabel.Size = new System.Drawing.Size(32, 17);
+            this.T0yLabel.Size = new System.Drawing.Size(25, 13);
             this.T0yLabel.TabIndex = 21;
             this.T0yLabel.Text = "T0y";
             // 
@@ -408,39 +407,37 @@ namespace Magn3D_Prof
             // 
             this.T0x.Decimalplaces = 3;
             this.T0x.Enabled = false;
-            this.T0x.Location = new System.Drawing.Point(45, 38);
+            this.T0x.Location = new System.Drawing.Point(34, 31);
+            this.T0x.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.T0x.Name = "T0x";
-            this.T0x.Size = new System.Drawing.Size(107, 34);
+            this.T0x.Size = new System.Drawing.Size(80, 28);
             this.T0x.TabIndex = 20;
             this.T0x.TabStop = false;
             // 
             // T0xLabel
             // 
             this.T0xLabel.AutoSize = true;
-            this.T0xLabel.Location = new System.Drawing.Point(7, 38);
-            this.T0xLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.T0xLabel.Location = new System.Drawing.Point(5, 31);
             this.T0xLabel.Name = "T0xLabel";
-            this.T0xLabel.Size = new System.Drawing.Size(31, 17);
+            this.T0xLabel.Size = new System.Drawing.Size(25, 13);
             this.T0xLabel.TabIndex = 17;
             this.T0xLabel.Text = "T0x";
             // 
             // ViewLabel
             // 
             this.ViewLabel.AutoSize = true;
-            this.ViewLabel.Location = new System.Drawing.Point(234, 5);
-            this.ViewLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ViewLabel.Location = new System.Drawing.Point(176, 4);
             this.ViewLabel.Name = "ViewLabel";
-            this.ViewLabel.Size = new System.Drawing.Size(54, 17);
+            this.ViewLabel.Size = new System.Drawing.Size(42, 13);
             this.ViewLabel.TabIndex = 1;
             this.ViewLabel.Text = "Общие";
             // 
             // BodiesLabel
             // 
             this.BodiesLabel.AutoSize = true;
-            this.BodiesLabel.Location = new System.Drawing.Point(237, 5);
-            this.BodiesLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.BodiesLabel.Location = new System.Drawing.Point(178, 4);
             this.BodiesLabel.Name = "BodiesLabel";
-            this.BodiesLabel.Size = new System.Drawing.Size(39, 17);
+            this.BodiesLabel.Size = new System.Drawing.Size(30, 13);
             this.BodiesLabel.TabIndex = 2;
             this.BodiesLabel.Text = "тела";
             // 
@@ -449,6 +446,7 @@ namespace Magn3D_Prof
             this.RigthSplit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RigthSplit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RigthSplit.Location = new System.Drawing.Point(0, 0);
+            this.RigthSplit.Margin = new System.Windows.Forms.Padding(2);
             this.RigthSplit.Name = "RigthSplit";
             this.RigthSplit.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -460,8 +458,9 @@ namespace Magn3D_Prof
             // RigthSplit.Panel2
             // 
             this.RigthSplit.Panel2.Controls.Add(this.tabControl1);
-            this.RigthSplit.Size = new System.Drawing.Size(894, 720);
-            this.RigthSplit.SplitterDistance = 343;
+            this.RigthSplit.Size = new System.Drawing.Size(575, 585);
+            this.RigthSplit.SplitterDistance = 278;
+            this.RigthSplit.SplitterWidth = 3;
             this.RigthSplit.TabIndex = 0;
             this.RigthSplit.TabStop = false;
             // 
@@ -469,10 +468,11 @@ namespace Magn3D_Prof
             // 
             this.SKOlabel.AutoSize = true;
             this.SKOlabel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.SKOlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (204)));
-            this.SKOlabel.Location = new System.Drawing.Point(801, 0);
+            this.SKOlabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SKOlabel.Location = new System.Drawing.Point(502, 0);
+            this.SKOlabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SKOlabel.Name = "SKOlabel";
-            this.SKOlabel.Size = new System.Drawing.Size(91, 29);
+            this.SKOlabel.Size = new System.Drawing.Size(71, 24);
             this.SKOlabel.TabIndex = 2;
             this.SKOlabel.Text = "СКО = ";
             // 
@@ -485,9 +485,10 @@ namespace Magn3D_Prof
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(0, 0);
+            this.chart1.Margin = new System.Windows.Forms.Padding(2);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            this.chart1.PaletteCustomColors = new System.Drawing.Color[] {System.Drawing.Color.Blue, System.Drawing.Color.Yellow, System.Drawing.Color.Red, System.Drawing.Color.Yellow, System.Drawing.Color.Cyan, System.Drawing.Color.Green, System.Drawing.Color.Olive, System.Drawing.Color.Gray};
+            this.chart1.PaletteCustomColors = new System.Drawing.Color[] { System.Drawing.Color.Blue, System.Drawing.Color.Yellow, System.Drawing.Color.Red, System.Drawing.Color.Yellow, System.Drawing.Color.Cyan, System.Drawing.Color.Green, System.Drawing.Color.Olive, System.Drawing.Color.Gray };
             series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -539,7 +540,7 @@ namespace Magn3D_Prof
             this.chart1.Series.Add(series6);
             this.chart1.Series.Add(series7);
             this.chart1.Series.Add(series8);
-            this.chart1.Size = new System.Drawing.Size(892, 341);
+            this.chart1.Size = new System.Drawing.Size(573, 276);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "FieldChart";
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
@@ -552,10 +553,11 @@ namespace Magn3D_Prof
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(892, 371);
+            this.tabControl1.Size = new System.Drawing.Size(573, 302);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -563,10 +565,11 @@ namespace Magn3D_Prof
             this.tabPage1.Controls.Add(this.Hmin);
             this.tabPage1.Controls.Add(this.Hmax);
             this.tabPage1.Controls.Add(this.Slit);
-            this.tabPage1.Location = new System.Drawing.Point(25, 4);
+            this.tabPage1.Location = new System.Drawing.Point(23, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(863, 363);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage1.Size = new System.Drawing.Size(546, 294);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Разрез";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -574,9 +577,10 @@ namespace Magn3D_Prof
             // Hmin
             // 
             this.Hmin.Decimalplaces = 3;
-            this.Hmin.Location = new System.Drawing.Point(32, 36);
+            this.Hmin.Location = new System.Drawing.Point(24, 29);
+            this.Hmin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Hmin.Name = "Hmin";
-            this.Hmin.Size = new System.Drawing.Size(100, 30);
+            this.Hmin.Size = new System.Drawing.Size(75, 24);
             this.Hmin.TabIndex = 501;
             this.Hmin.TabStop = false;
             this.Hmin.Enter += new System.EventHandler(this.Slit_Enter);
@@ -585,9 +589,10 @@ namespace Magn3D_Prof
             // Hmax
             // 
             this.Hmax.Decimalplaces = 3;
-            this.Hmax.Location = new System.Drawing.Point(32, 314);
+            this.Hmax.Location = new System.Drawing.Point(24, 255);
+            this.Hmax.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Hmax.Name = "Hmax";
-            this.Hmax.Size = new System.Drawing.Size(100, 30);
+            this.Hmax.Size = new System.Drawing.Size(75, 24);
             this.Hmax.TabIndex = 53;
             this.Hmax.TabStop = false;
             this.Hmax.Enter += new System.EventHandler(this.Slit_Enter);
@@ -605,15 +610,16 @@ namespace Magn3D_Prof
             chartArea2.Name = "ChartArea1";
             this.Slit.ChartAreas.Add(chartArea2);
             this.Slit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Slit.Location = new System.Drawing.Point(3, 3);
+            this.Slit.Location = new System.Drawing.Point(2, 2);
+            this.Slit.Margin = new System.Windows.Forms.Padding(2);
             this.Slit.Name = "Slit";
             this.Slit.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            this.Slit.PaletteCustomColors = new System.Drawing.Color[] {System.Drawing.Color.Black};
+            this.Slit.PaletteCustomColors = new System.Drawing.Color[] { System.Drawing.Color.Black };
             series9.ChartArea = "ChartArea1";
             series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
             series9.Name = "Series1";
             this.Slit.Series.Add(series9);
-            this.Slit.Size = new System.Drawing.Size(857, 357);
+            this.Slit.Size = new System.Drawing.Size(542, 290);
             this.Slit.TabIndex = 0;
             this.Slit.Click += new System.EventHandler(this.Slit_Click);
             this.Slit.Paint += new System.Windows.Forms.PaintEventHandler(this.PaintA);
@@ -623,10 +629,11 @@ namespace Magn3D_Prof
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.splitContainer1);
-            this.tabPage2.Location = new System.Drawing.Point(25, 4);
+            this.tabPage2.Location = new System.Drawing.Point(23, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(863, 363);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage2.Size = new System.Drawing.Size(546, 294);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Сверху";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -636,7 +643,8 @@ namespace Magn3D_Prof
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.IsSplitterFixed = true;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Location = new System.Drawing.Point(2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -648,25 +656,28 @@ namespace Magn3D_Prof
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.Top);
-            this.splitContainer1.Size = new System.Drawing.Size(857, 357);
+            this.splitContainer1.Size = new System.Drawing.Size(542, 290);
             this.splitContainer1.SplitterDistance = 91;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 1;
             // 
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 108);
+            this.panel1.Location = new System.Drawing.Point(0, 88);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(5, 10, 60, 5);
-            this.panel1.Size = new System.Drawing.Size(91, 249);
+            this.panel1.Padding = new System.Windows.Forms.Padding(4, 8, 45, 4);
+            this.panel1.Size = new System.Drawing.Size(91, 202);
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // resetView
             // 
             this.resetView.AutoSize = true;
-            this.resetView.Image = ((System.Drawing.Image) (resources.GetObject("resetView.Image")));
-            this.resetView.Location = new System.Drawing.Point(6, 30);
+            this.resetView.Image = ((System.Drawing.Image)(resources.GetObject("resetView.Image")));
+            this.resetView.Location = new System.Drawing.Point(4, 24);
+            this.resetView.Margin = new System.Windows.Forms.Padding(2);
             this.resetView.Name = "resetView";
             this.resetView.Size = new System.Drawing.Size(81, 72);
             this.resetView.TabIndex = 0;
@@ -678,10 +689,11 @@ namespace Magn3D_Prof
             // 
             this.chooseGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chooseGrid.FormattingEnabled = true;
-            this.chooseGrid.Items.AddRange(new object[] {"рельеф"});
+            this.chooseGrid.Items.AddRange(new object[] { "рельеф" });
             this.chooseGrid.Location = new System.Drawing.Point(0, 0);
+            this.chooseGrid.Margin = new System.Windows.Forms.Padding(2);
             this.chooseGrid.Name = "chooseGrid";
-            this.chooseGrid.Size = new System.Drawing.Size(91, 24);
+            this.chooseGrid.Size = new System.Drawing.Size(91, 21);
             this.chooseGrid.TabIndex = 3;
             this.chooseGrid.Text = "рельеф";
             this.chooseGrid.SelectedIndexChanged += new System.EventHandler(this.chooseGrid_SelectedIndexChanged);
@@ -696,10 +708,10 @@ namespace Magn3D_Prof
             this.Top.LabelsCountX = 5;
             this.Top.LabelsCountY = 5;
             this.Top.Location = new System.Drawing.Point(0, 0);
-            this.Top.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Top.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Top.Name = "Top";
-            this.Top.Padding = new System.Windows.Forms.Padding(5);
-            this.Top.Size = new System.Drawing.Size(762, 357);
+            this.Top.Padding = new System.Windows.Forms.Padding(4);
+            this.Top.Size = new System.Drawing.Size(448, 290);
             this.Top.TabIndex = 0;
             this.Top.ViewHeight = 0;
             this.Top.ViewXmin = 0;
@@ -709,38 +721,39 @@ namespace Magn3D_Prof
             // 
             // Profile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.Controls.Add(this.ProfileSplit);
             this.Location = new System.Drawing.Point(15, 15);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Profile";
-            this.Size = new System.Drawing.Size(1280, 720);
+            this.Size = new System.Drawing.Size(960, 585);
             this.Load += new System.EventHandler(this.Profile_Load);
             this.ProfileSplit.Panel1.ResumeLayout(false);
             this.ProfileSplit.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize) (this.ProfileSplit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ProfileSplit)).EndInit();
             this.ProfileSplit.ResumeLayout(false);
             this.LeftSplit.Panel1.ResumeLayout(false);
             this.LeftSplit.Panel1.PerformLayout();
             this.LeftSplit.Panel2.ResumeLayout(false);
             this.LeftSplit.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.LeftSplit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.LeftSplit)).EndInit();
             this.LeftSplit.ResumeLayout(false);
             this.RigthSplit.Panel1.ResumeLayout(false);
             this.RigthSplit.Panel1.PerformLayout();
             this.RigthSplit.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize) (this.RigthSplit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RigthSplit)).EndInit();
             this.RigthSplit.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize) (this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize) (this.Slit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Slit)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize) (this.splitContainer1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
         }

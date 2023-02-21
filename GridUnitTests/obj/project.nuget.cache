@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "umjZhjR8p0Z9Zdsm65RkLnJwrsnfDaBAJBSQHy/9EkjIA0foXLWtgDjyhqRZYqQFBgUJarOB/wm6V4Q1r1Pu1A==",
+  "dgSpecHash": "VAyN6eQW8cyDNR+szpxrvuioPEyQeiLtlYuWN2xkICdDpPRItdHnqE3+8vw8tKHGGNZ3ambhNpSxdiP23QodYw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\GridUnitTests\\GridUnitTests.csproj",
+  "projectFilePath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof\\GridUnitTests\\GridUnitTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vladb\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\vladb\\.nuget\\packages\\microsoft.codecoverage\\16.9.4\\microsoft.codecoverage.16.9.4.nupkg.sha512",

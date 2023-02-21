@@ -363,6 +363,9 @@ namespace Magn3D_Prof
 
                 output.Add(new Vector4(FieldX, FieldY, FieldZ, dist));
             }
+            if (HeigthIndex >= Fields[ProfIndex].Count)
+                Fields[ProfIndex].Add(null);
+            
             Fields[ProfIndex][HeigthIndex] = output;
         }
 

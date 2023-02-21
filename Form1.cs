@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -249,11 +250,11 @@ namespace Magn3D_Prof
 
                 IGrid field = GRD.ReadGRD(FielNames[i]);
 
-                if (field.Xmax < Relief.Xmax || field.Ymax < Relief.Ymax || field.Xmin > Relief.Xmin || field.Ymin > Relief.Ymin)
-                {
-                    MessageBox.Show("файл " + FielNames[i] + " имеет неверный размер", "Невозможно загрузить сетку");
-                    continue;
-                }
+                // if (field.Xmax < Relief.Xmax || field.Ymax < Relief.Ymax || field.Xmin > Relief.Xmin || field.Ymin > Relief.Ymin)
+                // {
+                //     MessageBox.Show("файл " + FielNames[i] + " имеет неверный размер", "Невозможно загрузить сетку");
+                //     continue;
+                // }
                 MeasuredField.Add(field);
                 MeasFieldNames.Add(FielNames[i]);
 
@@ -283,22 +284,51 @@ namespace Magn3D_Prof
             {
                 double X, Y, b, d, L, h1, h2, h3, fi, alpha, beta, kappa, I, D;
                 bool hle;
+                
                 if (reader.IsStartElement("Body"))
                 {
-                    X = double.Parse(reader.GetAttribute("X"));
-                    Y = double.Parse(reader.GetAttribute("Y"));
-                    b = double.Parse(reader.GetAttribute("b"));
-                    d = double.Parse(reader.GetAttribute("d"));
-                    L = double.Parse(reader.GetAttribute("L"));
-                    h1 = double.Parse(reader.GetAttribute("h1"));
-                    h2 = double.Parse(reader.GetAttribute("h2"));
-                    h3 = double.Parse(reader.GetAttribute("h3"));
-                    fi = double.Parse(reader.GetAttribute("fi"));
-                    alpha = double.Parse(reader.GetAttribute("alpha"));
-                    beta = double.Parse(reader.GetAttribute("beta"));
-                    kappa = double.Parse(reader.GetAttribute("kappa"));
-                    I = double.Parse(reader.GetAttribute("I"));
-                    D = double.Parse(reader.GetAttribute("D"));
+                    double.TryParse(reader.GetAttribute("X")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out X);
+
+                    double.TryParse(reader.GetAttribute("Y")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out Y);
+
+                    double.TryParse(reader.GetAttribute("b")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out b);
+
+                    double.TryParse(reader.GetAttribute("d")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out d);
+
+                    double.TryParse(reader.GetAttribute("L")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out L);
+
+                    double.TryParse(reader.GetAttribute("h1")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out h1);
+
+                    double.TryParse(reader.GetAttribute("h2")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out h2);
+
+                    double.TryParse(reader.GetAttribute("h3")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out h3);
+
+                    double.TryParse(reader.GetAttribute("fi")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out fi);
+
+                    double.TryParse(reader.GetAttribute("alpha")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out alpha);
+
+                    double.TryParse(reader.GetAttribute("beta")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out beta);
+
+                    double.TryParse(reader.GetAttribute("kappa")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out kappa);
+
+                    double.TryParse(reader.GetAttribute("I")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out I);
+
+                    double.TryParse(reader.GetAttribute("D")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out D);
+                    
                     hle = Convert.ToBoolean(reader.GetAttribute("hle"));
 
                     bodies.Add(new Prismbody(X, Y, b, d, L, h1, h2, h3, fi, alpha, beta, kappa, I, D, hle));
@@ -313,20 +343,29 @@ namespace Magn3D_Prof
 
             while (reader.Read())
             {
-                double X0, Y0, X1, Y1, p, H1, H2;
                 string name;
                 if (reader.IsStartElement("profile"))
                 {
-                    X0 = double.Parse(reader.GetAttribute("X0"));
-                    Y0 = double.Parse(reader.GetAttribute("Y0"));
-
-                    X1 = double.Parse(reader.GetAttribute("X1"));
-                    Y1 = double.Parse(reader.GetAttribute("Y1"));
-
-                    p = double.Parse(reader.GetAttribute("PointsDensity"));
+                    double.TryParse(reader.GetAttribute("X0")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out var X0);
                     
-                    H1 = double.Parse(reader.GetAttribute("H1"));
-                    H2 = double.Parse(reader.GetAttribute("H2"));
+                    double.TryParse(reader.GetAttribute("Y0")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out var Y0);
+
+                    double.TryParse(reader.GetAttribute("X1")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out var X1);
+                    
+                    double.TryParse(reader.GetAttribute("Y1")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out var Y1);
+                    
+                    double.TryParse(reader.GetAttribute("PointsDensity")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out var p);
+                    
+                    double.TryParse(reader.GetAttribute("H1")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out var H1);
+                    
+                    double.TryParse(reader.GetAttribute("H2")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out var H2);
 
                     name = reader.ReadString();
 
@@ -584,72 +623,72 @@ namespace Magn3D_Prof
             {
                 node = XmlDoc.CreateElement("Body");
                 attribute = XmlDoc.CreateAttribute("X");
-                attribute.Value = body.X.ToString().Replace(".", ",");
+                attribute.Value = body.X.ToString(CultureInfo.InvariantCulture);
                 
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("Y");
-                attribute.Value = body.Y.ToString().Replace(".", ",");
+                attribute.Value = body.Y.ToString(CultureInfo.InvariantCulture);
 
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("b");
-                attribute.Value = body.b.ToString().Replace(".", ",");
+                attribute.Value = body.b.ToString(CultureInfo.InvariantCulture);
 
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("d");
-                attribute.Value = body.d.ToString().Replace(".", ",");
+                attribute.Value = body.d.ToString(CultureInfo.InvariantCulture);
 
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("L");
-                attribute.Value = body.L.ToString().Replace(".", ",");
+                attribute.Value = body.L.ToString(CultureInfo.InvariantCulture);
 
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("h1");
-                attribute.Value = body.h1.ToString().Replace(".", ",");
+                attribute.Value = body.h1.ToString(CultureInfo.InvariantCulture);
 
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("h2");
-                attribute.Value = body.h2.ToString().Replace(".", ",");
+                attribute.Value = body.h2.ToString(CultureInfo.InvariantCulture);
 
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("h3");
-                attribute.Value = body.h3.ToString().Replace(".", ",");
+                attribute.Value = body.h3.ToString(CultureInfo.InvariantCulture);
 
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("fi");
-                attribute.Value = body.alpha.ToString().Replace(".", ",");
+                attribute.Value = body.alpha.ToString(CultureInfo.InvariantCulture);
 
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("alpha");
-                attribute.Value = body.beta.ToString().Replace(".", ",");
+                attribute.Value = body.beta.ToString(CultureInfo.InvariantCulture);
 
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("beta");
-                attribute.Value = body.fi.ToString().Replace(".", ",");
+                attribute.Value = body.fi.ToString(CultureInfo.InvariantCulture);
 
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("kappa");
-                attribute.Value = body.kappa.ToString().Replace(".", ",");
+                attribute.Value = body.kappa.ToString(CultureInfo.InvariantCulture);
 
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("I");
-                attribute.Value = body.I.ToString().Replace(".", ",");
+                attribute.Value = body.I.ToString(CultureInfo.InvariantCulture);
 
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("D");
-                attribute.Value = body.D.ToString().Replace(".", ",");
+                attribute.Value = body.D.ToString(CultureInfo.InvariantCulture);
 
                 node.Attributes.Append(attribute);
 
@@ -676,31 +715,31 @@ namespace Magn3D_Prof
             {
                 node = XmlDoc.CreateElement("profile");
                 attribute = XmlDoc.CreateAttribute("X0");
-                attribute.Value = profile.Point0X.GetValue().ToString().Replace(".", ",");
+                attribute.Value = profile.Point0X.GetValue().ToString(CultureInfo.InvariantCulture);
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("Y0");
-                attribute.Value = profile.Point0Y.GetValue().ToString().Replace(".", ",");
+                attribute.Value = profile.Point0Y.GetValue().ToString(CultureInfo.InvariantCulture);
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("X1");
-                attribute.Value = profile.Point1X.GetValue().ToString().Replace(".", ",");
+                attribute.Value = profile.Point1X.GetValue().ToString(CultureInfo.InvariantCulture);
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("Y1");
-                attribute.Value = profile.Point1Y.GetValue().ToString().Replace(".", ",");
+                attribute.Value = profile.Point1Y.GetValue().ToString(CultureInfo.InvariantCulture);
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("PointsDensity");
-                attribute.Value = profile.PointsCount.GetValue().ToString().Replace(".", ",");
+                attribute.Value = profile.PointsCount.GetValue().ToString(CultureInfo.InvariantCulture);
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("H1");
-                attribute.Value = profile.Hi1.GetValue().ToString().Replace(".", ",");
+                attribute.Value = profile.Hi1.GetValue().ToString(CultureInfo.InvariantCulture);
                 node.Attributes.Append(attribute);
 
                 attribute = XmlDoc.CreateAttribute("H2");
-                attribute.Value = profile.Hi2.GetValue().ToString().Replace(".", ",");
+                attribute.Value = profile.Hi2.GetValue().ToString(CultureInfo.InvariantCulture);
                 node.Attributes.Append(attribute);
 
                 node.InnerText = ProfPlace.TabPages[Profiles.IndexOf(profile)].Text;
@@ -784,12 +823,6 @@ namespace Magn3D_Prof
 
                 
                 IGrid field = GRD.ReadGRD(filename);
-
-                if (!(field.Xmax < Relief.Xmax || field.Ymax < Relief.Ymax || field.Xmin > Relief.Xmin || field.Ymin > Relief.Ymin))
-                {
-                    MessageBox.Show("файл " + filename.Substring(filename.LastIndexOf("\\")+1) + " имеет неверный размер", "Невозможно загрузить сетку");
-                    continue;
-                }
 
                 MeasuredField.Add(field);
                 if(!File.Exists(ProjectPath + filename.Substring(filename.LastIndexOf("\\"))))

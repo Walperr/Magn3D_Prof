@@ -41,6 +41,8 @@ namespace Magn3D_Prof
         public Profile()
         {
             InitializeComponent();
+            
+            Point1X.SetValue(100);
         }
 
         public Profile(double X0,double X1, double Y0, double Y1)
@@ -52,12 +54,7 @@ namespace Magn3D_Prof
 
             Point0Y.SetValue(Y0);
             Point1Y.SetValue(Y1);
-
-            Point0X.Enabled = false;
-            Point1X.Enabled = false;
-            Point0Y.Enabled = false;
-            Point1Y.Enabled = false;
-
+            
             UpdateAxis();
         }
 

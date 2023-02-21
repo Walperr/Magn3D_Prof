@@ -2,22 +2,59 @@
   "version": 3,
   "targets": {
     "net5.0-windows7.0": {
+      "GRIDs/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.2",
+        "dependencies": {
+          "Vectors": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GRIDs.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GRIDs.dll": {}
+        }
+      },
       "Magn3D_Prof/1.0.0": {
         "type": "project",
+        "dependencies": {
+          "GRIDs": "1.0.0",
+          "Vectors": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/Magn3D_Prof.dll": {}
         },
         "runtime": {
           "bin/placeholder/Magn3D_Prof.dll": {}
         }
+      },
+      "Vectors/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.7.2",
+        "compile": {
+          "bin/placeholder/Vectors.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Vectors.dll": {}
+        }
       }
     }
   },
   "libraries": {
+    "GRIDs/1.0.0": {
+      "type": "project",
+      "path": "../GRIDs/GRIDs.csproj",
+      "msbuildProject": "../GRIDs/GRIDs.csproj"
+    },
     "Magn3D_Prof/1.0.0": {
       "type": "project",
       "path": "../Magn3D_Prof.csproj",
       "msbuildProject": "../Magn3D_Prof.csproj"
+    },
+    "Vectors/1.0.0": {
+      "type": "project",
+      "path": "../Vectors/Vectors.csproj",
+      "msbuildProject": "../Vectors/Vectors.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -27,22 +64,23 @@
   },
   "packageFolders": {
     "C:\\Users\\vladb\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\ploting\\ploting.csproj",
+      "projectUniqueName": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof\\ploting\\ploting.csproj",
       "projectName": "ploting",
-      "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\ploting\\ploting.csproj",
+      "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof\\ploting\\ploting.csproj",
       "packagesPath": "C:\\Users\\vladb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\ploting\\obj\\",
+      "outputPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof\\ploting\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\vladb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -56,8 +94,8 @@
         "net5.0-windows7.0": {
           "targetAlias": "net5.0-windows",
           "projectReferences": {
-            "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Magn3D_Prof.csproj": {
-              "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof1\\Magn3D_Prof.csproj"
+            "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof\\Magn3D_Prof.csproj": {
+              "projectPath": "C:\\Users\\vladb\\RiderProjects\\Magn3D_Prof\\Magn3D_Prof.csproj"
             }
           }
         }
@@ -77,7 +115,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -89,7 +128,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
