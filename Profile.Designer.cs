@@ -46,6 +46,9 @@ namespace Magn3D_Prof
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Profile));
             this.ProfileSplit = new System.Windows.Forms.SplitContainer();
             this.LeftSplit = new System.Windows.Forms.SplitContainer();
+            this.numeric1 = new Magn3D_Prof.Numeric();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.Hi2 = new Magn3D_Prof.Numeric();
@@ -146,6 +149,9 @@ namespace Magn3D_Prof
             // 
             // LeftSplit.Panel1
             // 
+            this.LeftSplit.Panel1.Controls.Add(this.numeric1);
+            this.LeftSplit.Panel1.Controls.Add(this.label9);
+            this.LeftSplit.Panel1.Controls.Add(this.label8);
             this.LeftSplit.Panel1.Controls.Add(this.label7);
             this.LeftSplit.Panel1.Controls.Add(this.label6);
             this.LeftSplit.Panel1.Controls.Add(this.Hi2);
@@ -178,14 +184,40 @@ namespace Magn3D_Prof
             this.LeftSplit.Panel2.AutoScroll = true;
             this.LeftSplit.Panel2.Controls.Add(this.BodiesLabel);
             this.LeftSplit.Size = new System.Drawing.Size(382, 585);
-            this.LeftSplit.SplitterDistance = 169;
+            this.LeftSplit.SplitterDistance = 200;
             this.LeftSplit.SplitterWidth = 3;
             this.LeftSplit.TabIndex = 0;
+            // 
+            // numeric1
+            // 
+            this.numeric1.Decimalplaces = 3;
+            this.numeric1.Location = new System.Drawing.Point(168, 140);
+            this.numeric1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numeric1.Name = "numeric1";
+            this.numeric1.Size = new System.Drawing.Size(207, 25);
+            this.numeric1.TabIndex = 50;
+            this.numeric1.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(10, 142);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(155, 23);
+            this.label9.TabIndex = 49;
+            this.label9.Text = "Смещение поля, нТл:";
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(228, 114);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(122, 21);
+            this.label8.TabIndex = 48;
+            this.label8.Text = "Смещение поля, нТл";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(330, 141);
+            this.label7.Location = new System.Drawing.Point(330, 167);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(20, 13);
             this.label7.TabIndex = 47;
@@ -194,7 +226,7 @@ namespace Magn3D_Prof
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(267, 141);
+            this.label6.Location = new System.Drawing.Point(267, 167);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(20, 13);
             this.label6.TabIndex = 46;
@@ -203,27 +235,27 @@ namespace Magn3D_Prof
             // Hi2
             // 
             this.Hi2.Decimalplaces = 3;
-            this.Hi2.Location = new System.Drawing.Point(354, 141);
-            this.Hi2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Hi2.Location = new System.Drawing.Point(354, 165);
+            this.Hi2.Margin = new System.Windows.Forms.Padding(0);
             this.Hi2.Name = "Hi2";
-            this.Hi2.Size = new System.Drawing.Size(22, 21);
+            this.Hi2.Size = new System.Drawing.Size(23, 25);
             this.Hi2.TabIndex = 45;
             this.Hi2.TabStop = false;
             // 
             // Hi1
             // 
             this.Hi1.Decimalplaces = 3;
-            this.Hi1.Location = new System.Drawing.Point(291, 141);
-            this.Hi1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Hi1.Location = new System.Drawing.Point(290, 165);
+            this.Hi1.Margin = new System.Windows.Forms.Padding(0);
             this.Hi1.Name = "Hi1";
-            this.Hi1.Size = new System.Drawing.Size(22, 21);
+            this.Hi1.Size = new System.Drawing.Size(23, 25);
             this.Hi1.TabIndex = 44;
             this.Hi1.TabStop = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 141);
+            this.label5.Location = new System.Drawing.Point(5, 167);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(222, 13);
             this.label5.TabIndex = 43;
@@ -757,6 +789,11 @@ namespace Magn3D_Prof
             this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Label label9;
+        public Magn3D_Prof.Numeric numeric1;
+
+        private System.Windows.Forms.Label label8;
 
         private System.Windows.Forms.Panel panel1;
 

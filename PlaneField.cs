@@ -127,7 +127,7 @@ namespace Magn3D_Prof
                     if (Fmin > dT) Fmin = dT;
                     if (Fmax < dT) Fmax = dT;
 
-                    F.Add(dT);
+                    F.Add(dT - numeric1.GetValue());
                     progressBar1.Value = F.Count / (grid.X.Count * grid.Y.Count) * 100;
                 }
             }

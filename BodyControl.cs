@@ -265,12 +265,12 @@ namespace Magn3D_Prof
                 double field2z = Field2[i].Z / kappa.GetValue();
 
                 // Считаем аномальное поле
-                double T = new Vector3(field1x + Global.T0.X, field1y + Global.T0.Y, field1z + Global.T0.Z).Getlength() - Global.T0.Getlength();
+                double T = new Vector3(field1x + Global.T0.X, field1y + Global.T0.Y, field1z + Global.T0.Z).Getlength() - Global.T0.Getlength() - CurrentProfile.numeric1.GetValue();
 
                 dTmean += T / (2 *Field1.Count);
                 dT.Add(T);
 
-                T = new Vector3(field2x + Global.T0.X, field2y + Global.T0.Y, field2z + Global.T0.Z).Getlength() - Global.T0.Getlength();
+                T = new Vector3(field2x + Global.T0.X, field2y + Global.T0.Y, field2z + Global.T0.Z).Getlength() - Global.T0.Getlength() - CurrentProfile.numeric1.GetValue();
 
                 dTmean += T / (2 * Field1.Count);
                 dT.Add(T);
@@ -286,8 +286,8 @@ namespace Magn3D_Prof
                         var BField1 = body.GetField(Global.Profiles.IndexOf(CurrentProfile), (int)CurrentProfile.Hi1.GetValue());
                         var BField2 = body.GetField(Global.Profiles.IndexOf(CurrentProfile), (int)CurrentProfile.Hi2.GetValue());
 
-                        temp1 += new Vector3(BField1[i].X + Global.T0.X, BField1[i].Y + Global.T0.Y, BField1[i].Z + Global.T0.Z).Getlength() - Global.T0.Getlength();
-                        temp2 += new Vector3(BField2[i].X + Global.T0.X, BField2[i].Y + Global.T0.Y, BField2[i].Z + Global.T0.Z).Getlength() - Global.T0.Getlength();
+                        temp1 += new Vector3(BField1[i].X + Global.T0.X, BField1[i].Y + Global.T0.Y, BField1[i].Z + Global.T0.Z).Getlength() - Global.T0.Getlength() - CurrentProfile.numeric1.GetValue();
+                        temp2 += new Vector3(BField2[i].X + Global.T0.X, BField2[i].Y + Global.T0.Y, BField2[i].Z + Global.T0.Z).Getlength() - Global.T0.Getlength() - CurrentProfile.numeric1.GetValue();
                     }
                 }
                 temp1 = FieldMeas[i].Y - temp1;

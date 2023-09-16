@@ -367,6 +367,9 @@ namespace Magn3D_Prof
                     double.TryParse(reader.GetAttribute("H2")?.Replace(',', '.'), NumberStyles.Any,
                         CultureInfo.InvariantCulture, out var H2);
 
+                    double.TryParse(reader.GetAttribute("FieldOffset")?.Replace(',', '.'), NumberStyles.Any,
+                        CultureInfo.InvariantCulture, out var fieldOffset);
+
                     name = reader.ReadString();
 
                     ProfPlace.TabPages.Add(name); // Добавляем вкладку с именем
@@ -383,6 +386,7 @@ namespace Magn3D_Prof
                     element.PointsCount.SetValue(p);
                     element.Hi1.SetValue(H1);
                     element.Hi2.SetValue(H2);
+                    element.numeric1.SetValue(fieldOffset);
                 }
             }
             
@@ -740,6 +744,10 @@ namespace Magn3D_Prof
 
                 attribute = XmlDoc.CreateAttribute("H2");
                 attribute.Value = profile.Hi2.GetValue().ToString(CultureInfo.InvariantCulture);
+                node.Attributes.Append(attribute);
+
+                attribute = XmlDoc.CreateAttribute("FieldOffset");
+                attribute.Value = profile.numeric1.GetValue().ToString(CultureInfo.InvariantCulture);
                 node.Attributes.Append(attribute);
 
                 node.InnerText = ProfPlace.TabPages[Profiles.IndexOf(profile)].Text;

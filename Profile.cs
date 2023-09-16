@@ -37,6 +37,22 @@ namespace Magn3D_Prof
         private bool AnomalFieldMode = true;
 
         public List<BodyControl> bodyControls = new List<BodyControl>();
+        private static double _fieldOffset;
+
+        private static double FieldOffset
+        {
+            get => _fieldOffset;
+            set
+            {
+                if (Math.Abs(value - _fieldOffset) < 0.0001)
+                    return;
+                
+                foreach (var profile in Global.Profiles)
+                    profile.numeric1.SetValue(value);
+
+                _fieldOffset = value;
+            }
+        }
 
         public Profile()
         {
@@ -82,6 +98,7 @@ namespace Magn3D_Prof
             Point0Y.OnValueChanged += UpdateProfilePoints;
             Point1X.OnValueChanged += UpdateProfilePoints;
             Point1Y.OnValueChanged += UpdateProfilePoints;
+            numeric1.OnValueChanged += OffsetOnOnValueChanged;
 
             PointsCount.OnValueChanged += UpdatePointsCount;
             Hi1.OnValueChanged += UpdatePointsCount;
@@ -121,6 +138,13 @@ namespace Magn3D_Prof
             
             UpdateProfilePoints(sender,e);
         }
+
+        private void OffsetOnOnValueChanged(object sender, EventArgs e)
+        {
+            chart1_Click(this, EventArgs.Empty);
+            FieldOffset = numeric1.GetValue();
+        }
+
         private void UpdateProfilePoints(object sender, EventArgs e)
         {
             Point0 = new Vector2(Point0X.GetValue(), Point0Y.GetValue());
@@ -246,8 +270,8 @@ namespace Magn3D_Prof
 
                 double dT2 = T2.Getlength() - Global.T0.Getlength();
                 
-                chart1.Series[0].Points.AddXY(x, dT1);
-                chart1.Series[1].Points.AddXY(x, dT2);
+                chart1.Series[0].Points.AddXY(x, dT1 - numeric1.GetValue());
+                chart1.Series[1].Points.AddXY(x, dT2 - numeric1.GetValue());
                 chart1.Series[2].Points.AddXY(x, FieldX1);
                 chart1.Series[3].Points.AddXY(x, FieldY1);
                 chart1.Series[4].Points.AddXY(x, FieldZ1);

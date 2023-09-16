@@ -223,7 +223,7 @@ namespace Magn3D_Prof
             this.ProfPlace.ContextMenuStrip = this.menuProfile;
             this.ProfPlace.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ProfPlace.Location = new System.Drawing.Point(0, 22);
-            this.ProfPlace.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ProfPlace.Margin = new System.Windows.Forms.Padding(2);
             this.ProfPlace.Name = "ProfPlace";
             this.ProfPlace.SelectedIndex = 0;
             this.ProfPlace.Size = new System.Drawing.Size(946, 525);
@@ -292,9 +292,9 @@ namespace Magn3D_Prof
             this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Global";
-            this.Text = "Магнитное поле. 0.1.1";
+            this.Text = "Магнитное поле. 0.1.2";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Global_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Global_KeyDown);

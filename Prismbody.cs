@@ -126,8 +126,8 @@ namespace Magn3D_Prof
             // каппа измеряется в 1e-5 единиц СИ.
             double J = kappa * 1e-5 * Global.T0.Getlength() / MU0 * 1e-9 / (1000 / (4 * Math.PI)); // Ersted
             
-            J_vector = new Vector3(J * Math.Cos(I * Math.PI / 180) * Math.Cos(D * Math.PI / 180),
-                                J * Math.Cos(I * Math.PI / 180) * Math.Sin(D * Math.PI / 180), J * Math.Sin(I * Math.PI / 180));
+            J_vector = new Vector3(J * Math.Cos(I * Math.PI / 180) * Math.Sin(D * Math.PI / 180),
+                                J * Math.Cos(I * Math.PI / 180) * Math.Cos(D * Math.PI / 180), J * Math.Sin(I * Math.PI / 180));
 
             OnChangeParametrs(this, new EventArgs());
         }
